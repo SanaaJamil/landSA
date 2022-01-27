@@ -21,6 +21,9 @@
 			<button><input type="submit" value="search" ></button>
 		</form>
 		</div>
+		<form>
+			<div id="countries" w3-include-html="countries.html"></div>
+		</form>
 		
 		<!-- footer -->
 	</div>
