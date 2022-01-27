@@ -15,13 +15,13 @@
 			<form action="" >
 		
 
-			<label for="courtOrder">Upload the court order*:</label><br>
+			<label for="courtOrder">ادخل صورة من أمر المحكمة (امر انتقال الملكية)*:</label><br><br>
 			<button><input type="file" id="courtOrder" name="courtOrder" src="img_submit.gif" alt="Submit" width="48" height="48" laceholder="Photo" required="" capture></button><br><br>
 
-  			<label for="OwnerID">Enter Owner ID number (the passed away person ID)*:</label><br>
+  			<label for="OwnerID">ادخل رقم هوية صاحب الأرض (الشخص المتوفي)*:</label><br>
   			<input type="text" id="OwnerID" name="OwnerID" required=""><br><br>
   			
-  			<label for="REUN">Enter Real estate unit number (REUN)*:</label><br>
+  			<label for="REUN">أدخل رقم الوحدة العقارية (REUN) *:</label><br>
   			<input type="text" id="REUN" name="REUN" required=""><br><br>
 
   			<button><input type="submit" value="Submit" ></button>
