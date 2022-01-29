@@ -1,5 +1,4 @@
 <?php
-if(isset($_POST['submit'])){
 
     $con = mysqli_connect("localhost", "root", "") or die("Error: can't connect to servier!!!");
     $db = mysqli_select_db($con, "landsa") or die("Error: can't connect to database :(");
@@ -60,6 +59,5 @@ if(isset($_POST['submit'])){
         die("Error: ".mysqli_erron($con));
         echo "there was an error submiting the form";
     }
-}
 
 ?>
