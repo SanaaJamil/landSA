@@ -12,7 +12,7 @@
 
 		<div style="text-align:center;" class="content">
 			<h1 style="padding-left:1%;margin: 5%;">استبيان وراثة ارض</h1>
-			<form action="" >
+			<form action="landinheritanceFormConnection.php" method="post" >
 		
 
 			<label for="courtOrder">ادخل صورة من أمر المحكمة (امر انتقال الملكية)*:</label><br><br>
@@ -24,7 +24,7 @@
   			<label for="REUN">أدخل رقم الوحدة العقارية (REUN) *:</label><br>
   			<input type="text" id="REUN" name="REUN" required=""><br><br>
 
-  			<button><input type="submit" value="Submit" ></button>
+  			<button><input name="submit" type="submit" value="Submit" ></button>
 
 			</form>
 		</div>
