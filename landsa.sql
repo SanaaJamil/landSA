@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2022 at 03:42 PM
+-- Generation Time: Jan 29, 2022 at 08:26 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -78,7 +78,7 @@ CREATE TABLE `landinfo` (
   `LatitudeD` int(11) NOT NULL,
   `locationMap` int(11) NOT NULL,
   `ElectronicTitleDeed` int(11) NOT NULL,
-  `REUN` int(11) NOT NULL
+  `REUN` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -284,6 +284,12 @@ ALTER TABLE `giftrecord`
 --
 ALTER TABLE `inheritancerecord`
   ADD CONSTRAINT `inheritancerecord_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID`);
+
+--
+-- Constraints for table `landinfo`
+--
+ALTER TABLE `landinfo`
+  ADD CONSTRAINT `landinfo_ibfk_1` FOREIGN KEY (`REUN`) REFERENCES `landrecord` (`REUN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `landrecord`
