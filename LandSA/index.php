@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>Redirct Page </title>
-	<!-- to redirct to other page, use next line -->
-	 <meta http-equiv = "refresh" content = "1; url = homePage.html" />
+	<!-- to redirct to other page, using next line -->
+	 <meta http-equiv = "refresh" content = "1; url = homePage.php" />
 </head>
 <body>
 
