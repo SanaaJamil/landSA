@@ -23,27 +23,25 @@
 	</div>
 
 	<br>
-	<div class="topnav"> <!-- land A browse
-	<div id="nationality" w3-include-html="components/nationality.html"> </div> !-->
-		<p style="position: relative;left:-30px;display: inline; ">
-			<img src="images/Riyadh.jpg">
-		</p>
+<form method="post" name="booking" action="retrieve/browseLands.php">
+		<br>
+	<div class="topnav"> <!-- land A browse !-->
+		<img src="images/Riyadh.jpg" alt="صورة الموقع العقاري "style="float:left; width: 200px; height: 121px;">
 		<h4> 
-			<div style="float:left; display: inline;">Left Text</div>
-			<div style="clear: left;"/>
+			<div style="float:right; display: inline;"> الموقع: <br>
+			المساحه:  <br>
+		رقم التواصل: <br>
+		تفاصيل اضافيه <br>
+
+	</div>
+			<div style="clear: right;"/>
 		</h4>
-		<br> <!-- only regesterd cans viwe the details -->
-		<button style="position: relative;right: 500px;"><input type="submit" value="عرض التفاصيل " ></button>
+		<br> <!-- only regesterd can view  details -->
+		<button style="float:right;"><input type="submit" value="عرض التفاصيل " ></button>
 
 
-	</div>
-
-	<br>
-	<div class="topnav">
-		<button style="position: relative;right: 1000px;"><input type="submit" value="عرض التفاصيل " ></button>
-
-
-	</div>
+	</div>	<br>
+</form>
 		
 		<!-- footer -->
 	</div>
