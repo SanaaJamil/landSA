@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
+if (isset($_SESSION['loggedin'] != true)) {
    echo "Please log in first to see this page.";
         header('Location: login.php');
 ?>
