@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+   echo "Please log in first to see this page.";
+        header('Location: login.php');
+?>
 <!DOCTYPE html>
 	<html lang="ar" style='direction: rtl'>
 		<head>
