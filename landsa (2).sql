@@ -186,7 +186,9 @@ CREATE TABLE `systemrequest` (
 CREATE TABLE `users` (
   `ID` varchar(64) NOT NULL,
   `IDType` varchar(64) NOT NULL,
-  `Name` varchar(64) NOT NULL,
+  `fristName` varchar(64) NOT NULL,
+  `middleName` varchar(64) NOT NULL,
+  `lastName` varchar(64) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `phoneNum` varchar(64) NOT NULL,
   `Email` varchar(64) NOT NULL,
