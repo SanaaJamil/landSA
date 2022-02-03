@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin'] != true)) {
-   echo "Please log in first to see this page.";
-        header('Location: login.php');
+if (!isset($_SESSION['loggedin'])) {
+echo "<script>alert('الرجاء تسجيل الدخول أولا')</script>";
+        header('Location: ./sign_log/login.php');}
 ?>
 <!DOCTYPE html>
 	<html lang="ar" style='direction: rtl'>
