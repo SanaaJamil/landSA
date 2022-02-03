@@ -9,7 +9,7 @@
     $share = $_POST["share"];
     $address = $_POST["address"];
     $IDType = $_POST["IDType"];
-    //$IDNumber  = $_POST["IDNumber"];
+    $IDNumber  = $_POST["IDNumber"];
     //land info
     $pieceNumber = $_POST["pieceNumber"];
     $blockNumber = $_POST["blockNumber"];
@@ -46,18 +46,20 @@
     $ElectronicTitleDeed = $_POST["ElectronicTitleDeed"];
     
 
-    $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
-    value('$name', '$nationality', '$share', '$address', '$IDType', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
+    $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
+    value('$name', '$nationality', '$share', '$address', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
     $query = mysqli_query($con, $insertLand);
 
     if($query){
-        $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, locationMap, ElectronicTitleDeed) 
-        VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$locationMap', '$ElectronicTitleDeed')";
+        $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, locationMap, ElectronicTitleDeed, REUN) 
+        VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$locationMap', '$ElectronicTitleDeed', '$REUN')";
+        $query = mysqli_query($con, $insertLandInfo);
         echo "تم ارسال الطلب بنجاح";
         echo "<a href='../homePage.php'>view home</a>";
     }else{
-        die("Error: ".mysqli_erron($con));
         echo "there was an error submiting the form";
+        die("Error: ".mysqli_erron($con));
+        
     }
 
 ?>
