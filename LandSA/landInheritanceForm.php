@@ -1,4 +1,4 @@
-<!-- land Inheritance form -->
+<!-- land Inheritance form HTML -->
 <!DOCTYPE html>
 <html lang="ar" style='direction: rtl'>
 	<head>
