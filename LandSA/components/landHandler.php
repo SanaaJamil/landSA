@@ -4,7 +4,6 @@
     $db = mysqli_select_db($con, "landsa") or die("Error: can't connect to database :(");
 
     //user info
-    $name = $_POST["name"];
     $nationality = $_POST["nationality"];
     $share = $_POST["share"];
     $address = $_POST["address"];
@@ -44,7 +43,14 @@
     $LatitudeD = $_POST["LatitudeD"];
     $locationMap = $_POST["locationMap"];
     $ElectronicTitleDeed = $_POST["ElectronicTitleDeed"];
-    
+
+    if (!empty ($_POST['name'])){
+        $name = $_POST["name"];
+    }
+    else{
+        $error1 = "Please enter your name <br>";
+        exit;
+    }
 
     $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
     value('$name', '$nationality', '$share', '$address', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
@@ -54,8 +60,7 @@
         $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, locationMap, ElectronicTitleDeed, REUN) 
         VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$locationMap', '$ElectronicTitleDeed', '$REUN')";
         $query = mysqli_query($con, $insertLandInfo);
-        echo "تم ارسال الطلب بنجاح";
-        echo "<a href='../homePage.php'>view home</a>";
+        header('Location: ../homePage.php');
     }else{
         echo "there was an error submiting the form";
         die("Error: ".mysqli_erron($con));
