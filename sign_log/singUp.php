@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ar" style='direction: rtl'>
 
 <head>
@@ -24,7 +25,51 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
-    <style>*{font-family: "Montserrat", sans-serif;}</style>
+    <style>
+*
+{font-family: "Montserrat", sans-serif;} 
+    
+#message {
+  display:none;
+  background: #fff;
+  color: #000;
+  position: relative;
+  padding: 0px 25px 10px ;
+  margin-top: 0px;
+}
+
+#message p {
+  padding: 0px 35px;
+  font-size: 18px;
+}
+
+.A{
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  right: -25px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  right: -25px;
+  content: "✖";
+}
+</style>
 </head>
 
 <body>
@@ -34,22 +79,33 @@
                 <div class="card-body">
                     <img class="logo " src="../images/Picture1.gif" alt="logo" width="300px" style="margin-right: 125px">
                     <h4 class="title">إنشاء حساب</h4>
-                    <form method="POST" action="SignupHandler.php">
+                    <form  onSubmit="return validate();" method="POST" action="SignupHandler.php">
                         <div class="row row-space">
                             <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">رقم الهوية الوطنيه</label>
-                                    <input class="input--style-4" type="text" name="ID" required>
+                                <div <?php if (isset($id_error)): ?> class="input-group" <?php endif ?>>
+                                    <label class="label">رقم الهوية </label>
+                                    <input class="input--style-4" type="text" name="ID" maxlength="10" pattern="[0-9]{10}" required>
+                                    <?php if (isset($id_error)): ?>
+	  	                              <span><?php echo $id_error; ?></span>
+	                                  <?php endif ?>
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">نوع الهوية</label>
-                                    <input class="input--style-4" type="text" name="IDType" required>
-                                </div>
+                            <div class="input-group">
+                            <label class="label">نوع الهوية</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="IDType">
+                                    <option disabled="disabled" selected="selected">اختر نوع الهوية</option>
+                                    <option>مواطن</option>
+                                    <option>مقيم</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
                             </div>
                         </div>
                         <div class="row row-space">
+                        
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">الاسم الأول</label>
@@ -68,16 +124,17 @@
                                     <input class="input--style-4" type="text" name="lastName"required>
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">البريد الإلكتروني</label>
-                                    <input class="input--style-4" type="Email" name="Email"required>
-                                </div>
-                            </div>
+                            
 
                             </div>
                             
                         <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">البريد الإلكتروني</label>
+                                    <input class="input--style-4" type="email" name="Email" placeholder="example@xxxxx.com" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" required>
+                                </div>
+                            </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">تاريخ الميلاد</label>
@@ -92,21 +149,37 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">رقم الهاتف</label>
-                                    <input class="input--style-4" type="text" name="phoneNum" required>
+                                    <label class="label"> رقم الجوال</label>
+                                    <input class="input--style-4" type="text" name="phoneNum" placeholder="05XXXXXXXX" maxlength="10" pattern="+966[0-9]{10}" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">الكلمة السرية</label>
-                                    <input class="input--style-4" type="Password" name="Password" required>
+                                    <label class="label" for="psw">كلمة المرور</label>
+                                    <input class="input--style-4" type="Password" id="psw" name="Password" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required>                                 
+                                </div>
+                                <div id="message">
+  <h5>يجب أن تحتوي كلمة المرور على ما يلي:</h5>
+  <p id="letter" class="invalid A" > حروف صغيرة</p>
+  <p id="capital" class="invalid A">حروف كبيرة</p>
+  <p id="number" class="invalid A">أرقام</p>
+  <p id="length" class="invalid A">على الأقل 8 رموز</p>
+</div>
+				
+
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">إعادة كلمة المرور</label>
+                                    <input class="input--style-4" type="Password" id ="password_confirm" name="password_confirm" required>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">ارسال</button>
-                            <button class="btn btn--radius-2 btn--blue" type="submit">إلغاء</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit" name="Submit">ارسال</button>
+                            <button class="btn btn--radius-2 btn--blue" type="reset">إلغاء</button>
 
                         </div>
                     </form>
@@ -124,6 +197,80 @@
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+
+    <script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+<script>
+        function validate(){
+
+            var a = document.getElementById("psw").value;
+            var b = document.getElementById("password_confirm").value;
+            if (a!=b) {
+               alert("يجب أن تتطابق كلمة المرور وإعادة كلمة المرور!");
+               return false;
+            }
+        }
+     </script>
+
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
