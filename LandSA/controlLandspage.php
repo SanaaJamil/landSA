@@ -52,8 +52,40 @@
 		.moreB{
 			background-color:#35c8afce;;
 		}
-		/* Style of switch button */
+		.MiniBlock {
+			display: flex;
+			justify-content: space-evenly;
+		}
+		.land img{
+				width: 40%;
+				border-radius: 5%;
+			}
 
+		@media only screen and (max-width: 800px ) {
+			.land {
+				flex-direction: column;
+				align-items: center;
+			}
+			.block {
+				display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+			}
+			.MiniBlock{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-around;
+			}
+			.MiniBlock img{
+				width: 50%;
+				width:25%; 
+				height:25%;
+				 border-radius: 2%;
+			}
+
+		}
 
 	</style>
 	<?php
@@ -80,7 +112,7 @@
 </head>
 <body>
 	<!--Page header-->
-	<div id="Head" w3-include-html="components/nav.html"></div>
+	<div id="Head" w3-include-html="components/nav.php"></div>
 
 	<div class="content">
 		<h1>قائمة الاراضي</h1><br>
@@ -93,7 +125,7 @@
 				if ($result->num_rows > 0) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-						echo "<div class='land'>";
+					echo "<div class='land'>";
 						// Informations block
 
 						echo"<div class='block'>";
@@ -132,26 +164,28 @@
 						
 						echo "<tr>
 							<td>المساحة بالارقام:</td>
-							<td> $row[spaceInNumbersLength] X $row[spaceInNumbersWidth]</td>
+							<td> $row[spaceInNumbersLength]x$row[spaceInNumbersWidth] متر</td>
 						</tr>";
 						echo"</table>";
-						echo"</div>";
+						echo"</div> <br>";
 
-						
-						echo "<img src='images/Riyadh.jpg' alt='صورة الأرض' width='25%'> ";
-						
-						// Buttons block
-						echo"<div class='block'>";
-						if($row["landState"]==0){
+						// echo"<div class='MiniBlock'>";
+
+							echo "<img src='images/Riyadh.jpg' alt='صورة الأرض' ><br> ";
 							
-							echo "<button class='sellB'>بيع</button>";
-							echo "<button class='giftB'>اهداء</button>";
-						}
-						
-						echo "<button class='moreB'>عرض التفاصيل></button>";
-						
-						echo"</div>";
-						echo "</div>";
+							// Buttons block
+							echo"<div class='block'>";
+							if($row["landState"]==0){
+								echo "<button class='sellB'>بيع</button>";
+								echo "<button class='giftB'>اهداء</button>";
+							}
+							
+							echo "<button class='moreB'>عرض التفاصيل></button>";
+							
+							echo"</div>";
+
+						// echo"</div>";
+					echo "</div>";
 					}
 				} else {
 					echo "0 results";

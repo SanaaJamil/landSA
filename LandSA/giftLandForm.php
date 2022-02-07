@@ -80,7 +80,7 @@
 	</head>
 	<body>
 		<!--Page header-->
-		<div id="Head" w3-include-html="components/nav.html"></div>
+		<div id="Head" w3-include-html="components/nav.php"></div>
 	<div class="content">
 		<div style="text-align:center;margin: 5%;">
 			<h1 style="padding-left:1%;margin: 5%;">استبيان اهداء ارض</h1>
