@@ -61,8 +61,8 @@ CREATE TABLE `inheritancerecord` (
 CREATE TABLE `landinfo` (
   `spaceInNumbersLength` int(11) NOT NULL,
   `spaceInNumbersWidth` int(11) NOT NULL,
-  `spaceInWritingLength` int(11) NOT NULL,
-  `spaceInWritingWidth` int(11) NOT NULL,
+  `spaceInWritingLength` VARCHAR(64) NOT NULL,
+  `spaceInWritingWidth` VARCHAR(64) NOT NULL,
   `bordersNorth` int(11) NOT NULL,
   `bordersSouth` int(11) NOT NULL,
   `bordersEast` int(11) NOT NULL,
