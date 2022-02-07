@@ -381,32 +381,6 @@ input {
   cursor: pointer;
 }
 
-.radio-container input:checked ~ .checkmark {
-  background-color: #e5e5e5;
-}
-
-.radio-container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.radio-container .checkmark:after {
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  background: #57b846;
-}
-
-
-
 .input-group {
   position: relative;
   margin-bottom: 22px;
@@ -463,12 +437,12 @@ input {
   font-size: 16px;
   font-family: inherit;
   padding-left: 22px;
-  padding-right: 50px;
+  text-align: right;
 }
 
 .rs-select2 .select2-container .select2-selection--single .select2-selection__arrow {
   height: 50px;
-  right: 20px;
+  left: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -499,6 +473,7 @@ input {
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  
 }
 
 .rs-select2 .select2-container.select2-container--open .select2-selection--single .select2-selection__arrow::after {
@@ -524,6 +499,8 @@ input {
 
 .select2-container--default .select2-results__option {
   padding-left: 22px;
+  text-align: right;
+
 }
 
 /* ==========================================================================
