@@ -27,7 +27,7 @@
                             <h2>معلومات المالك:</h2>
                             <p>اسم المالك</p>
                             <div class="form">
-                                <input type="text" name="name">
+                                <input type="text" name="name" required>
                             </div>
                             <p>الجنسية</p>
                             <div class="form">
@@ -284,11 +284,11 @@
                             </div>
                             <p>الحصة / النسبة</p>
                             <div class="form">
-                                <input type="number" name="share">
+                                <input type="number" name="share" required>
                             </div>
                             <p>العنوان</p>
                             <div class="form">
-                                <input type="text" name="address">
+                                <input type="text" name="address" required>
                             </div> 
                             <p>نوع الهوية</p>
                             <div class="form">
@@ -302,7 +302,7 @@
                             </div>
                             <p>رقم الهوية</p>
                             <div class="form">
-                                <input type="text" minlength="10" maxlength="10" name="IDNumber">
+                                <input type="text" minlength="10" maxlength="10" name="IDNumber" required>
                             </div>
                         </div>
 
@@ -310,65 +310,65 @@
                             <h2>معلومات العقار:</h2>
                             <p>رقم القطعة</p>
                             <div class="form">
-                                <input type="number" name="pieceNumber">
+                                <input type="number" name="pieceNumber" required>
                             </div>  
                             <p>رقم البلوك</p>
                             <div class="form">
-                                <input type="number" name="blockNumber">
+                                <input type="number" name="blockNumber" required>
                             </div>  
                             <p>رقم المخطط</p>
                             <div class="form">
-                                <input type="number" name="planNumber">
+                                <input type="number" name="planNumber" required>
                             </div>
                             <p>اسم الحي</p>  
                             <div class="form">
-                                <input type="text" name="neighborhoodName">
+                                <input type="text" name="neighborhoodName" required>
                             </div>
                             <p>المدينة</p>
                             <div class="form">
-                                <input type="text" name="city">
+                                <input type="text" name="city" required>
                             </div>
                             <p>رقم الوحدة</p>
                             <div class="form">
-                                <input type="text" name="REUN">
+                                <input type="text" name="REUN" required>
                             </div>
                             <p>نوع الوحدة</p>
                             <div class="form">
                                 <div class="custom_select">
                                     <select name="unitType">
                                         <option value="">اختار</option>
-                                        <option value="card">سكني</option>
-                                        <option value="passport">تجاري</option>
+                                        <option value="residential">سكني</option>
+                                        <option value="commercial">تجاري</option>
                                     </select>
                                 </div>
                             </div> 
                             <p>رقم الصك</p>
                             <div class="form">
-                                <input type="text" minlength="12" maxlength="12" name="deedNumber">
+                                <input type="text" minlength="12" maxlength="12" name="deedNumber" required>
                             </div>  
                             <p>تاريخ الصك</p>
                             <div class="form">
-                                <input type="date" class="input" name="deedDate">
+                                <input type="date" name="deedDate" required>
                             </div>  
                             <p>مصدر الصك</p>
                             <div class="form">
-                                <input type="text" name="courtIssued">
+                                <input type="text" name="courtIssued" required>
                             </div>
                             <p>المساحة بالأرقام</p>
                             <div class="form multiple">
-                                <input type="number" name="spaceInNumbersLength"> <input type="number" name="spaceInNumbersWidth">
+                                <input type="number" name="spaceInNumbersLength" required> <input type="number" name="spaceInNumbersWidth" required>
                             </div>  
                             <p>المساحة كتابتًا</p>
                             <div class="form multiple">
-                                <input type="text" name="spaceInWritingLength"> <input type="text" name="spaceInWritingWidth">
+                                <input type="text" name="spaceInWritingLength" required> <input type="text" name="spaceInWritingWidth" required>
                             </div>  
                             <p>الحدود: شمالا، جنوبا، شرقا، غربا</p>
                             <div class="form multiple">
-                                <input type="number" name="bordersNorth"> <input type="number" name="bordersSouth"> <input type="number" name="bordersEast"> <input type="number" name="bordersWest">
+                                <input type="number" name="bordersNorth" required> <input type="number" name="bordersSouth" required> <input type="number" name="bordersEast" required> <input type="number" name="bordersWest" required>
                             </div> 
                             <p>الأطوال: شمالا، جنوبا، شرقا، غربا</p>
                             <div class="form multiple">
-                                <input type="number" name="lengthNorth"> <input type="number" name="lengthSouth"> <input type="number" name="lengthEast"> <input type="number" name="lengthWest">
+                                <input type="number" name="lengthNorth" required> <input type="number" name="lengthSouth" required> <input type="number" name="lengthEast" required> <input type="number" name="lengthWest" required>
                             </div>  
                             
                         </div>
@@ -384,31 +384,31 @@
                                 </tr>
                                 <tr>
                                     <th>أ</th>
-                                    <th><input type="text" name="LongitudeA"></th>
-                                    <th><input type="text" name="LatitudeA"></th>
+                                    <th><input type="text" name="LongitudeA" required></th>
+                                    <th><input type="text" name="LatitudeA" required></th>
                                 </tr>
                                 <tr>
                                     <th>ب</th>
-                                    <th><input type="text" name="LongitudeB"></th>
-                                    <th><input type="text" name="LatitudeB"></th>
+                                    <th><input type="text" name="LongitudeB" required></th>
+                                    <th><input type="text" name="LatitudeB" required></th>
                                 </tr>
                                 <tr>
                                     <th>ج</th>
-                                    <th><input type="text" name="LongitudeC"></th>
-                                    <th><input type="text" name="LatitudeC"></th>
+                                    <th><input type="text" name="LongitudeC" required></th>
+                                    <th><input type="text" name="LatitudeC" required></th>
                                 </tr>
                                 <tr>
                                     <th>د</th>
-                                    <th><input type="text" name="LongitudeD"></th>
-                                    <th><input type="text" name="LatitudeD"></th>
+                                    <th><input type="text" name="LongitudeD" required></th>
+                                    <th><input type="text" name="LatitudeD" required></th>
                                 </tr>
                             </table>  
                             <p>خريطة الموقع / كروكي</p>
                             <div class="form">
-                                <input type="text" name="locationMap" placeholder="google map api need subsecribtion so this field is just a placeholder">
+                                <input type="text" name="locationMap" placeholder="google map api need subsecribtion so this field is just a placeholder" required>
                             </div>
                             <p>الرجاء ارفاق صورة من الصك</p>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" name="ElectronicTitleDeed">
+                            <input type="file" accept="image/*" onchange="loadFile(event)" name="ElectronicTitleDeed" required>
                             <img id="output"/>
                         </div>
 
@@ -446,7 +446,7 @@
                 }
                 
                 btnNext.addEventListener('click', function() {
-                    /*const allInputPerTab = allTab[i].querySelectorAll('input');
+                    const allInputPerTab = allTab[i].querySelectorAll('input');
                     for (let j = 0; j < allInputPerTab.length; j++) {
                         allInputPerTab[j].addEventListener('input', function () {
                             allInputPerTab[j].style.borderColor = '#ddd';
@@ -457,7 +457,7 @@
                         } else{
                             allInputPerTab[j].style.borderColor = '#ddd';
                         }
-                    }*/
+                    }
 
                     i += 1;
 
@@ -490,7 +490,7 @@
                     } else {
                         btnNext.innerHTML = 'التالي'; 
                     }
-                })
+                });
 
                 btnPrev.addEventListener('click', function () {
                     i -= 1;
