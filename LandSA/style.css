@@ -94,7 +94,7 @@ aside{
 .slider-display{
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px;
+    align-self: center;
 }
 
 .img-slider{
@@ -103,6 +103,7 @@ aside{
     height: 500px;
     margin: 25px;
     background: #1D212B;
+    overflow:hidden
 }
 
 .img-slider .slide{
