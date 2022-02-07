@@ -80,7 +80,7 @@ CREATE TABLE `landinfo` (
   `LatitudeC` int(11) NOT NULL,
   `LatitudeD` int(11) NOT NULL,
   `locationMap` int(11) NOT NULL,
-  `ElectronicTitleDeed` int(11) NOT NULL,
+  `ElectronicTitleDeed` blob NOT NULL,
   `REUN` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
