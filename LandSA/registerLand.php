@@ -414,7 +414,7 @@
 
                         <div class="btn">
                             <button type="button" class="prev">السابق</button>
-                            <button type="button" class="next">التالي</button>
+                            <button type="submit" class="next">التالي</button>
                         </div>
                     </form>
                 </div>
