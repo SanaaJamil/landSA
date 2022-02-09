@@ -33,7 +33,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                         <p>2</p>
                         <p>3</p>
                     </div>
-                    <form method="post" action="components/landHandler.php">
+                    <form method="POST" action="components/landHandler.php">
                         <div class="tab show">
                             <h2>معلومات المالك:</h2>
                             <p>اسم المالك</p>
@@ -306,7 +306,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                 <div class="custom_select">
                                     <select name="IDType">
                                         <option value="">اختار</option>
-                                        <option value="card">هوية وطنية</option>
+                                        <option value="card">هوية مواطن</option>
                                         <option value="passport">هوية مقيم</option>
                                     </select>
                                 </div>
