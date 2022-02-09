@@ -3,7 +3,7 @@
     <style>
 #logout{
     background-color: #67b293;
-    border-radius: 50px;
+    border-radius: 100px;
     cursor: pointer;
     margin-right: 30px;
 }
@@ -77,7 +77,7 @@
             </div> 
             </li>
             <li><a href='../LandSA/profilePage.php'>الملف الشخصي</a></li>
-            <li id='logout'><a href='../log/logout.php'>تسجيل الخروج</a></li>
+            <li id='logout' style='background-color: rgba(0,0,0,0)'><a href='../log/logout.php'><img class='logo' src='../LandSA/images/off.png' alt='logOut' height='20px'></a></li>
         </ul>
     </nav>";
 	}
