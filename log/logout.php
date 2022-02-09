@@ -1,5 +1,5 @@
 <?php
     session_start();
     unset($_SESSION["loggedUser"]);
-    header('Location: ../homePage.php');
+    header('Location: ../LandSA/homePage.php');
 ?>
