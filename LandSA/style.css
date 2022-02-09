@@ -63,7 +63,7 @@ li, a, button {
 button {
     margin-left: 10px;
     padding: 9px 25px;
-    background-color: rgba(63, 112, 108, 1); /*used rgb to control the opacity*/
+    background-color: rgb(103,178,147, 1); /*used rgb to control the opacity*/
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background-color: rgba(63, 112, 108, 0.8);
+    background-color: rgba(103,178,147, 0.8);
 }
 
 /*the main contnets css*/
@@ -402,11 +402,11 @@ aside{
     margin-bottom: 20px;
 }
 
-.tab p {
+.form p {
     margin-bottom: 12px;
 }
 
-form .tab .form {
+form .form {
     width: 100%;
     margin: 2px;
 }
@@ -415,7 +415,7 @@ form .tab .form {
     display: flex;
 }
 
-.tab .form input {
+.form input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -423,7 +423,7 @@ form .tab .form {
     margin: 3px;
 }
 
-.tab .form select{
+.form select{
     flex-wrap: wrap;
     width: 100%;
     flex: 0 0 100%;
@@ -509,8 +509,9 @@ input[type=submit]{
     padding: 20px;}
 
 label {
-        font-weight: bold;
-    }
+    font-weight: bold;
+}
+
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 
