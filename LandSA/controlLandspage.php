@@ -31,7 +31,7 @@
 			flex-wrap: wrap;
 			
 		}
-		.land button{
+		.land button {
 			display: inline-flex;
 			flex: left;
 			text-align: left;
@@ -89,30 +89,22 @@
 
 	</style>
 	<?php
-	include "connection.php";
+	include "components/connection.php";
 	session_start();
-	$ID = '0000';
-	$Password = '0000';
-	$sql = "SELECT * FROM users WHERE ID = '$ID' AND Password = '$Password'";
-	$result = mysqli_query($con, $sql);
-	$count = mysqli_num_rows($result);
-	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-	if ($count == 1){
-	$user_id = $row['ID'];    }
-
-	// if(!isset($_SESSION["loggedUser"])){
-	//     header('Location: ../login.php');
-	// }
-	if(!isset($_SESSION['loggedUser'])){
-		$_SESSION['loggedUser'] = $user_id;
+	if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
+		$ID = $_SESSION['loggedUser'];
+	}else{
+		echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
+		echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
 	}
-
 
 	?>
 </head>
 <body>
 	<!--Page header-->
 	<div id="Head" w3-include-html="components/nav.php"></div>
+	<main>
+	<aside></aside>
 
 	<div class="content">
 		<h1>قائمة الاراضي</h1><br>
@@ -177,7 +169,26 @@
 							echo"<div class='block'>";
 							if($row["landState"]==0){
 								echo "<button class='sellB'>بيع</button>";
-								echo "<button class='giftB'>اهداء</button>";
+
+								echo"
+								<form method='GET' action='giftLandForm.php'>
+									
+
+									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+									
+									<button class='giftB' type='submit' >اهداء</button>
+								</form>";
+								// <a ID='send_REUN'>$row[REUN]</a>
+									// <input type='text' name='$row[REUN]' />
+									// $_SESSION[REUN]=$row[REUN];
+
+								// session_start();
+								// // session_register('REUN');
+								// $_SESSION['REUN']=$row['REUN'];
+								// echo "<button class='giftB' onclick='window.location.href=\"giftLandForm.php\"'>اهداء</button>";
+
+								
+								
 							}
 							
 							echo "<button class='moreB'>عرض التفاصيل></button>";
@@ -194,9 +205,11 @@
 
 		</div>
 	</div>
+	<aside></aside>
+</main>
 
         <!-- footer -->
-		<div w3-include-html="components/footer.html"></div>
+		<div w3-include-html="components/footer.php"></div>
 	<script>
 		includeHTML();
 	</script>

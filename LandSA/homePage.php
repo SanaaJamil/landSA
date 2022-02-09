@@ -2,12 +2,17 @@
 	<html lang="ar" style='direction: rtl'>
 		<head>
 			<title>Home Page</title>
-			<link rel="stylesheet" href="./style.css">
-			<script src="./components/ComponentHandler.js" ></script>
+			<link rel="stylesheet" href="style.css">
+			<script src="components/ComponentHandler.js" ></script>
+			<style>
+				aside{
+					flex: 0 0 150px;
+				}
+			</style>
 		</head>
 		<body>
 		<!--header call-->
-		<div id="Head" w3-include-html="components/nav.html"></div>
+		<div id="Head" w3-include-html="components/nav.php"></div>
 
 		<!-- Page content -->
 		<main>
@@ -17,28 +22,28 @@
 				<div class="slider-display">
 					<div class="img-slider">
 						<div class="slide active">
-							<img src="./images/1.jpg">
+							<img src="images/1.jpg">
 							<div class="info">
 								<h2>slide 01</h2>
 								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
 							</div>
 						</div>
 						<div class="slide">
-							<img src="./images/2.jpg">
+							<img src="images/2.jpg">
 							<div class="info">
 								<h2>slide 02</h2>
 								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
 							</div>
 						</div>
 						<div class="slide">
-							<img src="./images/3.jpg">
+							<img src="images/3.jpg">
 							<div class="info">
 								<h2>slide 03</h2>
 								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
 							</div>
 						</div>
 						<div class="slide">
-							<img src="./images/4.jpg">
+							<img src="images/4.jpg">
 							<div class="info">
 								<h2>slide 04</h2>
 								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
@@ -98,7 +103,7 @@
 		
 
 		<!--footer call-->
-		<div id="footer"></div>
+		<div w3-include-html="components/footer.php"></div>
 
 		<script type="text/javascript">
 			var slides = document.querySelectorAll('.slide');

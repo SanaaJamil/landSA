@@ -1,3 +1,14 @@
+<?php
+include "components/connection.php";
+	
+#Check if the user is still logedin
+session_start();
+if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
+    echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
+     echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
+}
+
+?>
 <!DOCTYPE html>
     <html lang="ar" style='direction: rtl'>
         <head>
@@ -9,7 +20,7 @@
         </head>
         <body>
             <!--header call-->
-            <div id="Head" w3-include-html="components/nav.html"></div>
+            <div id="Head" w3-include-html="components/nav.php"></div>
 
             <!--land regiestration form start-->
             <main>
@@ -423,7 +434,7 @@
             <!--land regiestration form end-->
 
             <!--footer call-->
-            <div id="footer"></div>
+            <div w3-include-html="components/footer.php"></div>
 
             <!--form script strat-->
             <script>

@@ -1,43 +1,34 @@
 <?php
     #Check the connections with the server and DB
-	include "connection.php";
+    include "components/connection.php";
     session_start();
-    $ID = '2222';
-    $Password = '2222';
-    $sql = "SELECT * FROM users WHERE ID = '$ID' AND Password = '$Password'";
-    $result = mysqli_query($con, $sql);
-    $count = mysqli_num_rows($result);
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    if ($count == 1){
-    $user_id = $row['ID'];    }
+    if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
+        $ID = $_SESSION['loggedUser'];
+        $ViewUser = "SELECT * FROM users WHERE ID = '$ID'";
+        $result = mysqli_query($con,$ViewUser);
+        if(!$result){
+            echo "Error:".mysqli_error($con);
+        }
 
-    // if(!isset($_SESSION["loggedUser"])){
-    //     header('Location: ../login.php');
-    // }
-    if(!isset($_SESSION['loggedUser'])){
-        $_SESSION['loggedUser'] = $user_id;
-    }
-
-
-    
-    $user_id=$_SESSION["loggedUser"];
-    $ViewUser = "SELECT * FROM users WHERE ID = '$ID'";
-    $result = mysqli_query($con,$ViewUser);
-    if(!$result){
-        echo "Error:".mysqli_error($con);
-    }
-
-    $row = mysqli_fetch_array($result);
-    
-    $user_id=$row["ID"];
-    $IDType=$row["IDType"];
-    $Name=$row["Name"];
-    $phoneNum=$row["phoneNum"];
-    $Email=$row["Email"];
-    $IBAN=$row["IBAN"];
-    $BirthDate=$row["BirthDate"];
+        $row = mysqli_fetch_array($result);
+        
+        $ID=$row["ID"];
+        $IDType=$row["IDType"];
+        $firstName=$row["firstName"];
+        $middleName=$row["middleName"];
+        $lastName=$row["lastName"];
+        $phoneNum=$row["phoneNum"];
+        $Email=$row["Email"];
+        $IBAN=$row["IBAN"];
+        $BirthDate=$row["BirthDate"];
+    }else{
+		echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
+		echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+	}
 
 ?>
+
+<!-- -------------------------------------------------#HTML Code#-------------------------------------------------- -->
 
 <!DOCTYPE html>
 <html lang="ar" style='direction: rtl'>
@@ -71,7 +62,7 @@
         /* margin-right: 20px; */
     }
     #UserData td{
-        padding: 20px 0px;
+        padding: 10px 0px;
         padding-right: 20px;
     }
 
@@ -81,51 +72,57 @@
     <body>
 		<!--Page header-->
 		<div id="Head" w3-include-html="components/nav.php"></div>
-        <div class="content">
-            <h1>المعلومات الشخصيه</h1><br><br>
-            
-            <div class="card">
-                <div class="card-body">
-                    <table id='UserData'>
-                    <tr>
-                        <td>رقم الهوية الوطنية: &emsp;</td>
-                        <td><?php print($user_id);?></td>
-                    </tr>
-                    <tr>
-                        <td>نوع الهوية:</td>
-                        <td><?php print($IDType);?></td>
-                    </tr>
-                    <tr>
-                        <td>رقم الجوال:</td>
-                        <td><?php print($phoneNum);?></td>
-                    </tr>
-                    <tr>
-                        <td>البريد الإلكتروني:</td>
-                        <td><?php print($Email);?></td>
-                    </tr>
-                    <tr>
-                        <td>رقم الحساب البنكي (IBAN):</td>
-                        <td><?php print($IBAN);?></td>
-                    </tr>
-                    <tr>
-                        <td>تاريخ الميلاد:  </td>
-                        <td><?php print($BirthDate);?></td>
-                    </tr>
-                    </table>
-                    <br>
 
-                    <form method="POST" action="">
-                    <button><input type="submit" value="تعديل المعلومات" ><i class="material-icons" style="font-size:16px">mode_edit</i></button>
-                    </form>
+        <main>
+            <aside></aside>
+            <div class="content">
+                <h1>المعلومات الشخصيه</h1><br><br>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <table id='UserData'>
+                        <tr>
+                            <th>الاسم الثلاثي: &emsp;</th>
+                            <td><?php print($firstName .' ' .$middleName .' ' .$lastName);?></td>
+                        </tr>
+                        <tr>
+                            <th>رقم الهوية الوطنية: </th>
+                            <td><?php print($ID);?></td>
+                        </tr>
+                        <tr>
+                            <th>نوع الهوية:</th>
+                            <td><?php print($IDType);?></td>
+                        </tr>
+                        <tr>
+                            <th>رقم الجوال:</th>
+                            <td><?php print($phoneNum);?></td>
+                        </tr>
+                        <tr>
+                            <th>البريد الإلكتروني:</th>
+                            <td><?php print($Email);?></td>
+                        </tr>
+                        <tr>
+                            <th>رقم الحساب البنكي (IBAN):</th>
+                            <td><?php print($IBAN);?></td>
+                        </tr>
+                        <tr>
+                            <th>تاريخ الميلاد:  </th>
+                            <td><?php print($BirthDate);?></td>
+                        </tr>
+                        </table>
+                        <br>
 
-                    <br>
+                        <form method="POST" action="">
+                        <button><input type="submit" value="تعديل المعلومات" ><i class="material-icons" style="font-size:16px">mode_edit</i></button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
-
-        </div>
-        
+            <aside></aside>
+        </main>
 		<!-- footer -->
-		<div w3-include-html="components/footer.html"></div>
+		<div w3-include-html="components/footer.php"></div>
 
         <script>
         includeHTML();
