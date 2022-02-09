@@ -58,7 +58,7 @@
                     <button type="reset">إلغاء</button>
                     <button type="submit">ارسال</button>
                 </div>
-                <a href="signUp.php">تسجيل الدخول</a>
+                <p style="text-align: left; margin-left: 21%;"><a href="signUp.php">تسجيل الدخول</a></p>
             </form>
         </div>
         <aside></aside>
