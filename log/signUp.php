@@ -173,6 +173,8 @@
                                 <p id="number" class="invalid A">أرقام</p>
                                 <p id="length" class="invalid A">على الأقل 8 رموز</p>
                             </div>
+				<p style="text-align: left; margin-left: 21%;"> لديك حساب؟ <a style="color: dodgerblue;"href="login.php"> تسجيل الدخول </a></p>
+
                         </th>
                         <th></th>
                     </tr>
