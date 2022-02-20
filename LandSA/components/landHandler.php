@@ -7,6 +7,7 @@
 	if(isset($_SESSION['loggedUser'] )&& $_SESSION['loggedUser']==true){
 
         //user info
+ 	$requestID = rand (1000, 9999);
         $nationality = $_POST["nationality"];
         $share = $_POST["share"];
         $address = $_POST["address"];
@@ -54,8 +55,8 @@
         $count = mysqli_num_rows($Check);
 
         if($count == 0){
-            $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
-            value('$name', '$nationality', '$share', '$address', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
+            $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued, requestID) 
+            value('$name', '$nationality', '$share', '$address', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued', '$requestID')";
             $query = mysqli_query($con, $insertLand);
 
             if($query){
