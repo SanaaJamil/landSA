@@ -1,30 +1,11 @@
-<?php
-// --------------- Browse lands PHP ------------
-//to show errors
- error_reporting(E_ALL);
- ini_set('display_errors', 1);
-//make connection and print error msgs
-include "components/connection.php";
-
-	//select coloumns to be printed on land browse page according to land state
-	$sql = "SELECT neighborhoodName, address, city FROM landrecord WHERE landState='0'";
-	$result = $con->query($sql); 
-	$num_rows = mysqli_num_rows($result); //number of rows
-	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-	//variables and their values
-		$neighborhoodName=$row["neighborhoodName"];
-		$address=$row["address"];
-		$city=$row["city"];
-?>
-<!-- -----------Brows lands page HTML ----------------- -->
+<!-- Browse Lands page-->
 <!DOCTYPE html>
 <html lang="ar" style='direction: rtl'>
 <head>
-	<title>Land Browse Page </title>
+	<title>Browse Lands page </title>
 	<link rel="stylesheet" href="style.css">
 	<script src="components/ComponentHandler.js" ></script>
-
+	
 	<style>
 
 		/* Style of each land */
@@ -50,7 +31,7 @@ include "components/connection.php";
 			flex-wrap: wrap;
 			
 		}
-		.land button{
+		.land button {
 			display: inline-flex;
 			flex: left;
 			text-align: left;
@@ -62,108 +43,131 @@ include "components/connection.php";
     		align-items: stretch;
 		}
 		/* style of buttons */
-		.moreB{
-			background-color: rgba(63, 112, 108, 1);
+		.sellB {
+			background-color: rgba(255, 80, 60, 0.568);
 		}
-		/* Style of switch button */
-</style>
+		.giftB{
+			background-color: #149d3bbb;
+		}
+		.moreB{
+			background-color:#35c8afce;;
+		}
+		.MiniBlock {
+			display: flex;
+			justify-content: space-evenly;
+		}
+		.land img{
+				width: 40%;
+				border-radius: 5%;
+			}
+
+		@media only screen and (max-width: 800px ) {
+			.land {
+				flex-direction: column;
+				align-items: center;
+			}
+			.block {
+				display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+			}
+			.MiniBlock{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-around;
+			}
+			.MiniBlock img{
+				width: 50%;
+				width:25%; 
+				height:25%;
+				 border-radius: 2%;
+			}
+
+		}
+
+	</style>
+	<?php
+	include "components/connection.php";
+
+	?>
 </head>
 <body>
 	<!--Page header-->
 	<div id="Head" w3-include-html="components/nav.php"></div>
-	
 	<main>
-		<aside></aside>
+	<aside></aside>
+
 	<div class="content">
-		<div class="topnav">
-			<form >
-				<input type="text" placeholder="	إبحث">
+		<h1>قائمة الاراضي</h1><br>
+		<div class="landList"></div>
+			<?php
+				// $sql_lands = "SELECT deedDate, deedNumber,unitType,REUN,city,neighborhoodName,landState  FROM `landrecord` WHERE IDNumber ='$ID'";
+				$sql_lands = "SELECT * FROM landrecord";
+				$result = $con->query($sql_lands);
+				
+				if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+					echo "<div class='land'>";
+						// Informations block
 
-				<!-- send the search attribute -->
-				<button ><input type="submit" value="إبحث" ></button>
-			</form>
-		</div>
-		<br>
-	
-			<div class="content" >
-				<h1>قائمة الاراضي</h1><br>
-				<!-- <div class="landList" ></div> -->
-					<?php
-					$sql_lands = "SELECT `landrecord`.neighborhoodName, address, city FROM `landrecord` WHERE landState='0'";
-					$result = $con->query($sql_lands);
-					
-					if ($result->num_rows > 0) {
-						// output data of each row
-						while($row = $result->fetch_assoc()) {
-							echo "<div class='land'>";
-							// Informations block
+						echo"<div class='block'>";
+						echo "<table id='UserData'>";
+						echo "<tr>
+							 <th><h2>رقم الوحدة العقارية: </h2></th>
+							 <th> <h2>$row[REUN]</h2></th>
+							</tr>";
+							echo "<tr>
+							<td>&emsp;</td>
+							<td>&emsp;</td>
+						   </tr>";	
+						echo "<tr>
+						 <td>العنوان:</td>
+						 <td> $row[address]</td>
+					  		</tr>";
+						echo "<tr>
+							 <td>المدينة:</td>
+							 <td> $row[city]</td>
+							</tr>";
+						 echo "<tr>
+							 <td>اسم الحي:</td>
+							 <td> $row[neighborhoodName]</td>
+							</tr>";
 
-							echo"<div class='block'>";
-							echo "<table id='UserData'>";
-							echo "<tr>
-								<th>الموقع:  </th>
-								<th> $row[address]</th>
-								</tr>";
-								echo "<tr>
-								<td>&emsp;</td>
-								<td>&emsp;</td>
-							</tr>";	
-							echo "<tr>
-								<td>المدينة: hello</td>
-								<td> $row[city]</td>
-								</tr>";
-							echo "<tr>
-								<td>اسم الحي:</td>
-								<td> $row[neighborhoodName]</td>
-								</tr>";
-							echo"</table>";
-							echo"</div>";
+						
 
+						echo"</table>";
+						echo"</div> <br>";
+
+						// echo"<div class='MiniBlock'>";
+
+							echo "<img src='images/Riyadh.jpg' alt='صورة الأرض' ><br> ";
 							
-							echo "<img src='images/Riyadh.jpg' alt='صورة الأرض' width='25%'> ";
-							// only regesterd can view  details, if user is not regesterd, transfer him to login page
+							// Buttons block
+							echo"<div class='block'>";
 							echo "<button class='moreB'>عرض التفاصيل></button>";
 							
 							echo"</div>";
-							echo "</div>";
-						}
-					} else {
-						echo "0 results";
+
+						// echo"</div>";
+					echo "</div>";
 					}
-				?>
-			</div>
+				} else {
+					echo "0 results";
+				}
+			?>
 
 		</div>
+	</div>
+	<aside></aside>
+</main>
 
-
-		<script type= text/javascript>
-			includeHTML();
-			function display_data($data) {
-				$output = '<table>';
-				foreach($data as $key => $var) {
-				$output .= '<tr>';
-				foreach($var as $k => $v) {
-					if ($key === 0) {
-						$output .= '<td><strong>' . $k . '</strong></td>';
-					} else {
-						$output .= '<td>' . $v . '</td>';
-					}
-					}
-					$output .= '</tr>';
-					}
-				$output .= '</table>';
-				echo $output;
-				}
-		</script>
-
-        <aside></aside>
-	</main>
-
-	<!-- footer -->
-	<div w3-include-html="components/footer.php"></div>
-
+        <!-- footer -->
+		<div w3-include-html="components/footer.php"></div>
 	<script>
-	includeHTML();
+		includeHTML();
 	</script>
 </body>
 </html>
