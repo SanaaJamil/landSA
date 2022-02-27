@@ -143,7 +143,7 @@
 				<td><?php echo $row['requestID']; ?></td> 
 				<td><?php echo $row['IDNumber']; ?></td> 
 				<td><?php echo $row['name']; ?></td> 
-				<td><?php echo $row['IDType']; ?></td> 
+				<td><?php echo $row['REUN']; ?></td> 
 				<td></td>
 			</tr> 
 			<?php 
