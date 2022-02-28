@@ -28,6 +28,11 @@ include "components/connection.php";
 	<style>
 
 		/* Style of each land */
+		.land_container {
+			padding: 0 6px;
+			float: right;
+			width: 33.3333%;
+		}
 		.land {
 			background-color: #203864; /* Green background */
 			/* color: white; White text */
@@ -36,13 +41,12 @@ include "components/connection.php";
 			margin: 8px 4px;
 			display: flex;
 			justify-content: space-between;
-
 			background-color: #fff;
 			border-radius: 18px;
 			box-shadow: 1px 1px 8px 0 grey;
 			height: auto;
 			width: 100%;
-			
+			flex-wrap: wrap;
 		}
 		.land p{
 			display: flex;
@@ -66,6 +70,29 @@ include "components/connection.php";
 			background-color: rgba(63, 112, 108, 1);
 		}
 		/* Style of switch button */
+
+		@media only screen and (max-width: 700px) {
+			.land_container {
+			width: 49.99999%;
+			margin: 6px 0;
+			height: 17%;
+		}
+		
+		}
+		.land {
+			padding: 10px 5px;
+		}
+		.land img {
+			width: 99%;
+			margin-top: 4%;
+		}
+
+		@media only screen and (max-width: 500px) {
+		.land_container {
+			width: 100%;
+			height: auto;
+		}
+		}
 </style>
 </head>
 <body>
@@ -87,7 +114,7 @@ include "components/connection.php";
 	
 			<div class="content" >
 				<h1>قائمة الاراضي</h1><br>
-				<!-- <div class="landList" ></div> -->
+				<div class="landList" >
 					<?php
 					$sql_lands = "SELECT `landrecord`.neighborhoodName, address, city FROM `landrecord` WHERE landState='0'";
 					$result = $con->query($sql_lands);
@@ -95,42 +122,49 @@ include "components/connection.php";
 					if ($result->num_rows > 0) {
 						// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo "<div class='land'>";
-							// Informations block
+							echo "<div class='land_container'>";
+								echo "<div class='land'>";
+								// Informations block
 
-							echo"<div class='block'>";
-							echo "<table id='UserData'>";
-							echo "<tr>
-								<th>الموقع:  </th>
-								<th> $row[address]</th>
-								</tr>";
-								echo "<tr>
-								<td>&emsp;</td>
-								<td>&emsp;</td>
-							</tr>";	
-							echo "<tr>
-								<td>المدينة: hello</td>
-								<td> $row[city]</td>
-								</tr>";
-							echo "<tr>
-								<td>اسم الحي:</td>
-								<td> $row[neighborhoodName]</td>
-								</tr>";
-							echo"</table>";
-							echo"</div>";
+									echo"<div class='block'>";
+										echo "<table id='UserData'>";
+										echo "<tr>
+											<th>الموقع:  </th>
+											<th> $row[address]</th>
+											</tr>";
+											echo "<tr>
+											<td>&emsp;</td>
+											<td>&emsp;</td>
+											</tr>";	
+										echo "<tr>
+											<td>المدينة: </td>
+											<td> $row[city]</td>
+											</tr>";
+										echo "<tr>
+											<td>اسم الحي:</td>
+											<td> $row[neighborhoodName]</td>
+											</tr>";
+										echo"</table>";
+									echo"</div>";
+								
 
 							
-							echo "<img src='images/Riyadh.jpg' alt='صورة الأرض' width='25%'> ";
-							// only regesterd can view  details, if user is not regesterd, transfer him to login page
-							echo "<button class='moreB'>عرض التفاصيل></button>";
-							
+									echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
+									// only regesterd can view  details, if user is not regesterd, transfer him to login page
+									echo "<button class='moreB'>عرض التفاصيل></button>";
+								echo"</div>";
 							echo"</div>";
-							echo "</div>";
+							
+							
+							
 						}
 					} else {
 						echo "0 results";
 					}
-				?>
+					
+					
+					?>
+				</div>
 			</div>
 
 		</div>
