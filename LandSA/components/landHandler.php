@@ -7,7 +7,7 @@
 	if(isset($_SESSION['loggedUser'] )&& $_SESSION['loggedUser']==true){
 
         //user info
- 	$requestID = rand (1000, 9999);
+        $name = $_POST["name"];
         $nationality = $_POST["nationality"];
         $share = $_POST["share"];
         $address = $_POST["address"];
@@ -49,20 +49,27 @@
         $LatitudeC = $_POST["LatitudeC"];
         $LatitudeD = $_POST["LatitudeD"];
         $locationMap = $_POST["locationMap"];
-        $ElectronicTitleDeed = $_POST["ElectronicTitleDeed"];
+
+        $image =$ElectronicTitleDeed= $_FILES['ElectronicTitleDeed']['tmp_name']; 
+        $imgContent = addslashes(file_get_contents($image)); 
+
         $Check="SELECT * FROM landrecord WHERE REUN = '$REUN'";
         $Check = mysqli_query($con,$Check);
         $count = mysqli_num_rows($Check);
 
         if($count == 0){
-            $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued, requestID) 
-            value('$name', '$nationality', '$share', '$address', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued', '$requestID')";
+            $insertLand = "INSERT INTO landrecord(name, nationality, share, address, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
+            value('$name', '$nationality', '$share', '$address', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
             $query = mysqli_query($con, $insertLand);
 
             if($query){
                 $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, locationMap, ElectronicTitleDeed, REUN) 
                 VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$locationMap', '$ElectronicTitleDeed', '$REUN')";
                 $query = mysqli_query($con, $insertLandInfo);
+                // insert the title image to images Table
+
+                $insert = $con->query("INSERT into images (image, created, REUN) VALUES ('$imgContent', NOW(),$REUN)"); 
+
                 echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
 				echo "<script>setTimeout(\"location.href = '../homePage.php';\",1500);</script>";
             }else{
@@ -71,9 +78,10 @@
             }
         }else{
             echo "<script>alert('توجد ارض مسجلة مسبقًا برقم الوحدة العقارية المدخل')</script>";
+            echo "<script>setTimeout(\"location.href = '../registerLand.php';\",1500);</script>";
         }
     }else{
         echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-        echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+        echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
     }
 ?>

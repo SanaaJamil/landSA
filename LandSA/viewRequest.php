@@ -75,7 +75,7 @@
 		tr{ border-bottom: 1px solid #092D33;}
 
 		table{
-			align:center;
+			/* align:center; */
 			line-height:40px;  
 			border-collapse: collapse;
 			background-color: #ffff;
@@ -143,8 +143,12 @@
 				<td><?php echo $row['requestID']; ?></td> 
 				<td><?php echo $row['IDNumber']; ?></td> 
 				<td><?php echo $row['name']; ?></td> 
-				<td><?php echo $row['REUN']; ?></td> 
-				<td></td>
+				<td><?php echo $row['IDType']; ?></td> 
+				<td><?php 
+                //if ($row['requestState']==0){echo "الطلب قيد التنفيذ";
+                //}elseif($row['requestState']==1){echo "الطلب مقبول";
+                //}elseif($row['requestState']==2){echo "الطلب مرفوض";} 
+                ?></td>
 			</tr> 
 			<?php 
 				} 

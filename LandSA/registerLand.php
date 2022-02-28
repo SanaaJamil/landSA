@@ -33,7 +33,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                         <p>2</p>
                         <p>3</p>
                     </div>
-                    <form method="POST" action="components/landHandler.php">
+                    <form method="POST" action="components/landHandler.php" enctype="multipart/form-data">
                         <div class="tab show">
                             <h2>معلومات المالك:</h2>
                             <p>اسم المالك</p>
@@ -239,7 +239,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                         <option value="Samoa American">Samoa American</option>
                                         <option value="San Marino">San Marino</option>
                                         <option value="Sao Tome & Principe">Sao Tome & Principe</option>
-                                        <option value="Saudi Arabia">Saudi Arabia</option>
+                                        <option value="Saudi Arabia" selected>Saudi Arabia</option>
                                         <option value="Senegal">Senegal</option>
                                         <option value="Seychelles">Seychelles</option>
                                         <option value="Sierra Leone">Sierra Leone</option>
