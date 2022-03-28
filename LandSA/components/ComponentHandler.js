@@ -24,7 +24,7 @@ function includeHTML() {
       return;
     }
   }
-};
+}
 
 function myFunction() {
   var x = document.getElementById("myTopnav");
@@ -33,4 +33,13 @@ function myFunction() {
   } else {
     x.className = "topnav";
   }
-};
+}
+
+window.onscroll = function() {navFunction()};
+function navFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
