@@ -58,7 +58,7 @@ if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
 				<button><input type="file" id="courtOrder" name="courtOrder" src="img_submit.gif" alt="Submit" width="48" height="48" laceholder="Photo" required="" capture></button><br><br>
 
 				<label for="OwnerID">ادخل رقم هوية صاحب الأرض (الشخص المتوفي)*:</label><br>
-				<input type="text" id="OwnerID" name="OwnerID" required=""><br><br>
+				<input type="text" id="OwnerID" minlength="10" maxlength="10" name="OwnerID" required=""><br><br>
 				
 				<label for="REUN">أدخل رقم الوحدة العقارية (REUN) *:</label><br>
 				<input type="text" id="REUN" name="REUN" required=""><br><br>
