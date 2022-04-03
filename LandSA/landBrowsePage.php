@@ -16,6 +16,8 @@ include "components/connection.php";
 		$neighborhoodName=$row["neighborhoodName"];
 		$address=$row["address"];
 		$city=$row["city"];
+	//search Engine 
+
 ?>
 <!-- -----------Brows lands page HTML ----------------- -->
 <!DOCTYPE html>
@@ -91,8 +93,67 @@ include "components/connection.php";
 		.land_container {
 			width: 100%;
 			height: auto;
+		}}
+		/////mine
+		.slidecontainer {
+		width: 100%; /* outside container width */
+			margin-bottom: 20px; 
+			margin-top: 20px;
 		}
+
+		/* The slider */
+		.slider {
+		-webkit-appearance: none;  /* Override default CSS styles */
+		appearance: none;
+		width: 100%; /* Full-width */
+		height: 25px; /* Specified height */
+		background: #d3d3d3; /* Grey background */
+		outline: none; /* Remove outline */
+		opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+		-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+		transition: opacity .2s;
+		border: 50px;
 		}
+
+		/* Mouse-over effects */
+		.slider:hover {
+		opacity: 1; /* Fully shown on mouse-over */
+		}
+
+		/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+		.slider::-webkit-slider-thumb {
+		-webkit-appearance: none; /* Override default look */
+		appearance: none;
+		width: 25px; /* Set a specific slider handle width */
+		height: 25px; /* Slider handle height */
+		background: #04AA6D; /* Green background */
+		cursor: pointer; /* Cursor on hover */
+		}
+
+		.slider::-moz-range-thumb {
+		width: 25px; /* Set a specific slider handle width */
+		height: 25px; /* Slider handle height */
+		background: #04AA6D; /* Green background */
+		cursor: pointer; /* Cursor on hover */
+		}
+
+
+		#site-footer { /* to add some style in footer and header*/
+			margin-top: 150px;
+		width:	100%;
+		height: 5%;
+		background: #04AA6D;
+
+		}
+		#site-header{ /* to add some style in footer and header*/
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width:  100%;
+		height: 5%;
+		background: #04AA6D;
+
+		}
+
 </style>
 </head>
 <body>
@@ -104,10 +165,52 @@ include "components/connection.php";
 	<div class="content">
 		<div class="topnav">
 			<form >
-				<input type="text" placeholder="	إبحث">
+			<!--	<input type="text" placeholder="	إبحث">
 
-				<!-- send the search attribute -->
+				// send the search attribute 
+				<button ><input type="submit" value="إبحث" ></button>  
+			-->
+
+				<div class="slidecontainer">
+				<!-- create a filter for price by slider -->
+				<div class="slidecontainer"> 
+				<text> <strong>السعر:  </strong></text>
+				<input type="range" min="10000" max="10000000" value="10000" class="slider" name="price"> <label>العدد المدخل:  <span class="limit"></span></label> 
+				</div>
+				<br/><br/>
+				<!-- create a filter for space by slider -->
+				<div class="slidecontainer"> 
+				<text><strong> المساحة بالمتر المربع: </strong></text>
+				<input type="range" min="100" max="5000" value="100" class="slider" name="space"> <label>العدد المدخل: <span class="limit"></span></label>
+				</div>
+				<br/><br/>
+				<!-- create filter -->
+				<div>
+				<text><strong> الواجهة: </strong></text>
+				<button ><input type="submit" name="north" value="شمال" ></button>
+				<button ><input type="submit" name="west" value="غرب" ></button>
+				<button ><input type="submit" name="south" value="جنوب" ></button>
+				<button ><input type="submit" name="east" value="شرق" ></button>
+				</div><br/><br/>
+				<!-- create city filter -->
+				<div>
+				<text><strong> المدينة: </strong></text>
+				<button ><input type="submit" name="Makkah" value="مكة المكرمة" ></button>
+				<button ><input type="submit" name="Jeddah" value="جدة" ></button>
+				<button ><input type="submit" name="Riyadh" value="الرياض" ></button>
+				<button ><input type="submit" name="Madinah" value="المدينة المنورة" ></button>
+				<button ><input type="submit" name="Dammam" value=" الدمام" ></button>
+				<button ><input type="submit" name="Abha" value=" ابها" ></button>
+				<button ><input type="submit" name="Tabok" value=" تبوك" ></button>
+
+
+
+				</div><br/><br/>
+
+
 				<button ><input type="submit" value="إبحث" ></button>
+
+				
 			</form>
 		</div>
 		<br>
@@ -188,7 +291,22 @@ include "components/connection.php";
 				$output .= '</table>';
 				echo $output;
 				}
+		
+		
+		
 		</script>
+		<script>//to change the value acconrding to the slider
+		function updateLabel() { 
+		var limit = this.parentElement.getElementsByClassName("limit")[0];
+		limit.innerHTML = this.value;
+		}
+		var slideContainers = document.getElementsByClassName("slidecontainer");
+		for (var i = 0; i < slideContainers.length; i++) {
+		var slider = slideContainers[i].getElementsByClassName("slider")[0];
+		updateLabel.call(slider);
+		slider.oninput = updateLabel;
+		}
+	</script>
 
         <aside></aside>
 	</main>
