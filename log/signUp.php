@@ -113,7 +113,7 @@
 
                 <p>الاسم الأول</p>
                 <div class="form">
-                    <input type="text" name="fristName"required>
+                    <input type="text" name="firstName"required>
                 </div>
 
                 <p>اسم الأب</p>
