@@ -5,7 +5,7 @@ include "../LandSA/components/connection.php";
 if (isset($_POST['Submit']))
 $ID = $_POST["ID"];
 $IDType = $_POST["IDType"];
-$fristName = $_POST["fristName"];
+firstName = $_POST["firstName"];
 $middleName = $_POST["middleName"];
 $lastName = $_POST["lastName"];
 $BirthDate = $_POST["BirthDate"];
