@@ -60,7 +60,7 @@ $REUN=null;
 		#else if the user is NOT logedin
 	}else{
 		echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-		echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+		echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
 	}
 ?>
 
