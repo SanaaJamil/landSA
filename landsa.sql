@@ -316,6 +316,23 @@ ALTER TABLE `landsonsale`
   ADD KEY `REUN` (`REUN`);
 
 --
+-- Table structure for table `map`
+--
+
+CREATE TABLE `map` (
+  `REUN` varchar(64) NOT NULL,
+  `latitude` varchar(64) NOT NULL,
+  `longitude` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `map`
+--
+
+INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES
+('1111', '24.69762175294001', '46.556510327148416');
+
+--
 -- Indexes for table `multir`
 --
 ALTER TABLE `multir`
@@ -381,6 +398,12 @@ ALTER TABLE `landsandoffers`
   ADD CONSTRAINT `landsandoffers_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landsonsale` (`REUN`),
   ADD CONSTRAINT `landsandoffers_offerID_fk` FOREIGN KEY (`offerID`) REFERENCES `offers` (`OfferID`);
 
+--
+-- Indexes for table `map`
+--
+ALTER TABLE `map`
+  ADD UNIQUE KEY `REUN` (`REUN`);
+  
 --
 -- القيود للجدول `multir`
 --
