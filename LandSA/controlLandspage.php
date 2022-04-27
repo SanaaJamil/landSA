@@ -197,9 +197,7 @@
 									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 									
 									<button class='giftB' type='submit' >تفاصيل</button>
-								</form>";
-							echo "<button class='moreB'>عرض التفاصيل ></button>";
-							
+								</form>";							
 							echo"</div>";
 
 						// echo"</div>";
