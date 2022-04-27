@@ -21,12 +21,12 @@
 		  echo "m";
 		} else {
 		  echo "Eroo". $query. "<br>" . $con->error;
-		}        
+		}
 
 	  }
 	 }
 	
-	?>
+?>
 
 <!DOCTYPE html>
 <html lang="ar" style='direction: rtl'>
@@ -121,8 +121,6 @@
 			padding: 0px;
 
 		}
-
-
 	</style>
 
 </head>
@@ -135,23 +133,19 @@
 	<div class="content">
 		<h1>قائمة الطلبات </h1><br>
 		<div class="landList">
-		<table> 
+		<table>
 				<tr> <th colspan="6" class= "heed"><h2> طلبات الوراثة</h2></th> </tr>
-
 				<th> رقم الطلب </th> 	  
 				<th> رقم الهوية </th> 
 				<th> رقم هوية المالك </th> 
 				<th> رقم الوحدة العقارية </th> 
 				<th> رابط صورة الوثيقة </th> 
 				<th> </th>
-			
-			
 			<?php 
 				$query="select * from inheritancerecord"; 
 				$result = $con->query($query); 
 				while($rows = $result->fetch_assoc()) 
 				{ 	
-			
 			?> 
 			<tr> 
 				<td><?php echo $rows['requestID']; ?></td> 
@@ -172,21 +166,20 @@
 		</table><br><br> 
 
 		<table> 
-	
 			<tr><th colspan="6"  class= "heed"><h2> طلبات تسجيل الأراضي  </h2></th></tr>
             <tr>
-					<th> رقم الطلب </th> 	  
-					<th> رقم الهوية </th> 
- 			  		<th> اسم المالك </th> 
-			 	    <th> نوع الهوية  </th> 
-			 		<th> الجنسية   </th>
-					 <th> </th> 
+				<th> رقم الطلب </th> 	  
+				<th> رقم الهوية </th> 
+ 			  	<th> اسم المالك </th> 
+			 	<th> نوع الهوية  </th> 
+			 	<th> الجنسية   </th>
+				<th></th>
 			</tr>
 			<?php  
 				$quer="select * FROM landrecord"; 
 				$results = $con->query($quer); 
 				while($row = $results->fetch_assoc()) 
-			{ 
+				{ 
 			?> 
 			<tr> 
 				<td><?php echo $row['requestID']; ?></td> 
@@ -194,17 +187,25 @@
 				<td><?php echo $row['name']; ?></td> 
 				<td><?php echo $row['IDType']; ?></td> 
 				<td><?php echo $row['nationality']; ?></td>
-				<td> <button style="padding: 9px 25px;"><a href="land.php"> عرض التفاصيل </button></td> 
+				<!-- <td> <button style="padding: 9px 25px;"><a href="land.php"> عرض التفاصيل </button></td>  -->
+				<td>
+					<?php
+				echo"
+				<form method='GET' action='land.php'>
+					<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+					<button class='giftB' type='submit' >تفاصيل</button>
+						</form>";			
+			echo"</div>";
+				?>
+				</td>
 			</tr> 
 			<?php 
 				} 
 			?> 
-
 		</table>
-			
-
 		</div>
 	</div>
+
 	<aside></aside>
 </main>
 
