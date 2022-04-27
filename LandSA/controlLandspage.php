@@ -190,8 +190,15 @@
 								
 								
 							}
-							
-							echo "<button class='moreB'>عرض التفاصيل></button>";
+							echo"
+								<form method='GET' action='land.php'>
+									
+
+									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+									
+									<button class='giftB' type='submit' >تفاصيل</button>
+								</form>";
+							echo "<button class='moreB'>عرض التفاصيل ></button>";
 							
 							echo"</div>";
 
@@ -202,7 +209,7 @@
 					echo "0 results";
 				}
 			?>
-
+			
 		</div>
 	</div>
 	<aside></aside>
