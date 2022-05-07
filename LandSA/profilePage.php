@@ -4,6 +4,27 @@
     session_start();
     if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
         $ID = $_SESSION['loggedUser'];
+
+        if(isset($_POST["save"])){
+            $firstName = $_POST["firstName"];
+            $middleName = $_POST["middleName"];
+            $lastName = $_POST["lastName"];
+            $IBAN = $_POST["IBAN"];
+            $phoneNum = $_POST["phoneNum"];
+            $Email = $_POST["Email"];
+            
+            //$sql = "UPDATE users SET firstName = 'اسماء', middleName = 'aa', lastName = 'aaa', phoneNum = '0000000000', Email = 'ayoshtameem@gmail.com', IBAN = '33' WHERE users.ID = '4444444444';";
+
+            $sql = "UPDATE users SET firstName = '$firstName', middleName = '$middleName', lastName = '$lastName', phoneNum = '$phoneNum', Email = '$Email', IBAN = '$IBAN' WHERE users.ID = '$ID'";
+            $query = mysqli_query($con, $sql);
+
+            if ($con->query($sql) === TRUE) {
+                echo "<script>alert('تم تعديل المعلومات بنجاح')</script>";
+            } else {
+                echo "Error updating record: " . $conn->error;
+            }
+        }
+        
         $ViewUser = "SELECT * FROM users WHERE ID = '$ID'";
         $result = mysqli_query($con,$ViewUser);
         if(!$result){
@@ -55,6 +76,12 @@
         margin-right: 8%;
         text-align: right;
     }
+    form .form {
+    width: 100%;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    }
     #UserData tr:nth-child(even){background-color: #f2f2f2;}
     #UserData{
         border-collapse: collapse;
@@ -77,8 +104,68 @@
             <aside></aside>
             <div class="content">
                 <h1>المعلومات الشخصيه</h1><br><br>
-                
-                <div class="card">
+                <?php
+                // if(isset($_POST('edit'))){
+
+                // }
+
+                ?>
+                <div class="card" id="save" style="display:none;">
+                <div class="card-body">
+                    <form method="POST">
+                        <table id='UserData'>
+                            <tr>
+                                <th>الاسم الثلاثي: &emsp;</th>
+                                <td>
+                                    <div class="form">
+                                        <?php echo "<input type='text' name='firstName' placeholder='$row[firstName]' required>" ?>
+                                        <?php echo "<input type='text' name='middleName' placeholder='$row[middleName]' required>" ?>
+                                        <?php echo "<input type='text' name='lastName' placeholder='$row[lastName]' required>" ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>رقم الهوية الوطنية: </th>
+                                <td><?php print($ID);?></td>
+                            </tr>
+                            <tr>
+                                <th>نوع الهوية:</th>
+                                <td><?php print($IDType);?></td>
+                            </tr>
+                            <tr>
+                                <th>رقم الجوال:</th>
+                                <td>
+                                    <div class="form">
+                                        <?php echo "<input type='text' minlength='10' maxlength='10' name='phoneNum' placeholder='$row[phoneNum]' required>" ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>البريد الإلكتروني:</th>
+                                <td>
+                                    <div class="form">
+                                        <?php echo "<input type='text' name='Email' placeholder='$row[Email]' required>" ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>رقم الحساب البنكي (IBAN):</th>
+                                <td>
+                                    <div class="form">
+                                        <?php echo "<input type='text' name='IBAN' placeholder='$row[IBAN]' required>" ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>تاريخ الميلاد:  </th>
+                                <td><?php print($BirthDate);?></td>
+                            </tr>
+                        </table><br>
+                        <button type="submit" name="save">حفظ</button>
+                    </form>
+                </div>
+                </div>
+                <div class="card" id="edit">
                     <div class="card-body">
                         <table id='UserData'>
                         <tr>
@@ -112,10 +199,7 @@
                         </table>
                         <br>
 
-                        <form method="POST" action="">
-                        <button><input type="submit" value="تعديل المعلومات" ><i class="material-icons" style="font-size:16px">mode_edit</i></button>
-                        </form>
-
+                        <button name="edit" onclick="myFunction()">تعديل المعلومات</button>
                     </div>
                 </div>
             </div>
@@ -126,6 +210,19 @@
 
         <script>
         includeHTML();
+        </script>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("save");
+                var y = document.getElementById("edit");
+                if (x.style.display === "none" && y.style.display === "block") {
+                    x.style.display = "block";
+                    y.style.display = "none";
+                } else {
+                    x.style.display = "none";
+                    y.style.display = "block";
+                }
+            }
         </script>
     </body>
 </html>

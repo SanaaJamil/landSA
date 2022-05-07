@@ -36,6 +36,7 @@
 			flex: left;
 			text-align: left;
 			margin-top: 10px;
+			width: 100px;
 		}
 		.block{
 			display: flex;
@@ -95,7 +96,7 @@
 		$ID = $_SESSION['loggedUser'];
 	}else{
 		echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-		echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+		echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
 	}
 
 	?>
@@ -159,6 +160,16 @@
 							<td> $row[spaceInNumbersLength]x$row[spaceInNumbersWidth] متر</td>
 						</tr>";
 						echo"</table>";
+						// try to add the price if the land got for sale
+						// if(isset($row[price])){
+						// 	echo "<tr>
+						// 		<td>السعر</td>
+						// 		<td> $row[price]x$row[price] متر</td>
+						// 	</tr>";
+						// }
+						
+						
+						echo"</table>";
 						echo"</div> <br>";
 
 						// echo"<div class='MiniBlock'>";
@@ -168,14 +179,15 @@
 							// Buttons block
 							echo"<div class='block'>";
 							if($row["landState"]==0){
-								echo "<button class='sellB'>بيع</button>";
+								echo" 
+								<form method='GET' action='setPrice.php'>
+								<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+								<button class='sellB' type='submit' name='sell' >بيع</button>
+								</form>";
 
 								echo"
 								<form method='GET' action='giftLandForm.php'>
-									
-
 									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-									
 									<button class='giftB' type='submit' >اهداء</button>
 								</form>";
 								// <a ID='send_REUN'>$row[REUN]</a>
@@ -192,10 +204,7 @@
 							}
 							echo"
 								<form method='GET' action='land.php'>
-									
-
 									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-									
 									<button class='giftB' type='submit' >تفاصيل</button>
 								</form>";							
 							echo"</div>";

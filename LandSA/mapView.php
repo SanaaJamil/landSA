@@ -1,8 +1,7 @@
 <?php
   include "connection.php";
   
-
-  $viewMap = "SELECT * FROM map";
+  $viewMap = "SELECT * FROM map WHERE REUN = $REUN AND REUN IN (SELECT REUN FROM landsonsale)";
   $result = mysqli_query($con,$viewMap);
 
   $row = mysqli_fetch_array($result);
@@ -24,7 +23,7 @@
     <style type="text/css">
       /* Set the size of the div element that contains the map */
       #map {
-        height: 400px;
+        height: 300px;
         /* The height is 400 pixels */
         width: 100%;
         /* The width is the width of the web page */
@@ -69,19 +68,11 @@
   </head>
   
   <body>
-    <h3>My Google Maps Demo</h3>
     <!--The div element for the map -->
     <div id="map"></div>
-    <script>
-      <?php
-          echo "var jsvar ='$var';";
-      ?>
-      console.log(jsvar);
-    </script>
 
     <p id="latitude"></p>
     <p id="longitude"></p>
-
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script async

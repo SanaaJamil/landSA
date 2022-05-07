@@ -7,15 +7,16 @@
 include "components/connection.php";
 
 	//select coloumns to be printed on land browse page according to land state
-	$sql = "SELECT neighborhoodName, address, city FROM landrecord WHERE landState='0'";
-	$result = $con->query($sql); 
+	$sql_lands = "SELECT landsonsale.REUN,deedDate, address,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
+	$result = $con->query($sql_lands); 
 	$num_rows = mysqli_num_rows($result); //number of rows
 	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 	//variables and their values
-		$neighborhoodName=$row["neighborhoodName"];
-		$address=$row["address"];
-		$city=$row["city"];
+		$neighborhoodName = $row["neighborhoodName"];
+		$address = $row["address"];
+		$city = $row["city"];
+		$price = $row["price"];
 	//search Engine 
 
 ?>
@@ -203,8 +204,6 @@ include "components/connection.php";
 				<button ><input type="submit" name="Abha" value=" ابها" ></button>
 				<button ><input type="submit" name="Tabok" value=" تبوك" ></button>
 
-
-
 				</div><br/><br/>
 
 
@@ -219,57 +218,82 @@ include "components/connection.php";
 				<h1>قائمة الاراضي</h1><br>
 				<div class="landList" >
 					<?php
-					$sql_lands = "SELECT `landrecord`.neighborhoodName, address, city FROM `landrecord` WHERE landState='0'";
+					$sql_lands = "SELECT landsonsale.REUN,deedDate, address,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
 					$result = $con->query($sql_lands);
+					$REUN = $row["REUN"];
+
 					
 					if ($result->num_rows > 0) {
 						// output data of each row
 						while($row = $result->fetch_assoc()) {
 							echo "<div class='land_container'>";
-								echo "<div class='land'>";
-								// Informations block
+							echo "<div class='land'>";
+							// Informations block
 
-									echo"<div class='block'>";
-										echo "<table id='UserData'>";
-										echo "<tr>
-											<th>الموقع:  </th>
-											<th> $row[address]</th>
-											</tr>";
-											echo "<tr>
-											<td>&emsp;</td>
-											<td>&emsp;</td>
-											</tr>";	
-										echo "<tr>
-											<td>المدينة: </td>
-											<td> $row[city]</td>
-											</tr>";
-										echo "<tr>
-											<td>اسم الحي:</td>
-											<td> $row[neighborhoodName]</td>
-											</tr>";
-										echo"</table>";
-									echo"</div>";
+							echo"<div class='block'>";
+								echo "<table id='UserData'>";
+									echo "<tr>
+										<th>رقم الوحدة العقارية: </th>
+										<th>$row[REUN]</th>
+										</tr>";
+									echo "<tr>
+										<td>&emsp;</td>
+										<td>&emsp;</td>
+										</tr>";	
+									echo "<tr>
+										<td>الموقع:  </td>
+										<td>$row[address]</td>
+										</tr>";
+									echo "<tr>
+										<td>المدينة: </td>
+										<td> $row[city]</td>
+										</tr>";
+									echo "<tr>
+										<td>اسم الحي:</td>
+										<td> $row[neighborhoodName]</td>
+										</tr>";
+									echo "<tr>
+										<td>نوع الوحدة:</td>
+										<td> $row[unitType]</td>
+										</tr>";
+									echo "<tr>
+										<td>تاريخ الصك:</td>
+										<td> $row[deedDate]</td>
+										</tr>";
+									echo "<tr>
+										<td><b>السعر :</b></td>
+										<td><b>$row[price]</b></td>
+										</tr>";
+									echo"</table>";
+								echo"</div>";
+	
+								// echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
 								
+								// only regesterd can view  details, if user is not regesterd, transfer him to login page
 
-							
-									echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
-									// only regesterd can view  details, if user is not regesterd, transfer him to login page
-									echo "<button class='moreB'>عرض التفاصيل></button>";
+								echo"<div>";
+									echo"
+									<form method='GET' action='land.php'>
+										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+										<button class='giftB' type='submit' >تفاصيل</button>
+									</form>";
+									echo" 
+									<form method='GET' action='Offers.php'>
+										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+										<button class='sellB' type='submit' name='sell' >تقديم عرض</button>
+									</form>";
+									
+								echo"</div>";
+									
 								echo"</div>";
 							echo"</div>";
-							
-							
-							
 						}
 					} else {
 						echo "0 results";
-					}
-					
-					
+					}					
 					?>
 				</div>
 			</div>
-
 		</div>
 
 

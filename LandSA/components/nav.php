@@ -300,6 +300,7 @@
                                 <a href='../LandSA/controlLandspage.php'>&emsp;&emsp;ادارة الأراضي</a>
                                 <a href='../LandSA/landInheritanceForm.php'>&emsp;&emsp;طلب وراثة</a>
                                 <a href='../LandSA/viewRequest.php'>&emsp;&emsp;الطلبات السابقة</a>
+                                <a href='../LandSA/viewOffers.php'>&emsp;&emsp;عروض الشراء </a>
                             </div>
                         </div> 
                         </li>

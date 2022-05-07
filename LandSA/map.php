@@ -3,12 +3,10 @@
   
 
   if ($_SERVER["REQUEST_METHOD"]=="POST"){
-    // $REUN = $_GET['REUN'];
 
     echo "hi";
     $L1 = $_POST['lats'];
     $L2 = $_POST['longs'];
-    $REUN = 1111;
 
     $insertLocation = "INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES ('$REUN', '$L1', '$L2');";
     $query = mysqli_query($con, $insertLocation);
@@ -104,9 +102,9 @@
     <p id="longitude"></p> -->
     
     <form method="POST">
-      <input  name="lats" id="latitude" />
-      <input  name="longs" id="longitude" />
-      <input type="submit" value="تأكيد الموقع">
+      <input type="hidden" name="lats" id="latitude" />
+      <input type="hidden" name="longs" id="longitude" />
+      <!-- <input type="submit" value="تأكيد الموقع"> -->
     </form>
 
 

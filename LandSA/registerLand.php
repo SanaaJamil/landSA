@@ -315,6 +315,10 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                             <div class="form">
                                 <input type="text" minlength="10" maxlength="10" name="IDNumber" required>
                             </div>
+                            <p>تاريخ الهوية</p>
+                            <div class="form">
+                            <input type="date" name="deedDate" required>
+                            </div>
                         </div>
 
                         <div class="tab">
@@ -348,8 +352,8 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                 <div class="custom_select">
                                     <select name="unitType">
                                         <option value="">اختار</option>
-                                        <option value="residential">سكني</option>
-                                        <option value="commercial">تجاري</option>
+                                        <option value="سكني">سكني</option>
+                                        <option value="تجاري">تجاري</option>
                                     </select>
                                 </div>
                             </div> 
@@ -415,6 +419,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                 </tr>
                             </table>  
                             <p>خريطة الموقع / كروكي</p>
+                            <?php include "map.php"; ?>
                             <div class="form">
                                 <input type="text" name="locationMap" placeholder="google map api need subsecribtion so this field is just a placeholder" required>
                             </div>
