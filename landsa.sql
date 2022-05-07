@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25 أبريل 2022 الساعة 00:47
--- إصدار الخادم: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: May 07, 2022 at 07:33 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `giftrecord`
+-- Table structure for table `giftrecord`
 --
 
 CREATE TABLE `giftrecord` (
@@ -39,7 +39,7 @@ CREATE TABLE `giftrecord` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `giftrecord`
+-- Dumping data for table `giftrecord`
 --
 
 INSERT INTO `giftrecord` (`requestID`, `NOwnerID`, `NOwnerFirstName`, `NOwnerMiddleName`, `NOwnerLastName`, `NOwnerPhone`, `REUN`, `UserID`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `giftrecord` (`requestID`, `NOwnerID`, `NOwnerFirstName`, `NOwnerMid
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `inheritancerecord`
+-- Table structure for table `inheritancerecord`
 --
 
 CREATE TABLE `inheritancerecord` (
@@ -62,7 +62,7 @@ CREATE TABLE `inheritancerecord` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `inheritancerecord`
+-- Dumping data for table `inheritancerecord`
 --
 
 INSERT INTO `inheritancerecord` (`ownerID`, `courtOrder`, `REUN`, `requestID`, `UserID`, `reqStatus`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `inheritancerecord` (`ownerID`, `courtOrder`, `REUN`, `requestID`, `
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `landinfo`
+-- Table structure for table `landinfo`
 --
 
 CREATE TABLE `landinfo` (
@@ -101,7 +101,7 @@ CREATE TABLE `landinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `landinfo`
+-- Dumping data for table `landinfo`
 --
 
 INSERT INTO `landinfo` (`spaceInNumbersLength`, `spaceInNumbersWidth`, `spaceInWritingLength`, `spaceInWritingWidth`, `bordersNorth`, `bordersSouth`, `bordersEast`, `bordersWest`, `lengthNorth`, `lengthSouth`, `lengthEast`, `lengthWest`, `LongitudeA`, `LongitudeB`, `LongitudeC`, `LongitudeD`, `LatitudeA`, `LatitudeB`, `LatitudeC`, `LatitudeD`, `locationMap`, `ElectronicTitleDeed`, `REUN`) VALUES
@@ -114,7 +114,7 @@ INSERT INTO `landinfo` (`spaceInNumbersLength`, `spaceInNumbersWidth`, `spaceInW
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `landrecord`
+-- Table structure for table `landrecord`
 --
 
 CREATE TABLE `landrecord` (
@@ -125,6 +125,7 @@ CREATE TABLE `landrecord` (
   `address` varchar(150) DEFAULT NULL,
   `IDType` varchar(64) DEFAULT NULL,
   `IDNumber` varchar(64) NOT NULL,
+  `IDdate` date DEFAULT NULL,
   `pieceNumber` varchar(64) DEFAULT NULL,
   `blockNumber` varchar(64) DEFAULT NULL,
   `planNumber` varchar(64) DEFAULT NULL,
@@ -140,20 +141,20 @@ CREATE TABLE `landrecord` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `landrecord`
+-- Dumping data for table `landrecord`
 --
 
-INSERT INTO `landrecord` (`landState`, `name`, `nationality`, `share`, `address`, `IDType`, `IDNumber`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `REUN`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `UserID`, `requestID`) VALUES
-(b'0', '', 'Afganistan', '1', '1', 'card', '4444444444', '1', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', NULL, ''),
-(b'0', 'ds', 'Bangladesh', '23', 'cd', 'passport', '4444444444', '39', '1', '1', '1', 'makkah', '33', 'commercial', '666666666666', '2022-02-01', 're', NULL, ''),
-(b'0', 'aisha tameem ', 'Bolivia', '3', 'makkah', 'passport', '4444444444', '12', '3', '21', 'dcs', 'sw', '67', 'residential', '666666666666', '2022-02-21', 'tr', NULL, '9011'),
-(b'0', '', 'Algeria', '43', 'makkah', 'card', '4444444444', '32', '1', '1', '1', 'makkah', '7', 'residential', '555555555555', '2022-02-03', 'tr', NULL, ''),
-(b'0', '', 'Afganistan', '1', '11', '', '9999999999', '9', '1', '1', '11', '1', '9', '', '133333333333', '0004-11-01', '1', NULL, '');
+INSERT INTO `landrecord` (`landState`, `name`, `nationality`, `share`, `address`, `IDType`, `IDNumber`, `IDdate`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `REUN`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `UserID`, `requestID`) VALUES
+(b'0', 'taif', 'Afganistan', '1', '1', 'card', '4444444444', '0001-01-01', '1', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', NULL, ''),
+(b'0', 'fatom', 'Bangladesh', '23', 'cd', 'passport', '4444444444', '2022-05-12', '39', '1', '1', '1', 'makkah', '33', 'commercial', '666666666666', '2022-02-01', 're', NULL, ''),
+(b'0', 'aisha tameem ', 'Bolivia', '3', 'makkah', 'passport', '4444444444', '2022-05-17', '12', '3', '21', 'dcs', 'sw', '67', 'residential', '666666666666', '2022-02-21', 'tr', NULL, '9011'),
+(b'0', 'asmaa', 'Algeria', '43', 'makkah', 'card', '4444444444', '2022-05-31', '32', '1', '1', '1', 'makkah', '7', 'residential', '555555555555', '2022-02-03', 'tr', NULL, ''),
+(b'0', 'sanaa', 'Afganistan', '1', '11', '', '9999999999', '2022-05-01', '9', '1', '1', '11', '1', '9', '', '133333333333', '0004-11-01', '1', NULL, '');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `landsandoffers`
+-- Table structure for table `landsandoffers`
 --
 
 CREATE TABLE `landsandoffers` (
@@ -164,7 +165,7 @@ CREATE TABLE `landsandoffers` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `landsonsale`
+-- Table structure for table `landsonsale`
 --
 
 CREATE TABLE `landsonsale` (
@@ -173,7 +174,7 @@ CREATE TABLE `landsonsale` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `landsonsale`
+-- Dumping data for table `landsonsale`
 --
 
 INSERT INTO `landsonsale` (`REUN`, `price`) VALUES
@@ -186,7 +187,30 @@ INSERT INTO `landsonsale` (`REUN`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `multir`
+-- Table structure for table `map`
+--
+
+CREATE TABLE `map` (
+  `REUN` varchar(64) NOT NULL,
+  `latitude` varchar(64) NOT NULL,
+  `longitude` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `map`
+--
+
+INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES
+('1', '46.60743652865959', '24.69169517979055'),
+('33', '24.69762175294001', '46.556510327148416'),
+('67', '24.69169517979055', '46.60743652865959'),
+('7', '24.69169517979055', '24.69169517979055'),
+('9', '46.60743652865959', '46.60743652865959');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `multir`
 --
 
 CREATE TABLE `multir` (
@@ -207,7 +231,7 @@ CREATE TABLE `multir` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `offers`
+-- Table structure for table `offers`
 --
 
 CREATE TABLE `offers` (
@@ -220,17 +244,18 @@ CREATE TABLE `offers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `offers`
+-- Dumping data for table `offers`
 --
 
 INSERT INTO `offers` (`OfferID`, `landPrice`, `UserID`, `REUN`, `requestID`, `offerStatus`) VALUES
-('4057', '1234', '9999999999', '1', '5127', '0'),
-('8396', '4567', '9999999999', '9', '2131', '0');
+('6219', '90', '2222222222', '33', '8462', '1'),
+('8396', '4567', '9999999999', '9', '2131', '0'),
+('9079', '40', '2222222222', '33', '3920', '2');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `systemrequest`
+-- Table structure for table `systemrequest`
 --
 
 CREATE TABLE `systemrequest` (
@@ -242,7 +267,7 @@ CREATE TABLE `systemrequest` (
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -260,12 +285,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`ID`, `IDType`, `firstName`, `middleName`, `lastName`, `Password`, `phoneNum`, `Email`, `IBAN`, `BirthDate`, `UserType`) VALUES
-('4444444444', 'مواطن', '', 'aa', 'aaa', 'Asmaa1234', '0000000000', 'ayoshtameem@gmail.com', '33', '2022-02-01', '0'),
-('9999999999', 'مواطن', '', 'aa', 'AR', 'Asmaa1111', '7777777777', 'ayoshtameem@gmail.com', '44', '2022-02-06', '0');
+('2222222222', 'مواطن', 'طيف', 'محمد', 'الغامدي', '123456789tT', '0598765432', 't@gmail.com', '7888888888888888', '2022-04-13', '0'),
+('4444444444', 'مواطن', 'اسماء', 'عبدالرحمن ', 'عظيم الدين', 'Asmaa1234', '1111111111', 'a@gmail.com', '111', '2022-02-01', '0'),
+('9999999999', 'مواطن', 'اسما', 'aa', 'AR', 'Asmaa1111', '7777777777', 'ayoshtameem@gmail.com', '44', '2022-02-06', '0');
 
 --
 -- Indexes for dumped tables
@@ -316,21 +342,10 @@ ALTER TABLE `landsonsale`
   ADD KEY `REUN` (`REUN`);
 
 --
--- Table structure for table `map`
+-- Indexes for table `map`
 --
-
-CREATE TABLE `map` (
-  `REUN` varchar(64) NOT NULL,
-  `latitude` varchar(64) NOT NULL,
-  `longitude` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `map`
---
-
-INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES
-('1111', '24.69762175294001', '46.556510327148416');
+ALTER TABLE `map`
+  ADD UNIQUE KEY `REUN` (`REUN`);
 
 --
 -- Indexes for table `multir`
@@ -363,49 +378,43 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`) USING BTREE;
 
 --
--- قيود الجداول المحفوظة
+-- Constraints for dumped tables
 --
 
 --
--- القيود للجدول `giftrecord`
+-- Constraints for table `giftrecord`
 --
 ALTER TABLE `giftrecord`
   ADD CONSTRAINT `giftrecord_ID_fk` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID`);
 
 --
--- القيود للجدول `inheritancerecord`
+-- Constraints for table `inheritancerecord`
 --
 ALTER TABLE `inheritancerecord`
   ADD CONSTRAINT `inheritancerecord_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landrecord` (`REUN`),
   ADD CONSTRAINT `inheritancerecord_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID`);
 
 --
--- القيود للجدول `landinfo`
+-- Constraints for table `landinfo`
 --
 ALTER TABLE `landinfo`
   ADD CONSTRAINT `landinfo_ibfk_1` FOREIGN KEY (`REUN`) REFERENCES `landrecord` (`REUN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- القيود للجدول `landrecord`
+-- Constraints for table `landrecord`
 --
 ALTER TABLE `landrecord`
   ADD CONSTRAINT `landrecord_ibfk_1` FOREIGN KEY (`IDNumber`) REFERENCES `users` (`ID`);
 
 --
--- القيود للجدول `landsandoffers`
+-- Constraints for table `landsandoffers`
 --
 ALTER TABLE `landsandoffers`
   ADD CONSTRAINT `landsandoffers_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landsonsale` (`REUN`),
   ADD CONSTRAINT `landsandoffers_offerID_fk` FOREIGN KEY (`offerID`) REFERENCES `offers` (`OfferID`);
 
 --
--- Indexes for table `map`
---
-ALTER TABLE `map`
-  ADD UNIQUE KEY `REUN` (`REUN`);
-  
---
--- القيود للجدول `multir`
+-- Constraints for table `multir`
 --
 ALTER TABLE `multir`
   ADD CONSTRAINT `multir_ID_fk` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`),
@@ -413,14 +422,14 @@ ALTER TABLE `multir`
   ADD CONSTRAINT `multir_offerID_fk` FOREIGN KEY (`offerID`) REFERENCES `offers` (`OfferID`);
 
 --
--- القيود للجدول `offers`
+-- Constraints for table `offers`
 --
 ALTER TABLE `offers`
   ADD CONSTRAINT `offers_ID_fk` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID`),
   ADD CONSTRAINT `offers_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landsonsale` (`REUN`);
 
 --
--- القيود للجدول `systemrequest`
+-- Constraints for table `systemrequest`
 --
 ALTER TABLE `systemrequest`
   ADD CONSTRAINT `systemrequest_ibfk_1` FOREIGN KEY (`OfferID`) REFERENCES `offers` (`OfferID`);
