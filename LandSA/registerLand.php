@@ -317,7 +317,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                             </div>
                             <p>تاريخ الهوية</p>
                             <div class="form">
-                            <input type="date" name="deedDate" required>
+                            <input type="date" name="IDdate" required>
                             </div>
                         </div>
 
@@ -396,35 +396,38 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                     <th>النقطة</th>
                                     <th><p>خطوط الطول</p></th>
                                     <th><p>خطوط العرض</p></th>
+                                    <th style="width: 15%;"><p>زاوية الانكسار</p></th>
                                 </tr>
                                 <tr>
                                     <th>أ</th>
-                                    <th><input type="text" name="LongitudeA" required></th>
                                     <th><input type="text" name="LatitudeA" required></th>
+                                    <th><input type="text" name="LongitudeA" required></th>
+                                    <th><input type="text" name="angleA" required></th>
                                 </tr>
                                 <tr>
                                     <th>ب</th>
-                                    <th><input type="text" name="LongitudeB" required></th>
                                     <th><input type="text" name="LatitudeB" required></th>
+                                    <th><input type="text" name="LongitudeB" required></th>
+                                    <th><input type="text" name="angleB" required></th>
                                 </tr>
                                 <tr>
                                     <th>ج</th>
-                                    <th><input type="text" name="LongitudeC" required></th>
                                     <th><input type="text" name="LatitudeC" required></th>
+                                    <th><input type="text" name="LongitudeC" required></th>
+                                    <th><input type="text" name="angleC" required></th>
                                 </tr>
                                 <tr>
                                     <th>د</th>
-                                    <th><input type="text" name="LongitudeD" required></th>
                                     <th><input type="text" name="LatitudeD" required></th>
+                                    <th><input type="text" name="LongitudeD" required></th>
+                                    <th><input type="text" name="angleD" required></th>
                                 </tr>
                             </table>  
                             <p>خريطة الموقع / كروكي</p>
                             <?php include "map.php"; ?>
-                            <div class="form">
-                                <input type="text" name="locationMap" placeholder="google map api need subsecribtion so this field is just a placeholder" required>
-                            </div>
+                            <br>
                             <p>الرجاء ارفاق صورة من الصك</p>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" name="ElectronicTitleDeed" required>
+                            <input type="file" accept="image/*" name="ElectronicTitleDeed" required>
                             <img id="output"/>
                         </div>
 
@@ -533,17 +536,6 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                 });
             </script>
             <!--form script end-->
-
-            <script>
-                //preview photo code
-                var loadFile = function(event) {
-                    var output = document.getElementById('output');
-                    output.src = URL.createObjectURL(event.target.files[0]);
-                    output.onload = function() {
-                    URL.revokeObjectURL(output.src) // free memory
-                    }
-                };
-            </script>
             <script>includeHTML();</script>
         </body>
     </html>

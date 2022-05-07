@@ -1,21 +1,3 @@
-<?php
-  include "connection.php";
-  
-
-  if ($_SERVER["REQUEST_METHOD"]=="POST"){
-
-    echo "hi";
-    $L1 = $_POST['lats'];
-    $L2 = $_POST['longs'];
-
-    $insertLocation = "INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES ('$REUN', '$L1', '$L2');";
-    $query = mysqli_query($con, $insertLocation);
-
-}
-?>
-
-<!-- -------------------------------------------------#HTML Code#-------------------------------------------------- -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -58,14 +40,6 @@
         }
 
         google.maps.event.addListener(map, 'click', function(event) {
-          // function (){
-          // let lat= marker.position.lat()
-          // let Ing= marker.position.lng()
-          // $('#latitude').val(lat)
-          // $('#longitude').val(lng)
-          // })
-
-          
           placeMarker(event.latLng);
 
           //convert "event.latLng" into string
@@ -84,8 +58,6 @@
           document.getElementById('latitude').value = latitude;
           document.getElementById('longitude').value = longitude;
 
-          // document.getElementById('latitude').value = latitude;
-          // document.getElementById('longitude').value = longitude;
         });
       }
       
@@ -97,16 +69,9 @@
     <h3>My Google Maps Demo</h3>
     <!--The div element for the map -->
     <div id="map"></div>
-
-    <!-- <p id="latitude"></p>
-    <p id="longitude"></p> -->
     
-    <form method="POST">
-      <input type="hidden" name="lats" id="latitude" />
-      <input type="hidden" name="longs" id="longitude" />
-      <!-- <input type="submit" value="تأكيد الموقع"> -->
-    </form>
-
+    <input type="hidden" name="lats" id="latitude" />
+    <input type="hidden" name="longs" id="longitude" />
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script async

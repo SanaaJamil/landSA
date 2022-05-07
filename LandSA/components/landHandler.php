@@ -49,7 +49,12 @@
         $LatitudeB = $_POST["LatitudeB"];
         $LatitudeC = $_POST["LatitudeC"];
         $LatitudeD = $_POST["LatitudeD"];
-        $locationMap = $_POST["locationMap"];
+        $angleA = $_POST["angleA"];
+        $angleB = $_POST["angleB"];
+        $angleC = $_POST["angleC"];
+        $angleD = $_POST["angleD"];
+        $L1 = $_POST['lats'];
+        $L2 = $_POST['longs'];
 
         $image =$ElectronicTitleDeed= $_FILES['ElectronicTitleDeed']['tmp_name']; 
         $imgContent = addslashes(file_get_contents($image)); 
@@ -64,12 +69,16 @@
             $query = mysqli_query($con, $insertLand);
 
             if($query){
-                $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, locationMap, ElectronicTitleDeed, REUN) 
-                VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$locationMap', '$ElectronicTitleDeed', '$REUN')";
+                $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, angleA, angleB, angleC, angleD, ElectronicTitleDeed, REUN) 
+                VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$angleA', '$angleB', '$angleC', '$angleD', '$ElectronicTitleDeed', '$REUN')";
                 $query = mysqli_query($con, $insertLandInfo);
                 // insert the title image to images Table
+                
 
-                $insert = $con->query("INSERT into images (image, created, REUN) VALUES ('$imgContent', NOW(),$REUN)"); 
+                $insertLocation = "INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES ('$REUN', '$L1', '$L2');";
+                $query = mysqli_query($con, $insertLocation);
+
+                // $insert = $con->query("INSERT into images (image, created, REUN) VALUES ('$imgContent', NOW(),$REUN)"); 
 
                 echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
 				echo "<script>setTimeout(\"location.href = '../homePage.php';\",1500);</script>";

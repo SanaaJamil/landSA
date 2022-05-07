@@ -71,8 +71,8 @@
     <!--The div element for the map -->
     <div id="map"></div>
 
-    <p id="latitude"></p>
-    <p id="longitude"></p>
+    <!-- <p id="latitude"></p>
+    <p id="longitude"></p> -->
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script async

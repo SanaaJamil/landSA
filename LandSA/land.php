@@ -61,7 +61,10 @@
         $LatitudeB = $row["LatitudeB"];
         $LatitudeC = $row["LatitudeC"];
         $LatitudeD = $row["LatitudeD"];
-        $locationMap = $row["locationMap"];
+		$angleA = $row["angleA"];
+        $angleB = $row["angleB"];
+        $angleC = $row["angleC"];
+        $angleD = $row["angleD"];
 
 
 	}else{
@@ -108,10 +111,10 @@
 				height: 300px;
 			}
 			.left{
-				width: 25%;
+				width: 40%;
 			}
 			.right{
-				width: 75%;
+				width: 60%;
 			}
 			.row{
 				display: flex;
@@ -277,58 +280,34 @@
 						<table>
 							<tbody>
 								<tr class="title">
-									<td rowspan="2">النقطة</td>
-									<td colspan="3">خط الطول</td>
-									<td colspan="3">خط العرض</td>
-									<td td rowspan="2">زوايا الانكسار</td>
-								</tr>
-								<tr class="title">
-									<td>الثانية</td>
-									<td>الدقيقة</td>
-									<td>الدرجة</td>
-									<td>الثانية</td>
-									<td>الدقيقة</td>
-									<td>الدرجة</td>
+									<td>النقطة</td>
+									<td>خط الطول</td>
+									<td>خط العرض</td>
+									<td>زوايا الانكسار</td>
 								</tr>
 								<tr>
 									<td class="title">أ</td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
+									<td><?php print($LatitudeA);?></td>
+									<td><?php print($LongitudeA);?></td>
+									<td><?php print($angleA);?></td>
 								</tr>
 								<tr>
 									<td class="title">ب</td>
-									<td>a</td>
-									<td>a</td>
-									<td>a</td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
+									<td><?php print($LatitudeB);?></td>
+									<td><?php print($LongitudeB);?></td>
+									<td><?php print($angleB);?></td>
 								</tr>
 								<tr>
 									<td class="title">ج</td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
+									<td><?php print($LatitudeC);?></td>
+									<td><?php print($LongitudeC);?></td>
+									<td><?php print($angleC);?></td>
 								</tr>
 								<tr>
 									<td class="title">د</td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
-									<td><?php print($REUN);?></td>
+									<td><?php print($LatitudeD);?></td>
+									<td><?php print($LongitudeD);?></td>
+									<td><?php print($angleD);?></td>
 								</tr>
 							</tbody>
 						</table>
@@ -348,12 +327,13 @@
 						<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 						<button class='sellB' type='submit' name='sell' >تقديم عرض</button>
 					</form>";
-
+					
 					echo"
-					<form method='GET' action='giftLandForm.php'>
-					<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-					<button class='giftB' type='submit' >التفاوض مع المالك</button>
-					</form>";
+						<form method='GET' action='contactOwner.php'>
+						<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+						<button class='giftB' type='submit' >التفاوض مع المالك</button>
+						</form>";
+
 					?>
 				</div>
 				

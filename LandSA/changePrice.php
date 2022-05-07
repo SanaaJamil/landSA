@@ -1,4 +1,4 @@
-<!-- set price form -->
+<!-- change price form -->
 <?php
 $REUN=null;
   #Check the connections with the server and DB
@@ -13,33 +13,22 @@ $REUN=null;
     }
     
 
-    // receive all the informations from the interface form specifically "setPrice.php"
+    // receive all the informations from the interface form specifically "changePrice.php"
     if ($_SERVER["REQUEST_METHOD"]=="POST"){
       $REUN = $_POST["REUN"];
         $price = $_POST["price"];
 
-    //Check that their are no repeted requests
-        $query2="SELECT * FROM landsonsale WHERE REUN='$REUN'";
-        $result2 = mysqli_query($con, $query2);
-        $count2 = mysqli_num_rows($result2);
+            if(isset($_POST["price"])){  
+                $query = "UPDATE landsonsale set price= '$price' where REUN='$REUN'";        
+                $res2 = mysqli_query($con,$query);
+                if ($con->query($query)==TRUE) {
+                    echo "<script>alert('تم تغيير السعر بنجاح')</script>";
+                    echo "<script>setTimeout(\"location.href = 'controlLandspage.php';\",1500);</script>";
+                } else {
+                    echo "Eroo". $query. "<br>" . $con->error;
+                }
+            }
 
-        if($count2 == 0){
-          $insertUser = "INSERT INTO landsonsale(REUN, price) value($REUN, $price)";
-          $result = mysqli_query($con,$insertUser); #send query to the databaes to use insert method
-
-          if($result){  
-            echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
-            echo "<script>setTimeout(\"location.href = 'controlLandsPage.php';\",1500);</script>";
-          }else {
-            die("Error: ".mysqli_errno($con));
-          }
-
-        }else{
-          echo "<script>alert('تم عرض الأرض للبيع مسبقًا')</script>";
-          echo "<script>setTimeout(\"location.href = 'controlLandsPage.php';\",1500);</script>";
-        }
-        
-      
 
     }
     #else if the user is NOT logedin
@@ -48,14 +37,13 @@ $REUN=null;
     echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
   }
 ?>
-
-
+ 
 <!-- -------------------------------------------------#HTML Code#-------------------------------------------------- -->
 
 <!DOCTYPE html>
 <html lang="ar" style='direction: rtl'>
   <head>
-    <title> set price form</title>
+    <title> change price form</title>
     <link rel="stylesheet" href="style.css">
     <script src="components/ComponentHandler.js" ></script>
     
@@ -95,11 +83,11 @@ $REUN=null;
       <div class="content">
         
         <div style="text-align:center;margin: 5%;">
-        <h1 style="padding-left:1%;" >أدخل سعر لبيع الارض  </h1>
+        <h1 style="padding-left:1%;" >أدخل السعر  الجديد  </h1>
         <h2><?PHP echo $REUN; ?></h2>
 
           <!-- Gift Land Form -->
-          <form method="POST" action="setPrice.php">
+          <form method="POST" action="changePrice.php">
           <?php echo"<input type='hidden' id='REUN' name='REUN' value='$REUN' />";?>
 
           
@@ -108,7 +96,7 @@ $REUN=null;
               <td><label for="price">السعر:</label></td>
             </tr>
             <tr>
-              <td><input type="text" id="price" name="price" required></td>
+              <td><input type="text" id="price" name="price"   required></td>
             </tr>
           </table><br><br>
 

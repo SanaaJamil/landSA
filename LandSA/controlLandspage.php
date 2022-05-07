@@ -38,11 +38,25 @@
 			margin-top: 10px;
 			width: 100px;
 		}
+		.content form {
+			background-color: #fff0;
+			border-radius: 18px;
+			padding: 0px;
+		}
+		#price{
+			display: flex;
+    		justify-content: space-between;
+			align-items: baseline
+		}
+		.ch{
+			all: unset;
+		}
 		.block{
 			display: flex;
 			flex-direction: column;
     		align-items: stretch;
 		}
+		
 		/* style of buttons */
 		.sellB {
 			background-color: rgba(255, 80, 60, 0.568);
@@ -69,9 +83,9 @@
 			}
 			.block {
 				display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
+				width: 100%;
+				flex-direction: row;
+				justify-content: space-between;
 			}
 			.MiniBlock{
 				display: flex;
@@ -113,11 +127,17 @@
 			<?php
 				// $sql_lands = "SELECT deedDate, deedNumber,unitType,REUN,city,neighborhoodName,landState  FROM `landrecord` WHERE IDNumber ='$ID'";
 				$sql_lands = "SELECT `landrecord`.REUN,deedDate, deedNumber,unitType,city,neighborhoodName,spaceInNumbersWidth,spaceInNumbersLength,locationMap,landState FROM `landrecord`,`landinfo` WHERE IDNumber ='$ID' AND `landrecord`.REUN=`landinfo`.REUN";
+				
 				$result = $con->query($sql_lands);
+
 				
 				if ($result->num_rows > 0) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
+						$REUN = $row['REUN'];
+						$sql_price = "SELECT `landrecord`.REUN , price FROM `landrecord`,`landsonsale` WHERE `landsonsale`.REUN = '$REUN'";
+						$result2 = $con->query($sql_price);
+						$row2 = mysqli_fetch_array($result2);
 					echo "<div class='land'>";
 						// Informations block
 
@@ -159,22 +179,28 @@
 							<td>المساحة بالارقام:</td>
 							<td> $row[spaceInNumbersLength]x$row[spaceInNumbersWidth] متر</td>
 						</tr>";
-						echo"</table>";
 						// try to add the price if the land got for sale
-						// if(isset($row[price])){
-						// 	echo "<tr>
-						// 		<td>السعر</td>
-						// 		<td> $row[price]x$row[price] متر</td>
-						// 	</tr>";
-						// }
+						if(!empty($row2['price'])){
+							echo "<tr>
+								<td><b>السعر:</b></td>
+								<td id=price><b>$row2[price]</b>
+									<form method='GET' action='changePrice.php'>
+										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+										<button class='ch' name='price' >تعديل</button>
+									</form>
+								</td>
+							</tr>";
+							
+						}
+							
 						
 						
 						echo"</table>";
 						echo"</div> <br>";
 
+
 						// echo"<div class='MiniBlock'>";
 
-							echo "<img src='images/Riyadh.jpg' alt='صورة الأرض' ><br> ";
 							
 							// Buttons block
 							echo"<div class='block'>";

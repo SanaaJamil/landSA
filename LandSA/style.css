@@ -175,9 +175,7 @@ aside{
         height: 10px;
         margin: 8px;
     }
-    aside{
-        flex: 0 0 200px;
-    }
+
 }
 
 @media (max-width: 620px){
@@ -440,7 +438,8 @@ input[type=submit]{
 .content form {
     background-color: #fff;
     border-radius: 18px;
-    padding: 20px;}
+    padding: 20px;
+}
 
 label {
     font-weight: bold;

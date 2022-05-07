@@ -154,6 +154,13 @@ include "components/connection.php";
 		background: #04AA6D;
 
 		}
+		#map {
+        height: 300px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+        background-color: rgba(103,178,147, 0.8);
+      }
 
 </style>
 </head>
@@ -220,12 +227,18 @@ include "components/connection.php";
 					<?php
 					$sql_lands = "SELECT landsonsale.REUN,deedDate, address,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
 					$result = $con->query($sql_lands);
-					$REUN = $row["REUN"];
 
+					$viewMap = "SELECT * FROM map";
+					$result2 = mysqli_query($con,$viewMap);
+					$json=json_encode( $result2 );
+					echo "
+						<scrpit> var json={$json}; </scrpit>
+					";
 					
 					if ($result->num_rows > 0) {
 						// output data of each row
 						while($row = $result->fetch_assoc()) {
+							$REUN = $row["REUN"];
 							echo "<div class='land_container'>";
 							echo "<div class='land'>";
 							// Informations block
@@ -268,6 +281,25 @@ include "components/connection.php";
 								echo"</div>";
 	
 								// echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
+								
+
+								$row2 = mysqli_fetch_array($result2);
+
+								$lat = $row2["latitude"];
+								$long = $row2["longitude"];
+
+								print($lat);
+								print($long);
+
+								foreach( $result2 as $index => $result2 ){
+									echo "<div class='my_map' data-id='{$index}'></div>";
+								}
+								
+								
+
+								echo "<input id='latitude'></input>";
+								echo "<input id='longitude'></input>";
+
 								// only regesterd can view  details, if user is not regesterd, transfer him to login page
 
 								echo"<div>";
@@ -275,6 +307,11 @@ include "components/connection.php";
 									<form method='GET' action='land.php'>
 										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 										<button class='giftB' type='submit' >تفاصيل</button>
+									</form>";
+									echo" 
+									<form method='GET' action='Offers.php'>
+										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+										<button class='sellB' type='submit' name='sell' >تقديم عرض</button>
 									</form>";
 									
 								echo"</div>";
@@ -335,5 +372,26 @@ include "components/connection.php";
 	<script>
 	includeHTML();
 	</script>
+	<script>      // Initialize and add the map
+      // In the following example, markers appear when the user clicks on the map.
+      var marker;
+      var obj,map;
+
+
+      function initMap() {
+         /* iterate through json data */
+		 for( var n in json ){
+            obj=json[n];
+            map=new google.maps.Map( document.querySelector('div[ data-id="'+n+'" ]'),{
+                center:{ lat:parseFloat( obj.latitude ), lng:parseFloat( obj.longitude ) },
+                zoom:16
+            });
+        }
+        
+      } 
+    </script>
+	<script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl39nJCT9GvsrbmIlEexdz9LPr7v_9s3E&callback=initMap">
+    </script>
 </body>
 </html>

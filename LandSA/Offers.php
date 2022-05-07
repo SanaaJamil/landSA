@@ -34,12 +34,14 @@ $ID=null;
       }else{ $stmt=$con->prepare("INSERT INTO offers (OfferID,landPrice,UserID,REUN,requestID) VALUES (?,?,?,?,?)");
         $stmt -> bind_param("sssss",$OfferID,$landPrice,$_SESSION['loggedUser'],$REUN,$requestID);
         $stmt->execute();
-        echo "<script>alert('تم إرسال الطلب بنجاح')</script>";}
+        echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
+        echo "<script>setTimeout(\"location.href = 'landBrowsePage.php';\",1500);</script>";
+      }
     }
         #else if the user is NOT logedin
       }else{
         echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-        echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+        echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
       }
     
       ?>
