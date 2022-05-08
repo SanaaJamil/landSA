@@ -24,15 +24,21 @@ $ID=null;
       $OfferID = rand (1000, 9999);
       $requestID = rand (1000, 9999);
       
-      //Check that the  owner can not giva an offer for his land IDNumber = '$ID' and landrecord.REUN=landsonsale.REUN"
+      //Check that the  owner can not giva an offer for his land 
       $query1="SELECT ID FROM users WHERE ID IN (SELECT IDNumber from landrecord WHERE REUN= $REUN)"; 
       $result = mysqli_query($con, $query1);
       $row = mysqli_fetch_array($result);
       $ID = $row["ID"];
       if ($ID == $_SESSION['loggedUser']){
         echo "<script>alert(' لايمكنك تقديم عرض شراء للارض التي تملكها')</script>";
-      }else{ $stmt=$con->prepare("INSERT INTO offers (OfferID,landPrice,UserID,REUN,requestID) VALUES (?,?,?,?,?)");
-        $stmt -> bind_param("sssss",$OfferID,$landPrice,$_SESSION['loggedUser'],$REUN,$requestID);
+      }else{ 
+        $OwnerInfo = "SELECT IDNumber FROM landrecord WHERE REUN = $REUN";
+        $OwnerRes = mysqli_query($con, $OwnerInfo);
+        $OwnerRow = mysqli_fetch_array($OwnerRes);
+        $OwnerID = $OwnerRow["IDNumber"];
+
+        $stmt=$con->prepare("INSERT INTO offers (OfferID,landPrice,OwnerID, BuyerID,REUN,requestID) VALUES (?,?,?,?,?,?)");
+        $stmt -> bind_param("ssssss",$OfferID,$landPrice,$OwnerID,$_SESSION['loggedUser'],$REUN,$requestID);
         $stmt->execute();
         echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
         echo "<script>setTimeout(\"location.href = 'landBrowsePage.php';\",1500);</script>";

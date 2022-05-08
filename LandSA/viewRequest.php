@@ -124,72 +124,47 @@
 
 	<div class="content">
 		<div class="landList">
-		<table> 
-				<tr> <th colspan="6" class= "heed"><h2>   قائمة طلبات تسجيل الأرض  </h2></th> </tr>
+			<table> 
+				<tr> <th colspan="6" class= "heed"><h2>   حاله الطلبات  </h2></th> </tr>
 
-				<th> رقم الطلب </th> 	  
-					<th> رقم الهوية </th> 
- 			  		<th> اسم المالك </th> 
-			 	    <th> رقم الوحدة العقارية  </th> 
-			 		<th> حالة الطلب   </th>
-					 <th> </th> 
-			<?php  
-				$quer="select * FROM landrecord"; 
-				$results = $con->query($quer); 
-				while($row = $results->fetch_assoc()) 
-			{ 
-			?> 
-			<tr> 
-				<td><?php echo $row['requestID']; ?></td> 
-				<td><?php echo $row['IDNumber']; ?></td> 
-				<td><?php echo $row['name']; ?></td> 
-				<td><?php echo $row['IDType']; ?></td> 
-				<td><?php 
-                //if ($row['requestState']==0){echo "الطلب قيد التنفيذ";
-                //}elseif($row['requestState']==1){echo "الطلب مقبول";
-                //}elseif($row['requestState']==2){echo "الطلب مرفوض";} 
-                ?></td>
-			</tr> 
-			<?php 
-				} 
-			?>
-			
-	
-		</table><br><br> 
+					<th> رقم الطلب </th> 	  
+					<th> اسم المالك </th> 
+					<th> رقم الوحدة العقارية  </th> 
+					<th>السعر</th> 
+					<th> حالة الطلب   </th>
+						<th> </th> 
+				<?php  
+					$quer="SELECT * FROM offers WHERE BuyerID = $ID"; 
+					$results = $con->query($quer); 
 
-		<table> 
-	
-			<tr><th colspan="6"  class= "heed"><h2> قائمة طلبات الوراثة  </h2></th></tr>
-            <tr>
-			<th> رقم الطلب </th> 	  
-				<th> رقم الهوية </th> 
-				<th> رقم هوية المالك </th> 
-				<th> رقم الوحدة العقارية </th> 
-				<th> حالة الطلب </th> 
-				<th> </th>
-			</tr>
-			<?php 
-				$query="select * from inheritancerecord"; 
-				$result = $con->query($query); 
-				while($rows = $result->fetch_assoc()) 
-				{ 	
-			
-			?> 
-			<tr> 
-				<td><?php echo $rows['requestID']; ?></td> 
-				<td><?php echo $rows['UserID']; ?></td> 
-				<td><?php echo $rows['ownerID']; ?></td> 
-				<td><?php echo $rows['REUN']; ?></td> 
-				<td></td>
-			</tr> 
-			<?php 
-				} 
-			?> 
-			 
-
-		</table>
-			
-
+					while($row = $results->fetch_assoc())
+				{ 
+				?> 
+				<tr> 
+					<td><?php echo $row['requestID']; ?></td> 
+					<td><?php 
+					$REUN = $row['REUN'];
+					$OwnerID = $row['OwnerID'];
+					$quer2="SELECT name FROM landrecord WHERE IDNumber ='$OwnerID' AND REUN = '$REUN'"; 
+					$results2 = $con->query($quer2); 
+					$row2 = mysqli_fetch_array($results2);
+					echo $row2['name']; 
+					?>
+					</td> 
+					<td><?php echo $row['REUN']; ?></td> 
+					<td><?php echo $row['landPrice']; ?></td> 
+					<td><?php 
+						if ($row['offerStatus']==0){echo "الطلب قيد التنفيذ";
+						}elseif($row['offerStatus']==1){echo "الطلب مقبول";
+						}elseif($row['offerStatus']==2){echo "الطلب مرفوض";} 
+					?></td>
+				</tr> 
+				<?php 
+					} 
+				?>
+				
+		
+			</table><br><br> 
 		</div>
 	</div>
 	<aside></aside>
