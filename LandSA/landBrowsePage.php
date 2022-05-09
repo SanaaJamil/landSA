@@ -1,26 +1,25 @@
 <?php
 // --------------- Browse lands PHP ------------
 //to show errors
- error_reporting(E_ALL);
- ini_set('display_errors', 1);
-//make connection and print error msgs
-include "components/connection.php";
+	 error_reporting(E_ALL);
+	 ini_set('display_errors', 1);
+//make connection 
+	include "components/connection.php";
 
 	//select coloumns to be printed on land browse page according to land state
-	$sql_lands = "SELECT landsonsale.REUN,deedDate, address,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
-	$result = $con->query($sql_lands); 
-	$num_rows = mysqli_num_rows($result); //number of rows
-	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		$sql_lands = "SELECT landsonsale.REUN,deedDate, landrecord.address,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
+		$result = $con->query($sql_lands); 
+			$num_rows = mysqli_num_rows($result); //number of rows
+			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 	//variables and their values
 		$neighborhoodName = $row["neighborhoodName"];
 		$address = $row["address"];
 		$city = $row["city"];
 		$price = $row["price"];
-	//search Engine 
 
 ?>
-<!-- -----------Brows lands page HTML ----------------- -->
+						<!-- -----------Brows lands page HTML ----------------- -->
 <!DOCTYPE html>
 <html lang="ar" style='direction: rtl'>
 <head>
@@ -30,6 +29,9 @@ include "components/connection.php";
 
 	<style>
 
+		input[type="radio"] { /* change "blue" browser chrome to yellow */
+		filter: invert(60%) hue-rotate(18deg) brightness(1.7);
+		}
 		/* Style of each land */
 		.land_container {
 			padding: 0 6px;
@@ -165,55 +167,42 @@ include "components/connection.php";
 		<aside></aside>
 	<div class="content">
 		<div class="topnav">
-			<form >
-			<!--	<input type="text" placeholder="	إبحث">
+		<div class="slidecontainer">
+			<!-- SEARCH BY CITIY NAME -->
 
-				// send the search attribute 
-				<button ><input type="submit" value="إبحث" ></button>  
-			-->
+		  <form name="form1" action="components/citySearchEngine.php"  method="get">
+			<text> <strong>أدخل إسم المدينة:  </strong></text>
+			<text>مثال: مكه-الرياض-المدينة</text><br>
+				<input type="radio" name="city" value="makkah" >مكة المكرمة<br>
+				<input type="radio" name="city" value="madinah" > المدينة المنورة<br>
+				<input type="radio" name="city" value="ryiadh" >الرياض<br>
+				<input type="radio" name="city" value="dammam" >الدمام<br>
+				<input type="radio" name="city" value="tabuk" >تبوك<br>
+				<input type="radio" name="city" value="jeddah" >جده<br>
+				<button><input type="submit" placeholder="search" name="submit"> </input> 
 
-				<div class="slidecontainer">
-				<!-- create a filter for price by slider -->
-				<div class="slidecontainer"> 
-				<text> <strong>السعر:  </strong></text>
-				<input type="range" min="10000" max="10000000" value="10000" class="slider" name="price"> <label>العدد المدخل:  <span class="limit"></span></label> 
-				</div>
-				<br/><br/>
-				<!-- create a filter for space by slider -->
-				<div class="slidecontainer"> 
-				<text><strong> المساحة بالمتر المربع: </strong></text>
-				<input type="range" min="100" max="5000" value="100" class="slider" name="space"> <label>العدد المدخل: <span class="limit"></span></label>
-				</div>
-				<br/><br/>
-				<!-- create filter -->
-				<div>
-				<text><strong> الواجهة: </strong></text>
-				<button ><input type="submit" name="north" value="شمال" ></button>
-				<button ><input type="submit" name="west" value="غرب" ></button>
-				<button ><input type="submit" name="south" value="جنوب" ></button>
-				<button ><input type="submit" name="east" value="شرق" ></button>
-				</div><br/><br/>
-				<!-- create city filter -->
-				<div>
-				<text><strong> المدينة: </strong></text>
-				<button ><input type="submit" name="Makkah" value="مكة المكرمة" ></button>
-				<button ><input type="submit" name="Jeddah" value="جدة" ></button>
-				<button ><input type="submit" name="Riyadh" value="الرياض" ></button>
-				<button ><input type="submit" name="Madinah" value="المدينة المنورة" ></button>
-				<button ><input type="submit" name="Dammam" value=" الدمام" ></button>
-				<button ><input type="submit" name="Abha" value=" ابها" ></button>
-				<button ><input type="submit" name="Tabok" value=" تبوك" ></button>
-
-				</div><br/><br/>
-
-
-				<button ><input type="submit" value="إبحث" ></button>
-
-				
-			</form>
+  		</form>   
 		</div>
 		<br>
 	
+				<!-- Form: -->
+							<?php
+								$clause = " WHERE ";//Initial clause
+								$sql="SELECT * FROM `landrecord`  ";//Query stub
+								if(isset($_POST['submit'])){
+									if(isset($_POST['city'])){
+										foreach($_POST['city'] as $c){
+											if(!empty($c)){
+												$sql .= $clause."`".$c."` LIKE '%{$c}%'";
+												$clause = " OR ";//Change  to OR after 1st WHERE
+											}   
+										}
+									}
+								echo $sql;//Remove after testing
+								}
+
+							?>
+
 			<div class="content" >
 				<h1>قائمة الاراضي</h1><br>
 				<div class="landList" >
@@ -268,6 +257,7 @@ include "components/connection.php";
 								echo"</div>";
 	
 								// echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
+								
 								// only regesterd can view  details, if user is not regesterd, transfer him to login page
 
 								echo"<div>";
@@ -275,6 +265,11 @@ include "components/connection.php";
 									<form method='GET' action='land.php'>
 										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 										<button class='giftB' type='submit' >تفاصيل</button>
+									</form>";
+									echo" 
+									<form method='GET' action='Offers.php'>
+										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+										<button class='sellB' type='submit' name='sell' >تقديم عرض</button>
 									</form>";
 									
 								echo"</div>";
