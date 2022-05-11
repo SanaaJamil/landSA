@@ -3,10 +3,21 @@ include "components/connection.php";
 	
 #Check if the user is still logedin
 session_start();
+
 if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
     echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
      echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
 }
+
+$ID = $_SESSION['loggedUser'];
+$UserInfo = "SELECT * FROM users WHERE ID = '$ID'";
+$result = mysqli_query($con,$UserInfo);
+$row = mysqli_fetch_array($result);
+
+$IDNumber = $row["ID"];
+$firstName = $row["firstName"];
+$middleName = $row["middleName"];
+$lastName = $row["lastName"];
 
 ?>
 <!DOCTYPE html>
@@ -37,8 +48,12 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                         <div class="tab show">
                             <h2>معلومات المالك:</h2>
                             <p>اسم المالك</p>
-                            <div class="form">
-                                <input type="text" name="name" required>
+                            <div class="form" style="display:flex;">
+                                <?php 
+                                echo "<input type='text' name='firstName' value='$firstName' readonly>";
+                                echo "<input type='text' name='middleName' value='$middleName' readonly>";
+                                echo "<input type='text' name='lastName' value='$lastName' readonly>";
+                                ?>
                             </div>
                             <p>الجنسية</p>
                             <div class="form">
@@ -306,14 +321,16 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                 <div class="custom_select">
                                     <select name="IDType">
                                         <option value="">اختار</option>
-                                        <option value="card">هوية مواطن</option>
-                                        <option value="passport">هوية مقيم</option>
+                                        <option value="مواطن">هوية مواطن</option>
+                                        <option value="مقيم">هوية مقيم</option>
                                     </select>
                                 </div>
                             </div>
                             <p>رقم الهوية</p>
                             <div class="form">
-                                <input type="text" minlength="10" maxlength="10" name="IDNumber" required>
+                                <?php
+                                echo "<input type='text' name='IDNumber' value='$IDNumber' readonly>";
+                                ?>
                             </div>
                             <p>تاريخ الهوية</p>
                             <div class="form">
@@ -422,7 +439,7 @@ if(!(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true)){
                                     <th><input type="text" name="LongitudeD" required></th>
                                     <th><input type="text" name="angleD" required></th>
                                 </tr>
-                            </table>  
+                            </table> <br>
                             <p>خريطة الموقع / كروكي</p>
                             <?php include "map.php"; ?>
                             <br>

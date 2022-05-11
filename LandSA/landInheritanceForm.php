@@ -30,7 +30,7 @@ if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
         }
 }else{
 	echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-	echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+	echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
 }
         
 ?>
