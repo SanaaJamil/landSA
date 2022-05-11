@@ -1,5 +1,6 @@
 
 landSA
+
 People face many problems in land registration and trading.
 We introduced a secure and transparent Blockchain-based Application for Real Estate Titles Registration and Transferring to solve these problems.
 
@@ -12,10 +13,9 @@ For using the website: you dont need anything but for tunning codes you need:
 
 
 Installation 
-A step by step downloading all the files and running the Hyperledger is here:
-        - https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html
-        - https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6 
-
+- A step by step downloading all the files and running the Hyperledger is here:
+       https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html
+       https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6 
 
 {{little demo
 
