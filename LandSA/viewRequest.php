@@ -3,15 +3,10 @@
 	session_start();
 
     if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
-
         $ID = $_SESSION['loggedUser'];
-
     }else{
-
         echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-
         echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
-
     }
 
 
@@ -145,10 +140,15 @@
 					<td><?php 
 					$REUN = $row['REUN'];
 					$OwnerID = $row['OwnerID'];
-					$quer2="SELECT name FROM landrecord WHERE IDNumber ='$OwnerID' AND REUN = '$REUN'"; 
+					$quer2="SELECT firstName,middleName,lastName FROM landrecord WHERE IDNumber ='$OwnerID' AND REUN = '$REUN'"; 
 					$results2 = $con->query($quer2); 
 					$row2 = mysqli_fetch_array($results2);
-					echo $row2['name']; 
+					
+					$firstName = $row2['firstName'];
+					$middleName = $row2['middleName']; 
+					$lastName = $row2['lastName']; 
+
+					print($firstName .' ' .$middleName .' ' .$lastName);
 					?>
 					</td> 
 					<td><?php echo $row['REUN']; ?></td> 
