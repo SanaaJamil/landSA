@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 07:33 AM
+-- Generation Time: May 11, 2022 at 09:26 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `landsa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `bill`
+-- (See below for the actual view)
+--
+CREATE TABLE `bill` (
+`OwnerID` varchar(64)
+,`BuyerID` varchar(64)
+,`REUN` varchar(64)
+,`SellerFName` varchar(64)
+,`SellerMName` varchar(64)
+,`SellerLName` varchar(64)
+,`BuyerFName` varchar(64)
+,`BuyerMName` varchar(64)
+,`BuyerLName` varchar(64)
+,`SellerIBAN` varchar(64)
+,`BuyerIBAN` varchar(64)
+,`offerID` varchar(64)
+,`landPrice` varchar(64)
+,`address` varchar(150)
+,`city` varchar(64)
+,`deedNumber` varchar(64)
+,`deedDate` date
+);
 
 -- --------------------------------------------------------
 
@@ -75,6 +101,7 @@ INSERT INTO `inheritancerecord` (`ownerID`, `courtOrder`, `REUN`, `requestID`, `
 --
 
 CREATE TABLE `landinfo` (
+  `REUN` varchar(64) NOT NULL,
   `spaceInNumbersLength` int(11) NOT NULL,
   `spaceInNumbersWidth` int(11) NOT NULL,
   `spaceInWritingLength` varchar(64) NOT NULL,
@@ -87,29 +114,32 @@ CREATE TABLE `landinfo` (
   `lengthSouth` int(11) NOT NULL,
   `lengthEast` int(11) NOT NULL,
   `lengthWest` int(11) NOT NULL,
-  `LongitudeA` int(11) NOT NULL,
-  `LongitudeB` int(11) NOT NULL,
-  `LongitudeC` int(11) NOT NULL,
-  `LongitudeD` int(11) NOT NULL,
   `LatitudeA` int(11) NOT NULL,
   `LatitudeB` int(11) NOT NULL,
   `LatitudeC` int(11) NOT NULL,
   `LatitudeD` int(11) NOT NULL,
-  `locationMap` int(11) NOT NULL,
-  `ElectronicTitleDeed` blob NOT NULL,
-  `REUN` varchar(64) NOT NULL
+  `LongitudeA` int(11) NOT NULL,
+  `LongitudeB` int(11) NOT NULL,
+  `LongitudeC` int(11) NOT NULL,
+  `LongitudeD` int(11) NOT NULL,
+  `angleA` int(11) NOT NULL,
+  `angleB` int(11) NOT NULL,
+  `angleC` int(11) NOT NULL,
+  `angleD` int(11) NOT NULL,
+  `ElectronicTitleDeed` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `landinfo`
 --
 
-INSERT INTO `landinfo` (`spaceInNumbersLength`, `spaceInNumbersWidth`, `spaceInWritingLength`, `spaceInWritingWidth`, `bordersNorth`, `bordersSouth`, `bordersEast`, `bordersWest`, `lengthNorth`, `lengthSouth`, `lengthEast`, `lengthWest`, `LongitudeA`, `LongitudeB`, `LongitudeC`, `LongitudeD`, `LatitudeA`, `LatitudeB`, `LatitudeC`, `LatitudeD`, `locationMap`, `ElectronicTitleDeed`, `REUN`) VALUES
-(1, 1, '1', '11', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0x312d31302e6a7067, '1'),
-(11, 1, '1', '11', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0x313336333230393931323631312e6a7067, '9'),
-(2, 2, '2', '2', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0x333534352e6a7067, '7'),
-(1, 1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 1, 0x313336333230393931323631312e6a7067, '33'),
-(1, 1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0x32332d322d373830783437302e6a7067, '67');
+INSERT INTO `landinfo` (`REUN`, `spaceInNumbersLength`, `spaceInNumbersWidth`, `spaceInWritingLength`, `spaceInWritingWidth`, `bordersNorth`, `bordersSouth`, `bordersEast`, `bordersWest`, `lengthNorth`, `lengthSouth`, `lengthEast`, `lengthWest`, `LatitudeA`, `LatitudeB`, `LatitudeC`, `LatitudeD`, `LongitudeA`, `LongitudeB`, `LongitudeC`, `LongitudeD`, `angleA`, `angleB`, `angleC`, `angleD`, `ElectronicTitleDeed`) VALUES
+('1', 1, 1, '1', '11', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0x312d31302e6a7067),
+('7', 2, 2, '2', '2', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0x333534352e6a7067),
+('33', 1, 1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0x313336333230393931323631312e6a7067),
+('67', 1, 1, '1', '1', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0x32332d322d373830783437302e6a7067),
+('00000000000000000', 0, 0, '0', '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x433a78616d7070096d70706870453139372e746d70),
+('87686', 877, 87, '878', '676', 5675, 876, 56, 876, 877, 867, 5765, 7676, 6575, 5648, 786, 8787, 6757, 6575, 9879, 789, 90, 50, 90, 10, 0x433a78616d7070096d70706870453736462e746d70);
 
 -- --------------------------------------------------------
 
@@ -118,8 +148,11 @@ INSERT INTO `landinfo` (`spaceInNumbersLength`, `spaceInNumbersWidth`, `spaceInW
 --
 
 CREATE TABLE `landrecord` (
+  `REUN` varchar(64) NOT NULL,
   `landState` bit(1) NOT NULL DEFAULT b'0',
-  `name` varchar(64) DEFAULT NULL,
+  `firstName` varchar(64) DEFAULT NULL,
+  `middleName` varchar(64) DEFAULT NULL,
+  `lastName` varchar(64) DEFAULT NULL,
   `nationality` varchar(64) DEFAULT NULL,
   `share` decimal(10,0) DEFAULT NULL,
   `address` varchar(150) DEFAULT NULL,
@@ -131,12 +164,10 @@ CREATE TABLE `landrecord` (
   `planNumber` varchar(64) DEFAULT NULL,
   `neighborhoodName` varchar(64) DEFAULT NULL,
   `city` varchar(64) DEFAULT NULL,
-  `REUN` varchar(64) NOT NULL,
   `unitType` varchar(64) DEFAULT NULL,
   `deedNumber` varchar(64) DEFAULT NULL,
   `deedDate` date DEFAULT NULL,
   `courtIssued` varchar(64) DEFAULT NULL,
-  `UserID` varchar(64) DEFAULT NULL COMMENT 'we need to see if we need it or not after implementation ',
   `requestID` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -144,23 +175,13 @@ CREATE TABLE `landrecord` (
 -- Dumping data for table `landrecord`
 --
 
-INSERT INTO `landrecord` (`landState`, `name`, `nationality`, `share`, `address`, `IDType`, `IDNumber`, `IDdate`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `REUN`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `UserID`, `requestID`) VALUES
-(b'0', 'taif', 'Afganistan', '1', '1', 'card', '4444444444', '0001-01-01', '1', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', NULL, ''),
-(b'0', 'fatom', 'Bangladesh', '23', 'cd', 'passport', '4444444444', '2022-05-12', '39', '1', '1', '1', 'makkah', '33', 'commercial', '666666666666', '2022-02-01', 're', NULL, ''),
-(b'0', 'aisha tameem ', 'Bolivia', '3', 'makkah', 'passport', '4444444444', '2022-05-17', '12', '3', '21', 'dcs', 'sw', '67', 'residential', '666666666666', '2022-02-21', 'tr', NULL, '9011'),
-(b'0', 'asmaa', 'Algeria', '43', 'makkah', 'card', '4444444444', '2022-05-31', '32', '1', '1', '1', 'makkah', '7', 'residential', '555555555555', '2022-02-03', 'tr', NULL, ''),
-(b'0', 'sanaa', 'Afganistan', '1', '11', '', '9999999999', '2022-05-01', '9', '1', '1', '11', '1', '9', '', '133333333333', '0004-11-01', '1', NULL, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `landsandoffers`
---
-
-CREATE TABLE `landsandoffers` (
-  `REUN` varchar(64) NOT NULL,
-  `offerID` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `landrecord` (`REUN`, `landState`, `firstName`, `middleName`, `lastName`, `nationality`, `share`, `address`, `IDType`, `IDNumber`, `IDdate`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `requestID`) VALUES
+('00000000000000000', b'0', 'طيف', 'محمد', 'الغامدي', 'Saudi Arabia', '43434', 'Makkah, Alhamrah', 'card', '4444444444', '2022-05-11', '0', '0', '0', '0', '0', '', '000000000000', '0001-01-01', '0', ''),
+('1', b'0', 'طيف', 'محمد', 'الغامدي', 'Afganistan', '1', '1', 'card', '4444444444', '0001-01-01', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', ''),
+('33', b'0', 'طيف', 'محمد', 'الغامدي', 'Bangladesh', '23', 'cd', 'passport', '4444444444', '2022-05-12', '39', '1', '1', '1', 'makkah', 'commercial', '666666666666', '2022-02-01', 're', ''),
+('67', b'0', 'طيف', 'محمد', 'الغامدي', 'Bolivia', '3', 'makkah', 'passport', '4444444444', '2022-05-17', '12', '3', '21', 'dcs', 'sw', 'residential', '666666666666', '2022-02-21', 'tr', '9011'),
+('7', b'0', 'طيف', 'محمد', 'الغامدي', 'Algeria', '43', 'makkah', 'card', '4444444444', '2022-05-31', '32', '1', '1', '1', 'makkah', 'residential', '555555555555', '2022-02-03', 'tr', ''),
+('87686', b'0', 'عبدالله', 'محمد', 'الغامدي', 'Seychelles', '878', '89789', 'card', '2222222222', '2022-05-22', '7878', '786', '787', '6876', '876876', 'سكني', '444455555555', '2022-05-19', 'الاببا', '');
 
 -- --------------------------------------------------------
 
@@ -178,10 +199,11 @@ CREATE TABLE `landsonsale` (
 --
 
 INSERT INTO `landsonsale` (`REUN`, `price`) VALUES
-('1', '12'),
+('0', '100000000'),
+('1', '100000000'),
 ('33', '44'),
-('67', '12345678'),
-('7', '1234'),
+('7', '6666'),
+('87686', '6565656'),
 ('9', '1234');
 
 -- --------------------------------------------------------
@@ -201,32 +223,12 @@ CREATE TABLE `map` (
 --
 
 INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES
+('00000000000000000', '21.37101886212143', '39.827362766041965'),
 ('1', '46.60743652865959', '24.69169517979055'),
 ('33', '24.69762175294001', '46.556510327148416'),
 ('67', '24.69169517979055', '46.60743652865959'),
 ('7', '24.69169517979055', '24.69169517979055'),
-('9', '46.60743652865959', '46.60743652865959');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `multir`
---
-
-CREATE TABLE `multir` (
-  `ID` varchar(64) NOT NULL,
-  `IDType` varchar(64) NOT NULL,
-  `Name` varchar(64) NOT NULL,
-  `Password` varchar(64) NOT NULL,
-  `phoneNum` varchar(64) NOT NULL,
-  `Email` varchar(64) NOT NULL,
-  `IBAN` varchar(64) NOT NULL,
-  `BirthDate` varchar(64) NOT NULL,
-  `REUN` varchar(64) NOT NULL,
-  `sellerPhoneNum` varchar(64) NOT NULL,
-  `offerID` varchar(64) NOT NULL,
-  `landPrice` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+('87686', '24.722201888127547', '46.68918891222014');
 
 -- --------------------------------------------------------
 
@@ -237,7 +239,8 @@ CREATE TABLE `multir` (
 CREATE TABLE `offers` (
   `OfferID` varchar(64) NOT NULL,
   `landPrice` varchar(64) NOT NULL,
-  `UserID` varchar(64) NOT NULL,
+  `OwnerID` varchar(64) NOT NULL,
+  `BuyerID` varchar(64) NOT NULL,
   `REUN` varchar(64) NOT NULL,
   `requestID` varchar(64) NOT NULL,
   `offerStatus` varchar(64) NOT NULL DEFAULT '0'
@@ -247,10 +250,27 @@ CREATE TABLE `offers` (
 -- Dumping data for table `offers`
 --
 
-INSERT INTO `offers` (`OfferID`, `landPrice`, `UserID`, `REUN`, `requestID`, `offerStatus`) VALUES
-('6219', '90', '2222222222', '33', '8462', '1'),
-('8396', '4567', '9999999999', '9', '2131', '0'),
-('9079', '40', '2222222222', '33', '3920', '2');
+INSERT INTO `offers` (`OfferID`, `landPrice`, `OwnerID`, `BuyerID`, `REUN`, `requestID`, `offerStatus`) VALUES
+('1511', '10000000', '4444444444', '2222222222', '7', '8273', '0'),
+('4093', '50', '4444444444', '2222222222', '33', '9158', '0'),
+('4628', '3000000000', '2222222222', '4444444444', '87686', '7728', '1'),
+('9961', '3000000000', '4444444444', '2222222222', '1', '8625', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `searchengine`
+-- (See below for the actual view)
+--
+CREATE TABLE `searchengine` (
+`REUN` varchar(64)
+,`address` varchar(150)
+,`city` varchar(64)
+,`neighborhoodName` varchar(64)
+,`unitType` varchar(64)
+,`deedDate` date
+,`price` varchar(64)
+);
 
 -- --------------------------------------------------------
 
@@ -289,9 +309,27 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `IDType`, `firstName`, `middleName`, `lastName`, `Password`, `phoneNum`, `Email`, `IBAN`, `BirthDate`, `UserType`) VALUES
-('2222222222', 'مواطن', 'طيف', 'محمد', 'الغامدي', '123456789tT', '0598765432', 't@gmail.com', '7888888888888888', '2022-04-13', '0'),
-('4444444444', 'مواطن', 'اسماء', 'عبدالرحمن ', 'عظيم الدين', 'Asmaa1234', '1111111111', 'a@gmail.com', '111', '2022-02-01', '0'),
-('9999999999', 'مواطن', 'اسما', 'aa', 'AR', 'Asmaa1111', '7777777777', 'ayoshtameem@gmail.com', '44', '2022-02-06', '0');
+('2222222222', 'مواطن', 'عبدالله', 'محمد', 'الغامدي', '123456789tT', '0598765432', 't@gmail.com', '7888888888888888', '2022-04-13', '0'),
+('4444444444', 'مواطن', 'طيف', 'محمد', 'الغامدي', 'Asmaa1234', '0550393666', 'fatom@gmail.com', '1234567890', '2022-02-01', '0'),
+('9999999999', 'مواطن', 'اسماء', 'عبدالرحمن', 'عظيم الدين', 'Asmaa1111', '7777777777', 'ayoshtameem@gmail.com', '44', '2022-02-06', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `bill`
+--
+DROP TABLE IF EXISTS `bill`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `l`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `searchengine`
+--
+DROP TABLE IF EXISTS `searchengine`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `searchengine`  AS SELECT `landrecord`.`REUN` AS `REUN`, `landrecord`.`address` AS `address`, `landrecord`.`city` AS `city`, `landrecord`.`neighborhoodName` AS `neighborhoodName`, `landrecord`.`unitType` AS `unitType`, `landrecord`.`deedDate` AS `deedDate`, `landsonsale`.`price` AS `price` FROM (`landrecord` join `landsonsale`) WHERE `landrecord`.`REUN` = `landsonsale`.`REUN` ;
 
 --
 -- Indexes for dumped tables
@@ -328,13 +366,6 @@ ALTER TABLE `landrecord`
   ADD KEY `IDNumber` (`IDNumber`);
 
 --
--- Indexes for table `landsandoffers`
---
-ALTER TABLE `landsandoffers`
-  ADD PRIMARY KEY (`REUN`,`offerID`),
-  ADD KEY `landsandoffers_offerID_fk` (`offerID`);
-
---
 -- Indexes for table `landsonsale`
 --
 ALTER TABLE `landsonsale`
@@ -348,20 +379,12 @@ ALTER TABLE `map`
   ADD UNIQUE KEY `REUN` (`REUN`);
 
 --
--- Indexes for table `multir`
---
-ALTER TABLE `multir`
-  ADD PRIMARY KEY (`ID`,`REUN`,`offerID`),
-  ADD KEY `multir_REUN_fk` (`REUN`),
-  ADD KEY `multir_offerID_fk` (`offerID`);
-
---
 -- Indexes for table `offers`
 --
 ALTER TABLE `offers`
-  ADD PRIMARY KEY (`OfferID`,`UserID`,`REUN`),
+  ADD PRIMARY KEY (`OfferID`,`OwnerID`,`REUN`),
   ADD UNIQUE KEY `requestID` (`requestID`),
-  ADD KEY `offers_ID_fk` (`UserID`),
+  ADD KEY `offers_ID_fk` (`OwnerID`),
   ADD KEY `offers_REUN_fk` (`REUN`);
 
 --
@@ -407,25 +430,10 @@ ALTER TABLE `landrecord`
   ADD CONSTRAINT `landrecord_ibfk_1` FOREIGN KEY (`IDNumber`) REFERENCES `users` (`ID`);
 
 --
--- Constraints for table `landsandoffers`
---
-ALTER TABLE `landsandoffers`
-  ADD CONSTRAINT `landsandoffers_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landsonsale` (`REUN`),
-  ADD CONSTRAINT `landsandoffers_offerID_fk` FOREIGN KEY (`offerID`) REFERENCES `offers` (`OfferID`);
-
---
--- Constraints for table `multir`
---
-ALTER TABLE `multir`
-  ADD CONSTRAINT `multir_ID_fk` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`),
-  ADD CONSTRAINT `multir_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landsonsale` (`REUN`),
-  ADD CONSTRAINT `multir_offerID_fk` FOREIGN KEY (`offerID`) REFERENCES `offers` (`OfferID`);
-
---
 -- Constraints for table `offers`
 --
 ALTER TABLE `offers`
-  ADD CONSTRAINT `offers_ID_fk` FOREIGN KEY (`UserID`) REFERENCES `users` (`ID`),
+  ADD CONSTRAINT `offers_ID_fk` FOREIGN KEY (`OwnerID`) REFERENCES `users` (`ID`),
   ADD CONSTRAINT `offers_REUN_fk` FOREIGN KEY (`REUN`) REFERENCES `landsonsale` (`REUN`);
 
 --
