@@ -256,7 +256,6 @@
 									echo"</table>";
 								echo"</div>";
 	
-								// echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
 								
 								// only regesterd can view  details, if user is not regesterd, transfer him to login page
 
@@ -266,12 +265,6 @@
 										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 										<button class='giftB' type='submit' >تفاصيل</button>
 									</form>";
-									echo" 
-									<form method='GET' action='Offers.php'>
-										<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-										<button class='sellB' type='submit' name='sell' >تقديم عرض</button>
-									</form>";
-									
 								echo"</div>";
 									
 								echo"</div>";
