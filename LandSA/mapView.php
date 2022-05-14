@@ -71,9 +71,6 @@
     <!--The div element for the map -->
     <div id="map"></div>
 
-    <!-- <p id="latitude"></p>
-    <p id="longitude"></p> -->
-
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script async
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl39nJCT9GvsrbmIlEexdz9LPr7v_9s3E&callback=initMap">
