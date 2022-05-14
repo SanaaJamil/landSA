@@ -17,21 +17,6 @@ Installation
        https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html
        https://www.youtube.com/playlist?list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6 
 
-{{little demo
-
-Running the tests
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system}}
 
 Built With
 - The Hyperledger framework used:
