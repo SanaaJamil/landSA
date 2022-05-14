@@ -140,93 +140,82 @@
 <body>
 	<div></div>
 	<h1>قائمة الاراضي</h1><br>
-			<div class="landList" >
+	<div class="landList" >
 
-<?php
-$city="";
-$button="";
-	 $city = $_GET['city'];
-	 $button = $_GET['submit'];
+		<?php
+		$city="";
+		$button="";
+		$city = $_GET['city'];
 
-//make connection and print error msgs
- include "connection.php"; 
-$query = "SELECT * FROM searchEngine WHERE  city = '$city' ";
-$result = mysqli_query($con, $query);
- $invoke = $con->query($query);
+		//make connection and print error msgs
+		include "connection.php"; 
+		$query = "SELECT * FROM searchEngine WHERE  city = '$city' ";
+		$result = mysqli_query($con, $query);
+		$invoke = $con->query($query);
 
-$run=mysqli_num_rows($result);
+		$run=mysqli_num_rows($result);
 
-if ($invoke->num_rows>0){
+		if ($invoke->num_rows>0){
 
-   while($row = $result->fetch_assoc()) {
-	 echo "<div class='land_container'>";
-	 echo "<div class='land'>";
-	 // Informations block
+		while($row = $result->fetch_assoc()) {
+			echo "<div class='land_container'>";
+			echo "<div class='land'>";
+			// Informations block
 
-	 echo"<div class='block'>";
-	   echo "<table id='UserData'>";
-		 echo "<tr>
-		   <th>رقم الوحدة العقارية: </th>
-		   <th>$row[REUN]</th>
-		   </tr>";
-		 echo "<tr>
-		   <td>&emsp;</td>
-		   <td>&emsp;</td>
-		   </tr>";	
-		 echo "<tr>
-		   <td>الموقع:  </td>
-		   <td>$row[address]</td>
-		   </tr>";
-		 echo "<tr>
-		   <td>المدينة: </td>
-		   <td> $row[city]</td>
-		   </tr>";
-		 echo "<tr>
-		   <td>اسم الحي:</td>
-		   <td> $row[neighborhoodName]</td>
-		   </tr>";
-		 echo "<tr>
-		   <td>نوع الوحدة:</td>
-		   <td> $row[unitType]</td>
-		   </tr>";
-		 echo "<tr>
-		   <td>تاريخ الصك:</td>
-		   <td> $row[deedDate]</td>
-		   </tr>";
-		 echo "<tr>
-		   <td><b>السعر :</b></td>
-		   <td><b>$row[price]</b></td>
-		   </tr>";
-		 echo"</table>";
-	   echo"</div>";
+			echo"<div class='block'>";
+			echo "<table id='UserData'>";
+				echo "<tr>
+				<th>رقم الوحدة العقارية: </th>
+				<th>$row[REUN]</th>
+				</tr>";
+				echo "<tr>
+				<td>&emsp;</td>
+				<td>&emsp;</td>
+				</tr>";
+				echo "<tr>
+				<td>المدينة: </td>
+				<td> $row[city]</td>
+				</tr>";
+				echo "<tr>
+				<td>اسم الحي:</td>
+				<td> $row[neighborhoodName]</td>
+				</tr>";
+				echo "<tr>
+				<td>نوع الوحدة:</td>
+				<td> $row[unitType]</td>
+				</tr>";
+				echo "<tr>
+				<td>تاريخ الصك:</td>
+				<td> $row[deedDate]</td>
+				</tr>";
+				echo "<tr>
+				<td><b>السعر :</b></td>
+				<td><b>$row[price]</b></td>
+				</tr>";
+				echo"</table>";
+			echo"</div>";
 
-	   // echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
-	   
-	   // only regesterd can view  details, if user is not regesterd, transfer him to login page
+			// echo "<img src='images/Riyadh.jpg' alt='موقع الأرض' width='25%'> ";
+			
+			// only regesterd can view  details, if user is not regesterd, transfer him to login page
 
-	   echo"<div>";
-		 echo"
-		 <form method='GET' action='../land.php'>
-		   <input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-		   <button class='giftB' type='submit' >تفاصيل</button>
-		 </form>";
-		 echo" 
-		 <form method='GET' action='../Offers.php'>
-		   <input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-		   <button class='sellB' type='submit' name='sell' >تقديم عرض</button>
-		 </form>";
-		 
-	   echo"</div>";
-		 
-	   echo"</div>";
-	 echo"</div>";
-   }
- } else {
-   echo "لا توجد نتائج مطابقة لبحثك ";
-   }
+			echo"<div>";
+				echo"
+				<form method='GET' action='../land.php'>
+				<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
+				<button class='giftB' type='submit' >تفاصيل</button>
+				</form>";
+			echo"</div>";
+				
+			echo"</div>";
+			echo"</div>";
+		}
+		} else {
+		echo "لا توجد نتائج مطابقة لبحثك ";
+		}
 
-   $phpVariable = "$city";
-	 ?>
+		$phpVariable = "$city";
+			?>
 			<!-- SEARCH BY price  --> 
 
           <form name="form1" action="searchPrice.php"  method="post">
@@ -241,19 +230,19 @@ if ($invoke->num_rows>0){
 			function display_data($data) {
 				$output = '<table>';
 				foreach($data as $key => $var) {
-				$output .= '<tr>';
-				foreach($var as $k => $v) {
-					if ($key === 0) {
-						$output .= '<td><strong>' . $k . '</strong></td>';
-					} else {
-						$output .= '<td>' . $v . '</td>';
-					}
-					}
-					$output .= '</tr>';
-					}
+					$output .= '<tr>';
+					foreach($var as $k => $v) {
+						if ($key === 0) {
+							$output .= '<td><strong>' . $k . '</strong></td>';
+						} else {
+							$output .= '<td>' . $v . '</td>';
+						}
+						}
+						$output .= '</tr>';
+				}
 				$output .= '</table>';
 				echo $output;
-				}
+			}
 		
 		
 		
