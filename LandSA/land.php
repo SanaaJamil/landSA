@@ -36,6 +36,7 @@
 
 		  	$viewLand = "SELECT * FROM landrecord NATURAL JOIN landinfo WHERE REUN = $REUN AND landrecord.REUN=landinfo.REUN;";
 			$result = mysqli_query($con,$viewLand);
+			
 
 			if(!$result){
 				die("Error: ".mysqli_erron($con));
@@ -44,16 +45,22 @@
 			$row = mysqli_fetch_array($result);
 		
 			$IDNumber = $row["IDNumber"];
-			$firstName = $row["firstName"];
-			$middleName = $row["middleName"];
-			$lastName = $row["lastName"];
+			
+			$userInfo = "SELECT * FROM users WHERE users.ID = $IDNumber";
+			$userRes = mysqli_query($con,$userInfo);
+			$userRow = mysqli_fetch_array($userRes);
 
 			//user info
-			$nationality = $row["nationality"];
+			$firstName = $userRow["firstName"];
+			$middleName = $userRow["middleName"];
+			$lastName = $userRow["lastName"];
+			$nationality = $userRow["nationality"];
+			$address = $userRow["address"];
+			$IDType = $userRow["IDType"];
+			$IDdate = $userRow["IDdate"];
+			
 			$share = $row["share"];
-			$address = $row["address"];
-			$IDType = $row["IDType"];
-			$IDdate = $row["IDdate"];
+			
 
 			//land info
 			$pieceNumber = $row["pieceNumber"];
