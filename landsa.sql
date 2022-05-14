@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2022 at 09:26 PM
+-- Generation Time: May 14, 2022 at 10:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -41,7 +41,7 @@ CREATE TABLE `bill` (
 ,`BuyerIBAN` varchar(64)
 ,`offerID` varchar(64)
 ,`landPrice` varchar(64)
-,`address` varchar(150)
+,`address` varchar(64)
 ,`city` varchar(64)
 ,`deedNumber` varchar(64)
 ,`deedDate` date
@@ -153,12 +153,9 @@ CREATE TABLE `landrecord` (
   `firstName` varchar(64) DEFAULT NULL,
   `middleName` varchar(64) DEFAULT NULL,
   `lastName` varchar(64) DEFAULT NULL,
-  `nationality` varchar(64) DEFAULT NULL,
   `share` decimal(10,0) DEFAULT NULL,
-  `address` varchar(150) DEFAULT NULL,
   `IDType` varchar(64) DEFAULT NULL,
   `IDNumber` varchar(64) NOT NULL,
-  `IDdate` date DEFAULT NULL,
   `pieceNumber` varchar(64) DEFAULT NULL,
   `blockNumber` varchar(64) DEFAULT NULL,
   `planNumber` varchar(64) DEFAULT NULL,
@@ -175,13 +172,13 @@ CREATE TABLE `landrecord` (
 -- Dumping data for table `landrecord`
 --
 
-INSERT INTO `landrecord` (`REUN`, `landState`, `firstName`, `middleName`, `lastName`, `nationality`, `share`, `address`, `IDType`, `IDNumber`, `IDdate`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `requestID`) VALUES
-('00000000000000000', b'0', 'طيف', 'محمد', 'الغامدي', 'Saudi Arabia', '43434', 'Makkah, Alhamrah', 'card', '4444444444', '2022-05-11', '0', '0', '0', '0', '0', '', '000000000000', '0001-01-01', '0', ''),
-('1', b'0', 'طيف', 'محمد', 'الغامدي', 'Afganistan', '1', '1', 'card', '4444444444', '0001-01-01', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', ''),
-('33', b'0', 'طيف', 'محمد', 'الغامدي', 'Bangladesh', '23', 'cd', 'passport', '4444444444', '2022-05-12', '39', '1', '1', '1', 'makkah', 'commercial', '666666666666', '2022-02-01', 're', ''),
-('67', b'0', 'طيف', 'محمد', 'الغامدي', 'Bolivia', '3', 'makkah', 'passport', '4444444444', '2022-05-17', '12', '3', '21', 'dcs', 'sw', 'residential', '666666666666', '2022-02-21', 'tr', '9011'),
-('7', b'0', 'طيف', 'محمد', 'الغامدي', 'Algeria', '43', 'makkah', 'card', '4444444444', '2022-05-31', '32', '1', '1', '1', 'makkah', 'residential', '555555555555', '2022-02-03', 'tr', ''),
-('87686', b'0', 'عبدالله', 'محمد', 'الغامدي', 'Seychelles', '878', '89789', 'card', '2222222222', '2022-05-22', '7878', '786', '787', '6876', '876876', 'سكني', '444455555555', '2022-05-19', 'الاببا', '');
+INSERT INTO `landrecord` (`REUN`, `landState`, `firstName`, `middleName`, `lastName`, `share`, `IDType`, `IDNumber`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `requestID`) VALUES
+('00000000000000000', b'0', 'طيف', 'محمد', 'الغامدي', '43434', 'card', '4444444444', '0', '0', '0', '0', '0', '', '000000000000', '0001-01-01', '0', ''),
+('1', b'0', 'طيف', 'محمد', 'الغامدي', '1', 'card', '4444444444', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', ''),
+('33', b'0', 'طيف', 'محمد', 'الغامدي', '23', 'passport', '4444444444', '39', '1', '1', '1', 'makkah', 'commercial', '666666666666', '2022-02-01', 're', ''),
+('67', b'0', 'طيف', 'محمد', 'الغامدي', '3', 'passport', '4444444444', '12', '3', '21', 'dcs', 'sw', 'residential', '666666666666', '2022-02-21', 'tr', '9011'),
+('7', b'0', 'طيف', 'محمد', 'الغامدي', '43', 'card', '4444444444', '32', '1', '1', '1', 'makkah', 'residential', '555555555555', '2022-02-03', 'tr', ''),
+('87686', b'0', 'عبدالله', 'محمد', 'الغامدي', '878', 'card', '2222222222', '7878', '786', '787', '6876', '876876', 'سكني', '444455555555', '2022-05-19', 'الاببا', '');
 
 -- --------------------------------------------------------
 
@@ -263,13 +260,6 @@ INSERT INTO `offers` (`OfferID`, `landPrice`, `OwnerID`, `BuyerID`, `REUN`, `req
 -- (See below for the actual view)
 --
 CREATE TABLE `searchengine` (
-`REUN` varchar(64)
-,`address` varchar(150)
-,`city` varchar(64)
-,`neighborhoodName` varchar(64)
-,`unitType` varchar(64)
-,`deedDate` date
-,`price` varchar(64)
 );
 
 -- --------------------------------------------------------
@@ -293,14 +283,17 @@ CREATE TABLE `systemrequest` (
 CREATE TABLE `users` (
   `ID` varchar(64) NOT NULL,
   `IDType` varchar(64) NOT NULL,
+  `IDdate` date NOT NULL,
   `firstName` varchar(64) NOT NULL,
   `middleName` varchar(64) NOT NULL,
   `lastName` varchar(64) NOT NULL,
+  `nationality` varchar(64) NOT NULL,
   `Password` varchar(64) NOT NULL,
   `phoneNum` varchar(64) NOT NULL,
   `Email` varchar(64) NOT NULL,
   `IBAN` varchar(64) NOT NULL,
   `BirthDate` date NOT NULL,
+  `address` varchar(64) NOT NULL,
   `UserType` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -308,10 +301,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `IDType`, `firstName`, `middleName`, `lastName`, `Password`, `phoneNum`, `Email`, `IBAN`, `BirthDate`, `UserType`) VALUES
-('2222222222', 'مواطن', 'عبدالله', 'محمد', 'الغامدي', '123456789tT', '0598765432', 't@gmail.com', '7888888888888888', '2022-04-13', '0'),
-('4444444444', 'مواطن', 'طيف', 'محمد', 'الغامدي', 'Asmaa1234', '0550393666', 'fatom@gmail.com', '1234567890', '2022-02-01', '0'),
-('9999999999', 'مواطن', 'اسماء', 'عبدالرحمن', 'عظيم الدين', 'Asmaa1111', '7777777777', 'ayoshtameem@gmail.com', '44', '2022-02-06', '0');
+INSERT INTO `users` (`ID`, `IDType`, `IDdate`, `firstName`, `middleName`, `lastName`, `nationality`, `Password`, `phoneNum`, `Email`, `IBAN`, `BirthDate`, `address`, `UserType`) VALUES
+('1010101010', 'مواطن', '2022-05-01', 'خلود', 'محمد', 'العميري', 'المملكة العربية السعودية', '123456789aA', '0550393666', 't@gmail.com', '1234567890', '2022-05-26', 'Makkah, Alhamrah', '0'),
+('2222222222', 'مواطن', '0000-00-00', 'عبدالله', 'محمد', 'الغامدي', '', '123456789tT', '0598765432', 't@gmail.com', '7888888888888888', '2022-04-13', 'saudi arabia, makkah', '0'),
+('4444444444', 'مواطن', '0000-00-00', 'طيف', 'محمد', 'الغامدي', '', 'Asmaa1234', '0550393666', 'fatom@gmail.com', '1234567890', '2022-02-01', 'saudi arabia, makkah', '0'),
+('9999999999', 'مواطن', '0000-00-00', 'اسماء', 'عبدالرحمن', 'عظيم الدين', '', 'Asmaa1111', '7777777777', 'ayoshtameem@gmail.com', '44', '2022-02-06', 'saudi arabia, makkah', '0');
 
 -- --------------------------------------------------------
 
@@ -320,7 +314,7 @@ INSERT INTO `users` (`ID`, `IDType`, `firstName`, `middleName`, `lastName`, `Pas
 --
 DROP TABLE IF EXISTS `bill`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `l`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `b`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN` ;
 
 -- --------------------------------------------------------
 
