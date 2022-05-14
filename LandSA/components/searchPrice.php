@@ -176,10 +176,6 @@
             echo "<tr>
               <td>&emsp;</td>
               <td>&emsp;</td>
-              </tr>";	
-            echo "<tr>
-              <td>الموقع:  </td>
-              <td>$row[address]</td>
               </tr>";
             echo "<tr>
               <td>المدينة: </td>
