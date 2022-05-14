@@ -5,7 +5,7 @@ include "../LandSA/components/connection.php";
 if (isset($_POST['Submit']))
 $ID = $_POST["ID"];
 $IDType = $_POST["IDType"];
-firstName = $_POST["firstName"];
+$firstName = $_POST["firstName"];
 $middleName = $_POST["middleName"];
 $lastName = $_POST["lastName"];
 $BirthDate = $_POST["BirthDate"];
@@ -23,16 +23,17 @@ if(mysqli_num_rows($select)) {
 
 }
 else{
-          $insertUser = "INSERT INTO users(ID,IDType,firstName,middleName,lastName,Password,phoneNum,Email,IBAN,BirthDate,UserType) 
-          value('$ID','$IDType','$firstName','$middleName','$lastName','$Password','$phoneNum','$Email','$IBAN','$BirthDate','$UserType')";
-           $result = mysqli_query($con,$insertUser); #send query to the databaes to use insert method
+     $insertUser = "INSERT INTO users(ID,IDType,firstName,middleName,lastName,Password,phoneNum,Email,IBAN,BirthDate,UserType) 
+     value('$ID','$IDType','$firstName','$middleName','$lastName','$Password','$phoneNum','$Email','$IBAN','$BirthDate','$UserType')";
+     $result = mysqli_query($con,$insertUser); #send query to the databaes to use insert method
 
-          if($result){
-     header('Location: login.php');
+     if($result){
+          header('Location: login.php');
 	}
      else {
-	die("Error: ".mysqli_errno($con)); }
-  	}
+	     die("Error: ".mysqli_errno($con)); 
+     }
+}
 
 
 ?>
