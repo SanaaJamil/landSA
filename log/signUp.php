@@ -25,6 +25,12 @@
         button:hover[type=reset]{
             background-color: rgba(200, 225, 225, 1);
         }
+        form .btn{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: -16px;
+        }
 
         table p{
 
@@ -173,8 +179,6 @@
                                 <p id="number" class="invalid A">أرقام</p>
                                 <p id="length" class="invalid A">على الأقل 8 رموز</p>
                             </div>
-				<p style="text-align: left; margin-left: 21%;"> لديك حساب؟ <a style="color: dodgerblue;"href="login.php"> تسجيل الدخول </a></p>
-
                         </th>
                         <th></th>
                     </tr>
@@ -182,8 +186,11 @@
                 
                 <div class="btn">
                     <button type="reset">إلغاء</button>
-                    <button type="submit" name="Submit">ارسال</button>
+                    <button type="submit" name="Submit">ارسال</button>				
                 </div>
+                <div><br>
+                  <p style="text-align: left;"> لديك حساب؟ <a style="color: dodgerblue;"href="login.php"> تسجيل الدخول </a></p>
+                </div>                 
           </form>
         </div>
         <asdie></asdie>
