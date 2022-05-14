@@ -24,6 +24,12 @@
         button:hover[type=reset]{
             background-color: rgba(200, 225, 225, 1);
         }
+        form .btn{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: -16px;
+        }
 
     </style>
 
@@ -45,7 +51,7 @@
             <form method="POST" action="‏‏LoginHandler.php">
                 <p>رقم الهوية</p>
                 <div class="form">
-                    <input type="text" name="ID" required>
+                    <input type="text" name="ID" maxlength="10" pattern="[0-9]{10}" required>
                 </div>
 
                 <p>كلمة المرور</p>
@@ -58,7 +64,9 @@
                     <button type="reset">إلغاء</button>
                     <button type="submit">ارسال</button>
                 </div>
-                <p style="text-align: left; margin-left: 21%;">ليس لديك حساب؟ <a style="color: dodgerblue;"href="signUp.php">إنشاء حساب</a></p>
+                <div><br>
+                    <p style="text-align: left;">ليس لديك حساب؟ <a style="color: dodgerblue;"href="signUp.php">إنشاء حساب</a></p>
+                </div>
             </form>
         </div>
         <aside></aside>
