@@ -16,8 +16,6 @@
     $query = "UPDATE offers set offerStatus= '1' where OfferID ='$OfferID'";    
     $query2 = "UPDATE offers set offerStatus= '2' WHERE REUN = '$REUN' AND OfferID != '$OfferID';";
 
-
-    // Except SELECT * FROM offers where REUN ='$REUN'";    
        $res2 = mysqli_query($con,$query);
        $res = mysqli_query($con,$query2);
        if ($con->query($query)==TRUE) {
@@ -26,7 +24,6 @@
        }        
     } 
     if(isset($_POST["reject"])){
-      // $REUN=$_POST['REUN'];
       $OfferID = $_POST['OfferID'];
       $query = "UPDATE offers set offerStatus= '2' where OfferID ='$OfferID'";        
       $res2 = mysqli_query($con,$query);
