@@ -13,8 +13,6 @@
             $phoneNum = $_POST["phoneNum"];
             $Email = $_POST["Email"];
             
-            //$sql = "UPDATE users SET firstName = 'اسماء', middleName = 'aa', lastName = 'aaa', phoneNum = '0000000000', Email = 'ayoshtameem@gmail.com', IBAN = '33' WHERE users.ID = '4444444444';";
-
             $sql = "UPDATE users SET firstName = '$firstName', middleName = '$middleName', lastName = '$lastName', phoneNum = '$phoneNum', Email = '$Email', IBAN = '$IBAN' WHERE users.ID = '$ID'";
             $query = mysqli_query($con, $sql);
 
@@ -104,12 +102,7 @@
             <aside></aside>
             <div class="content">
                 <h1>المعلومات الشخصيه</h1><br><br>
-                <?php
-                // if(isset($_POST('edit'))){
-
-                // }
-
-                ?>
+                
                 <div class="card" id="save" style="display:none;">
                 <div class="card-body">
                     <form method="POST">
