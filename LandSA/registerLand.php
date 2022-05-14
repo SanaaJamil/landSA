@@ -312,10 +312,6 @@ $lastName = $row["lastName"];
                             <div class="form">
                                 <input type="number" name="share" required>
                             </div>
-                            <p>العنوان</p>
-                            <div class="form">
-                                <input type="text" name="address" required>
-                            </div> 
                             <p>نوع الهوية</p>
                             <div class="form">
                                 <div class="custom_select">
