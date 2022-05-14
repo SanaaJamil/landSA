@@ -12,6 +12,9 @@ $BirthDate = $_POST["BirthDate"];
 $IBAN = $_POST["IBAN"];
 $phoneNum = $_POST["phoneNum"];
 $Email = $_POST["Email"];
+$address = $_POST["address"];
+$nationality = $_POST["nationality"];
+$IDdate = $_POST["IDdate"];
 $Password = $_POST["Password"];
 $UserType = 0;
 $password_confirm = $_POST['password_confirm'];
@@ -23,8 +26,8 @@ if(mysqli_num_rows($select)) {
 
 }
 else{
-     $insertUser = "INSERT INTO users(ID,IDType,firstName,middleName,lastName,Password,phoneNum,Email,IBAN,BirthDate,UserType) 
-     value('$ID','$IDType','$firstName','$middleName','$lastName','$Password','$phoneNum','$Email','$IBAN','$BirthDate','$UserType')";
+     $insertUser = "INSERT INTO users(ID,IDType,firstName,middleName,lastName,Password,phoneNum,Email,IBAN,BirthDate,UserType,IDdate,nationality,address) 
+     value('$ID','$IDType','$firstName','$middleName','$lastName','$Password','$phoneNum','$Email','$IBAN','$BirthDate','$UserType','$IDdate','$nationality','$address')";
      $result = mysqli_query($con,$insertUser); #send query to the databaes to use insert method
 
      if($result){

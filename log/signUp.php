@@ -105,6 +105,11 @@
                     <?php endif ?>
                     </div>
                 </div>
+
+                <p>تاريخ الهوية</p>
+                <div class="form">
+                    <input type="date" name="IDdate" required>
+                </div>
                 
                 <p>نوع الهوية</p>
                 <div class="form">
@@ -116,6 +121,7 @@
                         </select>
                     </div>
                 </div>
+                <br><br>
 
                 <p>الاسم الأول</p>
                 <div class="form">
@@ -132,6 +138,152 @@
                     <input type="text" name="lastName"required>
                 </div>
 
+                <p>الجنسية</p>
+                <div class="form">
+                    <div class="custom_select">
+                        <select name="nationality">
+                            <option value="أفغانستان">أفغانستان</option>
+                            <option value="ألبانيا">ألبانيا</option>
+                            <option value="الجزائر">الجزائر</option>
+                            <option value="أندورا">أندورا</option>
+                            <option value="الأرجنتين">الأرجنتين</option>
+                            <option value="أرمينيا">أرمينيا</option>
+                            <option value="أروبا">أروبا</option>
+                            <option value="أستراليا">أستراليا</option>
+                            <option value="النمسا">النمسا</option>
+                            <option value="البحرين">البحرين</option>
+                            <option value="بنغلاديش">بنغلاديش</option>
+                            <option value="بلجيكا">بلجيكا</option>
+                            <option value="برمودا">برمودا</option>
+                            <option value="بوتان">بوتان</option>
+                            <option value="بوليفيا">بوليفيا</option>
+                            <option value="البرازيل">البرازيل</option>
+                            <option value="بلغاريا">بلغاريا</option>
+                            <option value="كمبوديا">كمبوديا</option>
+                            <option value="كندا">كندا</option>
+                            <option value="تشيلي">تشيلي</option>
+                            <option value="الصين">الصين</option>
+                            <option value="كولومبيا">كولومبيا</option>
+                            <option value="قبرص">قبرص</option>
+                            <option value="الدنمارك">الدنمارك</option>
+                            <option value="جيبوتي">جيبوتي</option>
+                            <option value="دومينيكا">دومينيكا</option>
+                            <option value="تيمور الشرقية">تيمور الشرقية</option>
+                            <option value="الاكوادور">الاكوادور</option>
+                            <option value="مصر">مصر</option>
+                            <option value="إريتريا">إريتريا</option>
+                            <option value="إستونيا">إستونيا</option>
+                            <option value="فيجي">فيجي</option>
+                            <option value="فنلندا">فنلندا</option>
+                            <option value="فرنسا">فرنسا</option>
+                            <option value="غامبيا">غامبيا</option>
+                            <option value="جورجيا">جورجيا</option>
+                            <option value="ألمانيا">ألمانيا</option>
+                            <option value="غانا">غانا</option>
+                            <option value="جبل طارق">جبل طارق</option>
+                            <option value="اليونان">اليونان</option>
+                            <option value="غرينادا">غرينادا</option>
+                            <option value="غينيا">غينيا</option>
+                            <option value="غيانا">غيانا</option>
+                            <option value="هاواي">هاواي</option>
+                            <option value="هندوراس">هندوراس</option>
+                            <option value="هونج كونج">هونج كونج</option>
+                            <option value="هنغاريا">هنغاريا</option>
+                            <option value="أيسلندا">أيسلندا</option>
+                            <option value="إندونيسيا">إندونيسيا</option>
+                            <option value="الهند">الهند</option>
+                            <option value="إيران">إيران</option>
+                            <option value="العراق">العراق</option>
+                            <option value="أيرلندا">أيرلندا</option>
+                            <option value="إيطاليا">إيطاليا</option>
+                            <option value="اليابان">اليابان</option>
+                            <option value="الأردن">الأردن</option>
+                            <option value="كازاخستان">كازاخستان</option>
+                            <option value="كينيا">كينيا</option>
+                            <option value="كوريا الشمالية">كوريا الشمالية</option>
+                            <option value="كوريا الجنوب">كوريا الجنوب</option>
+                            <option value="الكويت">الكويت</option>
+                            <option value="لبنان">لبنان</option>
+                            <option value="ليبيريا">ليبيريا</option>
+                            <option value="ليبيا">ليبيا</option>
+                            <option value="ماكاو">ماكاو</option>
+                            <option value="ماكاو">ماكاو</option>
+                            <option value="مدغشقر">مدغشقر</option>
+                            <option value="ماليزيا">ماليزيا</option>
+                            <option value="ملاوي">ملاوي</option>
+                            <option value="جزر المالديف">جزر المالديف</option>
+                            <option value="مالطا">مالطا</option>
+                            <option value="المكسيك">المكسيك</option>
+                            <option value="موناكو">موناكو</option>
+                            <option value="منغوليا">منغوليا</option>
+                            <option value="مونتسيرات">مونتسيرات</option>
+                            <option value="المغرب">المغرب</option>
+                            <option value="موزمبيق">موزمبيق</option>
+                            <option value="نامبيا">نامبيا</option>
+                            <option value="هولندا">هولندا</option>
+                            <option value="نيفيس">نيفيس</option>
+                            <option value="نيوزيلاندا">نيوزيلاندا</option>
+                            <option value="النيجر">النيجر</option>
+                            <option value="نيجيريا">نيجيريا</option>
+                            <option value="النرويج">النرويج</option>
+                            <option value="سلطنة عمان">سلطنة عمان</option>
+                            <option value="باكستان">باكستان</option>
+                            <option value="فلسطين">فلسطين</option>
+                            <option value="بنما">بنما</option>
+                            <option value="باراغواي">باراغواي</option>
+                            <option value="بيرو">بيرو</option>
+                            <option value="الفلبين">الفلبين</option>
+                            <option value="بولندا">بولندا</option>
+                            <option value="البرتغال">البرتغال</option>
+                            <option value="بورتوريكو">بورتوريكو</option>
+                            <option value="دولة قطر">دولة قطر</option>
+                            <option value="صربيا">صربيا</option>
+                            <option value="رومانيا">رومانيا</option>
+                            <option value="روسيا">روسيا</option>
+                            <option value="رواندا">رواندا</option>
+                            <option value="ساموا">ساموا</option>
+                            <option value="ساموا الأمريكية">ساموا الأمريكية</option>
+                            <option value="سان مارينو">سان مارينو</option>
+                            <option value="المملكة العربية السعودية" selected>المملكة العربية السعودية</option>
+                            <option value="السنغال">السنغال</option>
+                            <option value="سنغافورة">سنغافورة</option>
+                            <option value="سلوفاكيا">سلوفاكيا</option>
+                            <option value="سلوفينيا">سلوفينيا</option>
+                            <option value="الصومال">الصومال</option>
+                            <option value="جنوب أفريقيا">جنوب أفريقيا</option>
+                            <option value="إسبانيا">إسبانيا</option>
+                            <option value="سيريلانكا">سيريلانكا</option>
+                            <option value="السودان">السودان</option>
+                            <option value="سوازيلاند">سوازيلاند</option>
+                            <option value="السويد">السويد</option>
+                            <option value="سويسرا">سويسرا</option>
+                            <option value="سوريا">سوريا</option>
+                            <option value="تاهيتي">تاهيتي</option>
+                            <option value="تايوان">تايوان</option>
+                            <option value="طاجيكستان">طاجيكستان</option>
+                            <option value="تنزانيا">تنزانيا</option>
+                            <option value="تايلاند">تايلاند</option>
+                            <option value="توجو">توجو</option>
+                            <option value="تونغا">تونغا</option>
+                            <option value="تونس">تونس</option>
+                            <option value="تركيا">تركيا</option>
+                            <option value="تركمانستان">تركمانستان</option>
+                            <option value="أوغندا">أوغندا</option>
+                            <option value="المملكة المتحدة">المملكة المتحدة</option>
+                            <option value="أوكرانيا">أوكرانيا</option>
+                            <option value="الإمارات العربية المتحدة">الإمارات العربية المتحدة</option>
+                            <option value="الولايات المتحده الامريكية">الولايات المتحده الامريكية</option>
+                            <option value="اليمن">اليمن</option>
+                        </select>
+                    </div>
+                </div>
+                <br><br>
+
+                <p>العنوان</p>
+                <div class="form">
+                    <input type="text" name="address" required>
+                </div> 
+                
                 <p>البريد الإلكتروني</p>
                 <div class="form">
                     <input type="email" name="Email" placeholder="example@xxxxx.com" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" required>
@@ -151,6 +303,7 @@
                 <div class="form">
                     <input type="text" name="phoneNum" placeholder="05XXXXXXXX" maxlength="10" pattern="+966[0-9]{10}" required>
                 </div>
+                <br><br>
 
                 <table class="form">
                     <tr>
