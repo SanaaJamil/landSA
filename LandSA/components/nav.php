@@ -67,7 +67,6 @@
           background-color: #51abbb;
           border-radius: 23px;
           /* cursor: pointer; */
-          margin-right: 30px;
       }
       /* Dropdown list style */
 
@@ -91,9 +90,10 @@
         overflow: hidden;
       }
       .topnav li {
-          float: right;
+        float: right;
         display: block;
         text-align: center;
+        margin-left: 7px;
       }
       .topnav a {
         display: block;
@@ -323,7 +323,7 @@
                             <li class='active'><a   href='../LandSA/homePage.php'>الرئيسية</a></li>
                             <li><a href='../LandSA/landBrowsePage.php'>تصفح الاراضي</a></li>
                             
-                            <li ><a id='login' href='../log/login.php'>تسجيل الدخول</a></li>
+                            <li style='margin-right: 18px;'><a id='login' href='../log/login.php'>تسجيل الدخول</a></li>
                         </ul>
                     </div>
                     <img class='logo_sticky' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
