@@ -314,7 +314,7 @@ INSERT INTO `users` (`ID`, `IDType`, `IDdate`, `firstName`, `middleName`, `lastN
 --
 DROP TABLE IF EXISTS `bill`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `b`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN` ;
+CREATE VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `b`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN` ;
 
 -- --------------------------------------------------------
 
@@ -323,7 +323,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `searchengine`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `searchengine`  AS SELECT `landrecord`.`REUN` AS `REUN`, `landrecord`.`address` AS `address`, `landrecord`.`city` AS `city`, `landrecord`.`neighborhoodName` AS `neighborhoodName`, `landrecord`.`unitType` AS `unitType`, `landrecord`.`deedDate` AS `deedDate`, `landsonsale`.`price` AS `price` FROM (`landrecord` join `landsonsale`) WHERE `landrecord`.`REUN` = `landsonsale`.`REUN` ;
+CREATE VIEW `searchengine`  AS SELECT `landrecord`.`REUN` AS `REUN`, `landrecord`.`address` AS `address`, `landrecord`.`city` AS `city`, `landrecord`.`neighborhoodName` AS `neighborhoodName`, `landrecord`.`unitType` AS `unitType`, `landrecord`.`deedDate` AS `deedDate`, `landsonsale`.`price` AS `price` FROM (`landrecord` join `landsonsale`) WHERE `landrecord`.`REUN` = `landsonsale`.`REUN` ;
 
 --
 -- Indexes for dumped tables
