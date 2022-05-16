@@ -22,31 +22,48 @@
 				<div class="slider-display">
 					<div class="img-slider">
 						<div class="slide active">
-							<img src="images/1.jpg">
+							<img src="images/p1.png">
 							<div class="info">
-								<h2>slide 01</h2>
-								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
+								<h2>دليل تسجيل الدخول</h2>
+								<p    style=" width: 60%;">
+									<br>١- إذا كنت مستخدم جديد اضغط زر "انشاء حساب " لإنشاء حساب جديد.<br>
+									<br>٢- قم بتعبئة النموذج بالمعلومات (رقم الهوية، نوع الهوية، الاسم، كلمة المرور ورقم الهاتف والبريد الالكتروني وبيانات الميلاد وIBAN ثم قم بإرسالها.<br>
+									<br>٣- اذا كان لديك حساب مسبقا قم بإدخال رقم الهوية وكلمة المرور.<br><br>
+								</p>
 							</div>
 						</div>
 						<div class="slide">
-							<img src="images/2.jpg">
+						<img src="images/p2.jpg">
 							<div class="info">
-								<h2>slide 02</h2>
-								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
+								<h2>لتسجيل أرض جديدة</h2>
+								<p>
+									<br>١- اضغط على زر "خدماتي" ثم اختر "تسجيل أرض" من القائمة المنسدلة.<br>
+									<br>٢- قم بملء النموذج وإرساله.  <br>
+									<br>٣- تستطيع تسجيل أكثر من ارض.<br>
+									<br>٤- يتم تسجيل الارض في النظام بعد التأكيد على صحة معلومات الارض.<br>
+									<br>٥- يتم إرسال رسالة في حالة تم رفض تسجيل الأرض. <br><br>
+								</p>
 							</div>
 						</div>
 						<div class="slide">
-							<img src="images/3.jpg">
+						<img src="images/p3.jpg">
 							<div class="info">
-								<h2>slide 03</h2>
-								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
+								<h2>لعرض الأراضي</h2>
+								<p>
+									<br>١- انقر زر "تصفح الأراضي" الموجود في الشريط الرئيسي.<br>
+									<br>٢- يمكنك عرض النتائج حسب المدينة او السعر. <br><br>
+								</p>							
 							</div>
 						</div>
 						<div class="slide">
-							<img src="images/4.jpg">
+						<img src="images/p4.jpg">
 							<div class="info">
-								<h2>slide 04</h2>
-								<p>id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit. id nibh ultricies vehicula ut id elit.</p>
+								<h2>لشراء أرض</h2>
+								<p>
+									<br>١- اذهب الى صفحة " تصفح الاراضي " واختر الأرض التي تريدها.<br>
+									<br>٢- لعرض التفاصيل اضغط زر "تفاصيل الأرض". <br>
+									<br>٣- لتقديم عرض شراء للمالك اضغط زر "تقديم عرض" ثم أدخل السعر وقم بإرسال العرض.<br><br>
+								</p>
 							</div>
 						</div>
 						<div class="slide-nav">
@@ -60,22 +77,20 @@
 				<!--image slider end-->
 
 				<!--Card group start-->
-				<h1>آخر الأخبار</h1>
+				<h1 >آخر الأخبار</h1>
 				<div class="card-group">
 					<div class="card">
-							<h4>Title</h4>
-							<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-							<a href="">Read more</a>
+							<h4>تعرف على متوسط أسعار الأراضي السكنية في عدد من أحياء المدن السعودية الكبرى خلال الربع الثالث 2021</h4>
+							<a href="https://www.argaam.com/ar/article/articledetail/id/1521447">اقرأ المزيد</a>
 					</div>
 					<div class="card">
-							<h4>Title</h4>
-							<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-							<a href="">Read more</a>
+							<h4>
+تراجع جماعي لأسعار أراضي 5 مدن سعودية كبرى</h4>
+							<a href="https://www.alwatan.com.sa/article/1086625">اقرأ المزيد</a>
 					</div>
 					<div class="card">
-							<h4>Title</h4>
-							<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-							<a href="">Read more</a>
+							<h4>كيف تغيرت أسعار الأراضي حاليا عما كانت عليه قبل 10 سنوات؟</h4>
+							<a href="https://www.okaz.com.sa/economy/saudi/2070791">اقرأ المزيد</a>
 					</div>
 				</div>
 				<!--Card group end-->

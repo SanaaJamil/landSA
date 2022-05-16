@@ -54,7 +54,7 @@
       }
 
       .nav_links li a:hover {
-          color: #0088a9
+          color: white;
       }
 
       #logout{
@@ -64,9 +64,9 @@
           margin-right: 30px;
       }
       #login{
-          background-color: #67b293;
-          border-radius: 100px;
-          cursor: pointer;
+          background-color: #51abbb;
+          border-radius: 23px;
+          /* cursor: pointer; */
           margin-right: 30px;
       }
       /* Dropdown list style */
@@ -83,8 +83,8 @@
       }
 
       .navbar a:hover, .dropdown:hover .dropbtn ,.nav_links Li:hover {
-        background-color: #d3ecdb;
-        border-radius: 50px;
+        background-color: #51abbb;
+        border-radius: 23px;
       }
 
       .topnav {
@@ -105,8 +105,8 @@
       }
 
       .active {
-          background-color: #abd3b8;
-          border-radius: 50px;
+          background-color: #51abbb;
+          border-radius: 23px;
       }
 
       .topnav .icon {
@@ -156,7 +156,7 @@
       }
 
       .dropdown-content a:hover {
-        background-color: #d3ecdb;
+        background-color: #5a9aab;
       }
 
       .dropdown:hover .dropdown-content {
@@ -283,13 +283,13 @@
     if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
         echo"
         <nav>
-        <img class='logo_Phone' src='../LandSA/images/logo.gif ' alt='logo' height='100px'>
+        <img class='logo_Phone' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
             <div class='header'>
-                <img class='logo_Disk' src='../LandSA/images/logo.gif ' alt='logo' height='100px'>
+                <img class='logo_Disk' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
                 <a href='javascript:void(0);' style='font-size:30px;' class='icon' onclick='myFunction()'>&#9776;</a>
                 <div class='topnav' id='myTopnav'>
                     <ul class='nav_links'>
-                        <li class='active'><a   href='../LandSA/homePage.php'>الرئيسة</a></li>
+                        <li class='active'><a   href='../LandSA/homePage.php'>الرئيسية</a></li>
                         <li><a href='../LandSA/landBrowsePage.php'>تصفح الاراضي</a></li>
                         <li>
                         <div class='dropdown'>
@@ -308,25 +308,25 @@
                         <li id='logout' style='background-color: rgba(0,0,0,0)'><a href='../log/logout.php'><img class='logo' src='../LandSA/images/off.png' alt='logOut' height='20px'></a></li>
                     </ul>
                 </div>
-                <img class='logo_sticky' src='../LandSA/images/logo.gif ' alt='logo' height='100px'>
+                <img class='logo_sticky' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
             </div>
     </nav>";
 	}
     else{
         echo"<nav>
-                <img class='logo_Phone' src='../LandSA/images/logo.gif ' alt='logo' height='100px'>
+                <img class='logo_Phone' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
                 <div class='header'>
-                    <img class='logo_Disk' src='../LandSA/images/logo.gif ' alt='logo' height='100px'>
+                    <img class='logo_Disk' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
                     <a href='javascript:void(0);' style='font-size:30px;' class='icon' onclick='myFunction()'>&#9776;</a>
                     <div class='topnav' id='myTopnav'>
                         <ul class='nav_links'>
-                            <li class='active'><a   href='../LandSA/homePage.php'>الرئيسة</a></li>
+                            <li class='active'><a   href='../LandSA/homePage.php'>الرئيسية</a></li>
                             <li><a href='../LandSA/landBrowsePage.php'>تصفح الاراضي</a></li>
                             
                             <li ><a id='login' href='../log/login.php'>تسجيل الدخول</a></li>
                         </ul>
                     </div>
-                    <img class='logo_sticky' src='../LandSA/images/logo.gif ' alt='logo' height='100px'>
+                    <img class='logo_sticky' src='../LandSA/images/logo.png ' alt='logo' height='100px'>
                     </div>
             </nav>";
 

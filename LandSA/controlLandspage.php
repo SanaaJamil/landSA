@@ -115,8 +115,9 @@ $REUN = null;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
-			font-size: 16px;
+			font-size: 18px;
 			cursor: pointer;
+			width: 55px;
     	}
 		.ch:hover{
 			background-color: #b70b09;
@@ -134,10 +135,10 @@ $REUN = null;
 			background-color: rgba(255, 80, 60, 0.568);
 		}
 		.giftB{
-			background-color: #149d3bbb;
+			background-color: #98cee8;
 		}
 		.moreB{
-			background-color:#35c8afce;;
+			background-color:#d1d1d1;
 		}
 		.MiniBlock {
 			display: flex;
@@ -323,7 +324,7 @@ $REUN = null;
 							echo"
 								<form method='GET' action='land.php'>
 									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-									<button class='giftB' type='submit' >تفاصيل</button>
+									<button class='moreB' type='submit' >تفاصيل</button>
 								</form>";							
 							echo"</div>";
 
@@ -338,13 +339,13 @@ $REUN = null;
 								<input type='hidden' id='REUN' name='REUN' value='$REUN' />
 								<table class='Namefeild'>
 									<tr>
-									<td><label for='price'>السعر:</label></td>
+									<td><label for='price'>أدخل سعر لبيع الارض رقم : $REUN</label></td>
 									</tr>
 									<tr>
 									<td><input type='text' id='price' name='price' required></td>
 									</tr>
 								</table><br><br>
-							<button><input type='submit' name='setPrice' value='ارسل' ></button>
+							<button><input type='submit' name='setPrice' value='إرسال' ></button>
 							</form>
 							<br>
 							</div>
@@ -356,19 +357,17 @@ $REUN = null;
 						<div class='block'>
 							<span onclick='document.getElementById(`id02`).style.display=`none`' class='close' title='Close Modal'>&times;</span>
 							<div style='text-align:center;margin: 5%;'>
-							<h1 style='padding-left:1%;' >أدخل السعر  الجديد  </h1>
-							<!-- Gift Land Form -->
 							<form method='POST'>
 							<input type='hidden' id='REUN' name='REUN' value='$REUN' />
 							<table class='Namefeild'>
 								<tr>
-								<td><label for='price'>السعر:</label></td>
+								<td><label for='price'>أدخل السعر  الجديد</label></td>
 								</tr>
 								<tr>
 								<td><input type='text' id='price' name='price' required></td>
 								</tr>
 							</table><br><br>
-							<button><input type='submit' name='updatePrice' value='ارسل' ></button>
+							<button><input type='submit' name='updatePrice' value='إرسال' ></button>
 							</form>
 							</div>
 						</div>

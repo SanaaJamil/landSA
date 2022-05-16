@@ -170,13 +170,13 @@
 					<!-- SEARCH BY CITIY NAME -->
 					<form name="form1" action="components/citySearchEngine.php"  method="get">
 						<text> <strong>أدخل إسم المدينة:  </strong></text>
-						<text>مثال: مكه-الرياض-المدينة</text><br>
-						<input type="radio" name="city" value="makkah" >مكة المكرمة<br>
-						<input type="radio" name="city" value="madinah" > المدينة المنورة<br>
-						<input type="radio" name="city" value="ryiadh" >الرياض<br>
-						<input type="radio" name="city" value="dammam" >الدمام<br>
-						<input type="radio" name="city" value="tabuk" >تبوك<br>
-						<input type="radio" name="city" value="jeddah" >جده<br>
+						<text style="color: white;">مثال: مكه-الرياض-المدينة</text><br>
+						<input style="color: white;" type="radio" name="city" value="makkah" >مكة المكرمة<br>
+						<input style="color: white;" type="radio" name="city" value="madinah" > المدينة المنورة<br>
+						<input style="color: white;" type="radio" name="city" value="ryiadh" >الرياض<br>
+						<input style="color: white;" type="radio" name="city" value="dammam" >الدمام<br>
+						<input style="color: white;" type="radio" name="city" value="tabuk" >تبوك<br>
+						<input style="color: white;" type="radio" name="city" value="jeddah" >جده<br>
 						<button><input type="submit" placeholder="search" name="submit"> </input> 
 					</form>   
 				</div>

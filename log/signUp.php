@@ -92,7 +92,7 @@
     <main>
         <asdie></asdie>
         <div class="container" style="width: 650px;">
-            <img class="logo " src="../LandSA/images/logo.gif" alt="logo" width="300px" style="margin-right: 25%;">
+            <img class="logo " src="../LandSA/images/logo.png" alt="logo" width="300px" style="margin-right: 25%;">
             <h1 class="title">إنشاء حساب</h1>
 
             <form  onSubmit="return validate();" method="POST" action="SignupHandler.php">
@@ -339,7 +339,7 @@
                 
                 <div class="btn">
                     <button type="reset">إلغاء</button>
-                    <button type="submit" name="Submit">ارسال</button>				
+                    <button type="submit" name="Submit">إرسال</button>				
                 </div>
                 <div><br>
                   <p style="text-align: left;"> لديك حساب؟ <a style="color: dodgerblue;"href="login.php"> تسجيل الدخول </a></p>

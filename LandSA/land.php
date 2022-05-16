@@ -127,6 +127,9 @@
 				height: 100%;
 				border-collapse: collapse;
 			}
+			td.Namefeild  {
+				border: none;
+			}
 			table.fixed{
 				table-layout:fixed;
 			}
@@ -422,13 +425,13 @@
 						<form method="POST">
 							<table class="Namefeild">
 								<tr>
-								<td><label for="landPrice"> السعر:</label></td>
+								<td style="border: none;"><label for="landPrice"> السعر:</label></td>
 								</tr>
 								<tr>
-								<td><input type="text" id="landPrice" name="landPrice" required></td>
+								<td style="border: none;"><input type="text" id="landPrice" name="landPrice" required></td>
 								</tr>
 							</table><br><br>
-							<button><input type="submit" name="setOffer" value="ارسل" ></button>
+							<button><input type="submit" name="setOffer" value="إرسال"></button>
 						</form>
 						<br>
 						</div>

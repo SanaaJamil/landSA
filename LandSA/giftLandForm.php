@@ -88,7 +88,7 @@ $REUN=null;
 				width: 98.5%;
 			}
 			.card {
-				background-color: #fff;
+				background-color: red;
 				border-radius: 18px;
 				box-shadow: 1px 1px 8px 0 grey;
 				height: auto;
@@ -108,9 +108,10 @@ $REUN=null;
 
 						
 			<div class="content">
-				
-				<div style="text-align:center;margin: 5%;">
-				<h1 style="padding-left:1%;" >استبيان اهداء ارض</h1>
+			<div  style="text-align:center; " class="content">
+
+				<div class="container" style= "text-align:center; width: 650px;" class="content">
+				<h1 style="padding-left:1%; margin: 5%; color: black" >استبيان اهداء ارض</h1>
 				<h2><?PHP echo $REUN; ?></h2>
 
 					<!-- Gift Land Form -->
@@ -137,7 +138,7 @@ $REUN=null;
 					<label for="NOwnerPhone">رقم هاتف الشخص المهدى إليه*:</label><br>
 					<input type="text" minlength="10" maxlength="10" id="NOwnerPhone" name="NOwnerPhone" placeholder="مثال: 0555555555" required><br><br>
 
-					<button><input type="submit" value="ارسل" ></button>
+					<button><input type="submit" value="إرسال" ></button>
 
 					</form>
 				</div>

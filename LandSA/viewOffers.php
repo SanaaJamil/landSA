@@ -81,52 +81,39 @@
     }
 
     td, th { 
-      text-align: center; 
-      padding :8px; 
-    }
-    th{background-color: #EEEBDD;}
+		text-align: center; 
+		padding :8px; 
+	}
 
-    td:nth-child(1) { background-color: #EEEBDD; }
+	table{
+		line-height:40px;  
+		border-collapse: collapse;
+		background-color: #ffff;
+		box-shadow: 1px 1px 8px 0 grey;
+		height: auto;
+		margin-bottom: 20px;
+		padding: 20px 0 20px 50px;
+		width: 100%; 
+	}
+	tr:nth-child(even) {
+		background-color: #b3d3e2;
+	}
+	tr {border-bottom: 1px solid #dddddd;}
 
-    tr{ border-bottom: 1px solid #092D33;}
+	.bt {
+		background-color:#BD2504;
+		 color: #ffffff;
+	}
+	.bt:hover{background-color:#D3705B}
 
-    table{
-      align:center;
-      line-height:40px;  
-      border-collapse: collapse;
-      background-color: #ffff;
-         border-radius: 10px;
-        box-shadow: 1px 1px 8px 0 grey;
-        height: auto;
-      margin-bottom: 20px;
-      padding: 20px 0 20px 50px;
-      width: 100%;
-    }
-    .heed {background-color:#26763A;
-               color: #ffffff;}
+	input{
+		padding: 9px 25px;
+	}
 
-      tr:nth-child(even) {background-color: #f2f2f2;}
+	button{
+		padding: 0px;
+	}
 
-      tr {border-bottom: 1px solid #dddddd;}
-
-     tr:nth-of-type(even) {background-color: #f3f3f3;}
-
-    tr:last-of-type {border-bottom: 2px solid #009879;}
-
-    .bt {
-      background-color:#BD2504;
-       color: #ffffff;
-    }
-    .bt:hover{background-color:#D3705B}
-
-    input{
-      padding: 9px 25px;
-    }
-
-    button{
-      padding: 0px;
-
-    }
 
     #id01{
       display: none;
@@ -175,9 +162,10 @@
     <main>
         <aside></aside>
         <div class="content">
+          <h1> قائمة العروض</h1><br>
             <div class="landList">
                 <table> 
-                    <tr> <th colspan="6" class= "heed"><h2> قائمة العروض</h2></th> </tr>
+                    <tr colspan="6" class= "heed"> </tr>
                             
                     <th> رقم الطلب </th> 
                     <th> رقم هوية المشتري </th> 
@@ -211,10 +199,10 @@
                     ?> 
                 </table><br><br> 
             </div>
-            
+            <h1> سجل معاملات البيع </h1><br>
             <div class="landList">
                 <table> 
-                    <tr> <th colspan="6" class= "heed"><h2> سجل معاملات البيع </h2></th> </tr>
+                    <tr colspan="6" class= "heed"> </tr>
                             
                     <th> رقم الطلب </th> 
                     <th> رقم هوية المشتري </th> 

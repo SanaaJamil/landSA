@@ -22,93 +22,79 @@
 	
 	<style>
 	
-		.block{
-			display: flex;
+	.block{
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.MiniBlock {
+		display: flex;
+		justify-content: space-evenly;
+	}
+	
+
+	@media only screen and (max-width: 800px ) {
+		.land {
 			flex-direction: column;
-    		align-items: stretch;
+			align-items: center;
 		}
-		.MiniBlock {
+		.block {
 			display: flex;
-			justify-content: space-evenly;
+			   width: 100%;
+			flex-direction: row;
+			   justify-content: space-between;
 		}
-		
-
-		@media only screen and (max-width: 800px ) {
-			.land {
-				flex-direction: column;
-				align-items: center;
-			}
-			.block {
-				display: flex;
-   				width: 100%;
-    			flex-direction: row;
-  			 	justify-content: space-between;
-			}
-			.MiniBlock{
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: space-around;
-			}
-			.MiniBlock img{
-				width: 50%;
-				width:25%; 
-				height:25%;
-				border-radius: 2%;
-			}
-
+		.MiniBlock{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-around;
+		}
+		.MiniBlock img{
+			width: 50%;
+			width:25%; 
+			height:25%;
+			border-radius: 2%;
 		}
 
-		td, th { 
-			text-align: center; 
-			padding :8px; 
-		}
-		th{background-color: #EEEBDD;}
+	}
 
-		td:nth-child(1) { background-color: #EEEBDD; }
+	td, th { 
+		text-align: center; 
+		padding :8px; 
+	}
 
-		tr{ border-bottom: 1px solid #092D33;}
+	table{
+		line-height:40px;  
+		border-collapse: collapse;
+		background-color: #ffff;
+		box-shadow: 1px 1px 8px 0 grey;
+		height: auto;
+		margin-bottom: 20px;
+		padding: 20px 0 20px 50px;
+		width: 100%; 
+	}
+	tr:nth-child(even) {
+		background-color: #b3d3e2;
+	}
+	tr {border-bottom: 1px solid #dddddd;}
 
-		table{
-			/* align:center; */
-			line-height:40px;  
-			border-collapse: collapse;
-			background-color: #ffff;
-   			border-radius: 5px;
-		    box-shadow: 1px 1px 8px 0 grey;
-		    height: auto;
-			margin-bottom: 20px;
-			padding: 20px 0 20px 50px;
-			width: 100%;
-		}
-		.heed {background-color:#26763A;
-               color: #ffffff;}
+	.bt {
+		background-color:#BD2504;
+		 color: #ffffff;
+	}
+	.bt:hover{background-color:#D3705B}
 
-	    tr:nth-child(even) {background-color: #f2f2f2;}
+	input{
+		padding: 9px 25px;
+	}
 
-	    tr {border-bottom: 1px solid #dddddd;}
-
- 		tr:nth-of-type(even) {background-color: #f3f3f3;}
-
-		tr:last-of-type {border-bottom: 2px solid #009879;}
-
-		.bt {
-			background-color:#BD2504;
-	 		color: #ffffff;
-		}
-		.bt:hover{background-color:#D3705B}
-
-		input{
-			padding: 9px 25px;
-		}
-
-		button{
-			padding: 0px;
-
-		}
+	button{
+		padding: 0px;
+	}
 
 
-	</style>
+</style>
 
 </head>
 <body>
@@ -117,17 +103,18 @@
 	<main>
 	<aside></aside>
 
+	
 	<div class="content">
+	<h1> طلباتي </h1><br>
 		<div class="landList">
-			<table> 
-				<tr> <th colspan="6" class= "heed"><h2>   حاله الطلبات  </h2></th> </tr>
+		<table> 
+				<tr colspan="5" class= "heed">  </tr>
 
-					<th> رقم الطلب </th> 	  
+				<th> رقم الطلب </th> 	  
 					<th> اسم المالك </th> 
-					<th> رقم الوحدة العقارية  </th> 
-					<th>السعر</th> 
-					<th> حالة الطلب   </th>
-						<th> </th> 
+ 			  		<th>  رقم الوحدة العقارية </th> 
+			 	    <th> السعر  </th> 
+			 		<th> حالة الطلب   </th>
 				<?php  
 					$quer="SELECT * FROM offers WHERE BuyerID = $ID"; 
 					$results = $con->query($quer); 

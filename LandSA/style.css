@@ -38,15 +38,15 @@ li, a, button {
 button {
     margin-left: 10px;
     padding: 9px 25px;
-    background-color: rgb(103,178,147, 1); /*used rgb to control the opacity*/
+    background-color: #51abbb; /*used rgb to control the opacity*/
     border: none;
-    border-radius: 50px;
+    border-radius: 23px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 
 button:hover {
-    background-color: rgba(103,178,147, 0.8);
+    background-color: #51abbb;
 }
 
 /*the main contnets css*/
@@ -55,10 +55,12 @@ main{
     justify-content: center;
     flex: 1 0 100%;
     flex-direction: row;
-    background-color: #e9e9e9;
-    background-image: url(images/BG.png);
-    background-repeat: repeat;
+    background-color: #011329;
+    background-image: url(images/network.jpg);
+    background-repeat: no-repeat;
+    background-position: right top;
     background-size: 800px;
+    
 }
 
 .content{
@@ -70,9 +72,15 @@ main{
     flex: 0 0 70%;
 }
 
+h1   {color: white;}
+h2   {color: black;}
+
+
 aside{
     flex: 0 0 50px;;
 }
+
+
 
 /*image slider css*/
 .slider-display{
@@ -83,14 +91,18 @@ aside{
 
 .img-slider{
     position: relative;
-    width: 800px;
-    height: 500px;
+    width: 900px;
+    height: 355px;
     margin: 25px;
-    background: #1D212B;
+    background: #b3d3e2;
     overflow:hidden
+}
+strong{
+    color: #ccc;
 }
 
 .img-slider .slide{
+    z-index: 1;
     position: absolute;
     width: 100%;
     clip-path: circle(0% at 0 50%);
@@ -103,6 +115,7 @@ aside{
 }
 
 .img-slider .slide img{
+    z-index: 1;
     width: 100%;
     border-radius: 5px;
 }
@@ -114,22 +127,23 @@ aside{
 }
 
 .img-slider .slide .info h2{
-    color: #fff;
+    color: rgb(18, 17, 17);
     font-size: 45px;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .img-slider .slide .info p{
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
+    color: rgb(6, 5, 5);
+    background: #dbeef7e6;
     font-size: 16px;
-    width: 60%;
+    /* width: 60%; */
     padding: 10px;
     border-radius: 4px;
 }
 
 .img-slider .slide-nav{
+    z-index: 2;
     position: absolute;
     display: flex;
     bottom: 0;
@@ -138,7 +152,7 @@ aside{
 }
 
 .img-slider .slide-nav .btn{
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(42, 41, 59, 0.5);
     width: 12px;
     height: 12px;
     margin: 10px;
@@ -175,7 +189,9 @@ aside{
         height: 10px;
         margin: 8px;
     }
-
+    aside{
+        flex: 0 0 200px;
+    }
 }
 
 @media (max-width: 620px){
@@ -234,7 +250,7 @@ aside{
 }
 
 .card {
-    background: #ffffff;
+    background: #fdfbfb;
     width: 260px;
     margin: 10px;
     border-radius: 15px;
@@ -252,7 +268,7 @@ aside{
 }
 
 .card a{
-    background-color: rgba(82, 145, 247,1);
+    background-color: #4790b2;
     padding: 10px 15px;
     display: block;
     text-align: center;
@@ -262,7 +278,7 @@ aside{
 }
 
 .card a:hover{
-    background-color: rgba(82, 145, 247,0.8);
+    background-color: #a2d1e6;
     transform: scale(1.01);
     transition: all 1s eas;
 }
@@ -276,7 +292,7 @@ aside{
 }
 
 .area{
-    background-color:cornflowerblue;
+    background-color:rgb(252, 252, 252);
     padding: 10px;
     width: 400px;
     margin: 10px;
@@ -306,13 +322,15 @@ aside{
     display: block;
     padding: 50px;
     margin: 20px;
-    background: #fff;
+    background: #ffffffc7;
     border-radius: 6px;
 }
 
 .container .title {
     text-align: center;
     margin-bottom: 36px;
+    margin-top: 30px;
+    color: #000000;
 }
 
 .indicator {
@@ -327,9 +345,10 @@ aside{
     position: absolute;
     top: 50%;
     height: 4px;
-    background: #ddd;
+    background: #807d7d;
     width: 100%;
     Left: 0;
+    z-index: 10;
     transform: scale(-1);
 }
 
@@ -344,6 +363,7 @@ aside{
 
 .indicator p {
     position: relative;
+    z-index: 20;
     width: 40px;
     height: 40px;
     border: 4px solid #ddd;
@@ -357,8 +377,8 @@ aside{
 }
 
 .indicator p.active {
-    border-color: #3f706c;
-    color: #3f706c;
+    border-color: #51abbb;
+    color: #0c0c0c;
 }
 
 .tab {
@@ -423,7 +443,7 @@ form .btn button.prev {
     background: #eee;
 }
 form .btn button.next {
-    background: #3f706c;
+    background: #51abbb;
     color: #fff;
 }
 
@@ -436,12 +456,11 @@ input[type=submit]{
   }
 /* Form style */
 .content form {
-    background-color: #fff;
     border-radius: 18px;
-    padding: 20px;
-}
+    padding: 20px;}
 
 label {
+
     font-weight: bold;
 }
 

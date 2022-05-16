@@ -45,7 +45,7 @@
     <main>
         <aside></aside>
         <div class="container" style="width: 650px;">
-            <img class="logo " src="../LandSA/images/logo.gif" alt="logo" width="300px" style="margin-right: 25%;">
+            <img class="logo " src="../LandSA/images/logo.png" alt="logo" width="300px" style="margin-right: 25%;">
             <h1 class="title">تسجيل الدخول</h1>
 
             <form method="POST" action="‏‏LoginHandler.php">
@@ -62,7 +62,7 @@
                 
                 <div class="btn">
                     <button type="reset">إلغاء</button>
-                    <button type="submit">ارسال</button>
+                    <button type="submit">إرسال</button>
                 </div>
                 <div><br>
                     <p style="text-align: left;">ليس لديك حساب؟ <a style="color: dodgerblue;"href="signUp.php">إنشاء حساب</a></p>

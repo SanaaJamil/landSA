@@ -59,7 +59,7 @@
 		<script src="components/ComponentHandler.js" ></script>
 	<style>
     .card {
-    background-color: #fff;
+    background-color: #ffffffc7;
     border-radius: 18px;
     box-shadow: 1px 1px 8px 0 grey;
     height: auto;
@@ -155,6 +155,7 @@
                             </tr>
                         </table><br>
                         <button type="submit" name="save">حفظ</button>
+                        <button type="reset">إلغاء</button>
                     </form>
                 </div>
                 </div>
