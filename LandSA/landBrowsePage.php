@@ -7,16 +7,41 @@
 	include "components/connection.php";
 
 	//select coloumns to be printed on land browse page according to land state
-	$sql_lands = "SELECT landsonsale.REUN,deedDate,unitType,city,neighborhoodName,landState, price FROM users,landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
-	$result = $con->query($sql_lands); 
-	$num_rows = mysqli_num_rows($result); //number of rows
-	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-	//variables and their values
-	$neighborhoodName = $row["neighborhoodName"];
-	$city = $row["city"];
-	$price = $row["price"];
+	if(!empty($_GET['city']) && empty($_GET['price'])){
+		//if the the user search for city
+		$city = $_GET['city'];
+		$sql_lands = "SELECT * FROM searchEngine WHERE  city = '$city'";
+		$result = $con->query($sql_lands);
 
+	}elseif(empty($_GET['city']) && !empty($_GET['price'])){
+		//if the the user search for price
+		$price = $_GET['price'];
+		$sql_lands = "SELECT * FROM searchEngine WHERE price = '$price'";
+		$result = $con->query($sql_lands);
+
+	}elseif(!empty($_GET['city']) && !empty($_GET['price'])){
+		//if the the user search for city and price
+		$city = $_GET['city'];
+		$price = $_GET['price'];
+		$sql_lands = "SELECT * FROM searchEngine WHERE price = '$price' AND city='$city'";
+		$result = $con->query($sql_lands);
+
+	}elseif(empty($_GET['city']) && empty($_GET['price'])){
+		//show all alnds on sale for user
+		$sql_lands = "SELECT landsonsale.REUN,deedDate,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
+		$result = $con->query($sql_lands);
+	}else{
+		//show all alnds on sale for user
+		$sql_lands = "SELECT landsonsale.REUN,deedDate,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
+		$result = $con->query($sql_lands);
+	}
+
+	if(isset($_GET['reset'])){
+		header("Location: landBrowsePage.php"); 
+		exit();
+	}
+	
 ?>
 
 <!-- -----------Brows lands page HTML ----------------- -->
@@ -30,8 +55,9 @@
 
 	<style>
 		input[type="radio"] { /* change "blue" browser chrome to yellow */
-		filter: invert(60%) hue-rotate(18deg) brightness(1.7);
+		filter: invert(60%) hue-rotate(150deg) brightness(1.7);
 		}
+		
 		/* Style of each land */
 		.land_container {
 			padding: 0 6px;
@@ -97,7 +123,7 @@
 			width: 100%;
 			height: auto;
 		}}
-		/////mine
+		/* /////mine////// */
 		.slidecontainer {
 		width: 100%; /* outside container width */
 			margin-bottom: 20px; 
@@ -154,7 +180,22 @@
 		width:  100%;
 		height: 5%;
 		background: #04AA6D;
+		}
 
+		/* tadio button style for the search */
+		.radio{
+			color: white;
+			width: 12px;
+			height: 12px;
+			left: 10px;
+			margin: 5px;
+			position: relative;
+			display: inline-block;
+			visibility: visible;
+		}
+		p{
+			margin:10px;
+			color: white;
 		}
 	</style>
 </head>
@@ -168,50 +209,40 @@
 			<div class="topnav">
 				<div class="slidecontainer">
 					<!-- SEARCH BY CITIY NAME -->
-					<form name="form1" action="components/citySearchEngine.php"  method="get">
-						<text> <strong>أدخل إسم المدينة:  </strong></text>
-						<text style="color: white;">مثال: مكه-الرياض-المدينة</text><br>
-						<input style="color: white;" type="radio" name="city" value="makkah" >مكة المكرمة<br>
-						<input style="color: white;" type="radio" name="city" value="madinah" > المدينة المنورة<br>
-						<input style="color: white;" type="radio" name="city" value="ryiadh" >الرياض<br>
-						<input style="color: white;" type="radio" name="city" value="dammam" >الدمام<br>
-						<input style="color: white;" type="radio" name="city" value="tabuk" >تبوك<br>
-						<input style="color: white;" type="radio" name="city" value="jeddah" >جده<br>
-						<button><input type="submit" placeholder="search" name="submit"> </input> 
+					<form name="form1" style="background-color: #ffffff91;" method="get">
+						<p> <strong>اختر إسم المدينة:  </strong></p>
+						<input type="radio" class="radio" name="city" value="مكة المكرمة" ><text>مكة المكرمة</text><br>
+						<input type="radio" class="radio" name="city" value="المدينة المنورة" > المدينة المنورة<br>
+						<input type="radio" class="radio" name="city" value="الرياض" >الرياض<br>
+						<input type="radio" class="radio" name="city" value="الدمام" >الدمام<br>
+						<input type="radio" class="radio" name="city" value="تبوك" >تبوك<br>
+						<input type="radio" class="radio" name="city" value="جده" >جده<br>
+						
+						<p> <strong>أدخل السعر:  </strong></p>
+						<div class="form"><input class="form" type="text"  placeholder="السعر" name="price"></input></div>
+						<br>
+
+						<button type="submit" name="submit">بحث</button>
+						<button type="submit" name="reset">ازالة</button>
 					</form>   
 				</div>
 				<br>
-			
-				<!-- Form: -->
-				<?php
-					$clause = " WHERE ";//Initial clause
-					$sql="SELECT * FROM `landrecord`  ";//Query stub
-					if(isset($_POST['submit'])){
-						if(isset($_POST['city'])){
-							foreach($_POST['city'] as $c){
-								if(!empty($c)){
-									$sql .= $clause."`".$c."` LIKE '%{$c}%'";
-									$clause = " OR ";//Change  to OR after 1st WHERE
-								}   
-							}
-						}
-					echo $sql;//Remove after testing
-					}
-
-				?>
 
 				<div class="content" >
 					<h1>قائمة الاراضي</h1><br>
 					<div class="landList" >
 						<?php
-							$sql_lands = "SELECT landsonsale.REUN,deedDate,unitType,city,neighborhoodName,landState, price FROM landrecord,landsonsale WHERE landrecord.REUN=landsonsale.REUN";
-							$result = $con->query($sql_lands);
-							$REUN = $row["REUN"];
-
-							
 							if ($result->num_rows > 0) {
 								// output data of each row
 								while($row = $result->fetch_assoc()) {
+									
+									//info we need to show from database
+									$REUN = $row["REUN"];
+									$neighborhoodName = $row["neighborhoodName"];
+									$city = $row["city"];
+									$price = $row["price"];
+
+
 									echo "<div class='land_container'>";
 									echo "<div class='land'>";
 									// Informations block
@@ -249,7 +280,6 @@
 											echo"</table>";
 										echo"</div>";
 			
-										
 										// only regesterd can view  details, if user is not regesterd, transfer him to login page
 
 										echo"<div>";
@@ -271,40 +301,6 @@
 				</div>
 			</div>
 		</div>
-
-
-		<script type= text/javascript>
-			includeHTML();
-			function display_data($data) {
-				$output = '<table>';
-				foreach($data as $key => $var) {
-				$output .= '<tr>';
-				foreach($var as $k => $v) {
-					if ($key === 0) {
-						$output .= '<td><strong>' . $k . '</strong></td>';
-					} else {
-						$output .= '<td>' . $v . '</td>';
-					}
-					}
-					$output .= '</tr>';
-					}
-				$output .= '</table>';
-				echo $output;
-				}
-		</script>
-
-		<script>//to change the value acconrding to the slider
-			function updateLabel() { 
-			var limit = this.parentElement.getElementsByClassName("limit")[0];
-			limit.innerHTML = this.value;
-			}
-			var slideContainers = document.getElementsByClassName("slidecontainer");
-			for (var i = 0; i < slideContainers.length; i++) {
-			var slider = slideContainers[i].getElementsByClassName("slider")[0];
-			updateLabel.call(slider);
-			slider.oninput = updateLabel;
-			}
-		</script>
         <aside></aside>
 	</main>
 
