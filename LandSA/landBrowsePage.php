@@ -182,20 +182,20 @@
 		background: #04AA6D;
 		}
 
-		/* tadio button style for the search */
-		.radio{
-			color: white;
-			width: 12px;
-			height: 12px;
-			left: 10px;
-			margin: 5px;
+		/* radio button style for the search */
+		input.radio{
+			color: black;
+			width: 30px;
+			height: 15px;
+			left: -8px;
+			margin: 7px;
 			position: relative;
 			display: inline-block;
 			visibility: visible;
 		}
 		h3{
 			margin:10px;
-			color: white;
+			color: black;
 		}
 	</style>
 </head>
@@ -209,14 +209,14 @@
 			<div class="topnav">
 				<div class="slidecontainer">
 					<!-- SEARCH BY CITIY NAME -->
-					<form name="form1" style="background-color: #ffffff91;" method="get">
+					<form name="form1" method="get">
 						<h3> <strong>اختر إسم المدينة:  </strong></h3>
-						<input type="radio" class="radio" name="city" value="مكة المكرمة" ><text>مكة المكرمة</text><br>
-						<input type="radio" class="radio" name="city" value="المدينة المنورة" > المدينة المنورة<br>
-						<input type="radio" class="radio" name="city" value="الرياض" >الرياض<br>
-						<input type="radio" class="radio" name="city" value="الدمام" >الدمام<br>
-						<input type="radio" class="radio" name="city" value="تبوك" >تبوك<br>
-						<input type="radio" class="radio" name="city" value="جده" >جده<br>
+						<input type="radio" class="radio" name="city" value="مكة المكرمة" >مكة المكرمة	
+						<input type="radio" class="radio" name="city" value="المدينة المنورة" > المدينة المنورة
+						<input type="radio" class="radio" name="city" value="الرياض" >الرياض
+						<input type="radio" class="radio" name="city" value="الدمام" >الدمام
+						<input type="radio" class="radio" name="city" value="تبوك" >تبوك
+						<input type="radio" class="radio" name="city" value="جده" >جده
 						
 						<h3> <strong>أدخل السعر:  </strong></h3>
 						<div class="form"><input class="form" type="text"  placeholder="السعر" name="price"></input></div>
