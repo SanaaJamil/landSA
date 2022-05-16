@@ -80,10 +80,16 @@
 
     }
 
-    td, th { 
-		text-align: center; 
-		padding :8px; 
-	}
+    td{
+      text-align: center; 
+      padding :8px; 
+    } 
+    
+    th { 
+      text-align: center; 
+      padding :8px; 
+      background-color: #3781a1;
+    }
 
 	table{
 		line-height:40px;  

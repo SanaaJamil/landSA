@@ -203,8 +203,10 @@ $REUN = null;
 		.block {
 			padding: 16px;
 			width: 700px;
+			border-radius: 15px;
 			margin: auto;
 			background-color: #fff;
+			width: 580px;
 		}
 		.Namefeild{
         text-align: center;

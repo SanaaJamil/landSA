@@ -193,7 +193,7 @@
 			display: inline-block;
 			visibility: visible;
 		}
-		p{
+		h3{
 			margin:10px;
 			color: white;
 		}
@@ -210,7 +210,7 @@
 				<div class="slidecontainer">
 					<!-- SEARCH BY CITIY NAME -->
 					<form name="form1" style="background-color: #ffffff91;" method="get">
-						<p> <strong>اختر إسم المدينة:  </strong></p>
+						<h3> <strong>اختر إسم المدينة:  </strong></h3>
 						<input type="radio" class="radio" name="city" value="مكة المكرمة" ><text>مكة المكرمة</text><br>
 						<input type="radio" class="radio" name="city" value="المدينة المنورة" > المدينة المنورة<br>
 						<input type="radio" class="radio" name="city" value="الرياض" >الرياض<br>
@@ -218,7 +218,7 @@
 						<input type="radio" class="radio" name="city" value="تبوك" >تبوك<br>
 						<input type="radio" class="radio" name="city" value="جده" >جده<br>
 						
-						<p> <strong>أدخل السعر:  </strong></p>
+						<h3> <strong>أدخل السعر:  </strong></h3>
 						<div class="form"><input class="form" type="text"  placeholder="السعر" name="price"></input></div>
 						<br>
 

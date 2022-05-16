@@ -118,25 +118,47 @@
 			<script src="components/ComponentHandler.js" ></script>
 		</head>
 		<style>
-			table, th, td{
-				border: 1.5px solid rgb(73, 73, 73);
-				overflow-x:auto;
+			.container{
+				width: 1000px;
+				display: block;
+				padding: 50px;
+				margin: 20px;
+				background: #ffffff;
+				border-radius: 6px;
 			}
-			table {
-				width: 100%;
-				height: 100%;
+
+			h1{
+				color: black;
+				text-align: center;
+			}
+
+			td{
+				text-align: center; 
+				padding :8px; 
+			} 
+			
+			th { 
+				text-align: center; 
+				padding :8px; 
+				background-color: #3781a1;
+				color: white;
+			}
+
+			table{
+				line-height:40px;  
 				border-collapse: collapse;
+				background-color: #ffff;
+				box-shadow: 1px 1px 8px 0 grey;
+				height: auto;
+				margin-bottom: 20px;
+				padding: 20px 0 20px 50px;
+				width: 100%; 
 			}
-			td.Namefeild  {
-				border: none;
+			tr:nth-child(odd) {
+				background-color: #b3d3e2;
 			}
-			table.fixed{
-				table-layout:fixed;
-			}
-			table.fixed td { overflow: hidden; }
-			table .title{
-				font-weight: bold;
-			}
+			tr {border-bottom: 1px solid #dddddd;}
+
 			p,h2,h3{
 				margin-bottom: 20px; 
 			}
@@ -254,7 +276,7 @@
 
             <div class="container">
 				<div class="row">
-					<h2>رقم الوحدة العقارية: </h3><p><?php print($REUN);?></p>
+					<h1>رقم الوحدة العقارية: <?php echo "<h1>$REUN</h1>";?></h1>
 					<h3>معلومات المالك</h3>
 					<table class="fixed">
 						<tbody>
@@ -267,14 +289,14 @@
 							<col width="40px" />
 							<col width="40px" />
 							<tr class='title'>
-								<td>م</td>
-								<td>اسم المالك</td>
-								<td>الجنسية</td>
-								<td>الحصة/النسبة</td>
-								<td>العنوان</td>
-								<td>نوع الهوية</td>
-								<td>رقم الهوية</td>
-								<td>تاريخ الهوية</td>
+								<th>م</th>
+								<th>اسم المالك</th>
+								<th>الجنسية</th>
+								<th>الحصة/النسبة</th>
+								<th>العنوان</th>
+								<th>نوع الهوية</th>
+								<th>رقم الهوية</th>
+								<th>تاريخ الهوية</th>
 							</tr>
 							<tr>
 								<td></td>
@@ -301,66 +323,66 @@
 							<col width="100px" />
 							<col width="30px" />
 							<tr>
-								<td class="title">رقم القطعة</td>
+								<th>رقم القطعة</th>
 								<td><?php print($pieceNumber);?></td>
-								<td class="title">الاتجاهات</td>
-								<td colspan="2" class="title">الحدود</td>
-								<td class="title">الاطوال</td>
+								<th>الاتجاهات</th>
+								<th colspan="2">الحدود</th>
+								<th>الاطوال</th>
 							</tr>
 							<tr>
-								<td class="title">رقم البلك</td>
+								<th>رقم البلك</th>
 								<td><?php print($blockNumber);?></td>
-								<td rowspan="2" class="title">شمالا</td>
+								<th rowspan="2">شمالا</th>
 								<td rowspan="2"><?php print($bordersNorth);?></td>
 								<td rowspan="2"><?php print($bordersNorth);?></td>
 								<td rowspan="2"><?php print($lengthNorth);?></td>
 							</tr>
 							<tr>
-								<td class="title">رقم المخطط</td>
+								<th>رقم المخطط</th>
 								<td><?php print($planNumber);?></td>
 							</tr>
 							<tr>
-								<td class="title">اسم الحي</td>
+								<th>اسم الحي</th>
 								<td><?php print($neighborhoodName);?></td>
-								<td rowspan="2" class="title">جنوبا</td>
+								<th rowspan="2">جنوبا</th>
 								<td rowspan="2"><?php print($bordersSouth);?></td>
 								<td rowspan="2"><?php print($bordersSouth);?></td>
 								<td rowspan="2"><?php print($lengthSouth);?></td>
 							</tr>
 							<tr>
-								<td class="title">المدينة</td>
+								<th>المدينة</th>
 								<td><?php print($city);?></td>
 							</tr>
 							<tr>
-								<td class="title">نوع الوحدة</td>
+								<th>نوع الوحدة</th>
 								<td><?php print($unitType);?></td>
-								<td rowspan="2" class="title">شرقا</td>
+								<th rowspan="2">شرقا</th>
 								<td rowspan="2"><?php print($bordersEast);?></td>
 								<td rowspan="2"><?php print($bordersEast);?></td>
 								<td rowspan="2"><?php print($lengthEast);?></td>
 							</tr>
 							<tr>
-								<td class="title">رقم الصك</td>
+								<th>رقم الصك</th>
 								<td><?php print($deedNumber);?></td>
 
 							</tr>
 							<tr>
-								<td class="title">تاريخ الصك</td>
+								<th>تاريخ الصك</th>
 								<td><?php print($deedDate);?></td>
-								<td rowspan="2" class="title">غربا</td>
+								<th rowspan="2">غربا</th>
 								<td rowspan="2"><?php print($bordersWest);?></td>
 								<td rowspan="2"><?php print($bordersWest);?></td>
 								<td rowspan="2"><?php print($lengthWest);?></td>
 							</tr>
 							<tr>
-								<td class="title">مصدر الصك</td>
+								<th>مصدر الصك</th>
 								<td><?php print($courtIssued);?></td>
 
 							</tr>
 							<tr>
-								<td class="title">المساحة</td>
+								<th>المساحة</th>
 								<td><?php print($spaceInNumbersLength);?></td>
-								<td class="title">كتابة</td>
+								<th>كتابة</th>
 								<td colspan="3"><?php print($spaceInWritingLength);?></td>
 							</tr>
 						</tbody>
@@ -376,32 +398,32 @@
 						<h3>احداثيات واركان الوحدة العقارية</h3>
 						<table>
 							<tbody>
-								<tr class="title">
-									<td>النقطة</td>
-									<td>خط الطول</td>
-									<td>خط العرض</td>
-									<td>زوايا الانكسار</td>
+								<tr>
+									<th>النقطة</th>
+									<th>خط الطول</th>
+									<th>خط العرض</th>
+									<th>زوايا الانكسار</th>
 								</tr>
 								<tr>
-									<td class="title">أ</td>
+									<th>أ</th>
 									<td><?php print($LatitudeA);?></td>
 									<td><?php print($LongitudeA);?></td>
 									<td><?php print($angleA);?></td>
 								</tr>
 								<tr>
-									<td class="title">ب</td>
+									<th>ب</th>
 									<td><?php print($LatitudeB);?></td>
 									<td><?php print($LongitudeB);?></td>
 									<td><?php print($angleB);?></td>
 								</tr>
 								<tr>
-									<td class="title">ج</td>
+									<th>ج</th>
 									<td><?php print($LatitudeC);?></td>
 									<td><?php print($LongitudeC);?></td>
 									<td><?php print($angleC);?></td>
 								</tr>
 								<tr>
-									<td class="title">د</td>
+									<th>د</th>
 									<td><?php print($LatitudeD);?></td>
 									<td><?php print($LongitudeD);?></td>
 									<td><?php print($angleD);?></td>

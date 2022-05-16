@@ -46,7 +46,9 @@ button {
 }
 
 button:hover {
-    background-color: #51abbb;
+    background-color: #a2d1e6;
+    transform: scale(1.01);
+    transition: all 1s eas;
 }
 
 /*the main contnets css*/
@@ -96,9 +98,6 @@ aside{
     margin: 25px;
     background: #b3d3e2;
     overflow:hidden
-}
-strong{
-    color: #ccc;
 }
 
 .img-slider .slide{

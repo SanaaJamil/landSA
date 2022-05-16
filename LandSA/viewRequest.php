@@ -59,9 +59,15 @@
 
 	}
 
-	td, th { 
+	td{
 		text-align: center; 
 		padding :8px; 
+	} 
+	
+	th { 
+		text-align: center; 
+		padding :8px; 
+		background-color: #3781a1;
 	}
 
 	table{
@@ -78,12 +84,6 @@
 		background-color: #b3d3e2;
 	}
 	tr {border-bottom: 1px solid #dddddd;}
-
-	.bt {
-		background-color:#BD2504;
-		 color: #ffffff;
-	}
-	.bt:hover{background-color:#D3705B}
 
 	input{
 		padding: 9px 25px;
