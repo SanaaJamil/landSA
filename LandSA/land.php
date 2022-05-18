@@ -60,7 +60,6 @@
 			$IDdate = $userRow["IDdate"];
 			
 			$share = $row["share"];
-			
 
 			//land info
 			$pieceNumber = $row["pieceNumber"];
@@ -99,8 +98,17 @@
 			$angleB = $row["angleB"];
 			$angleC = $row["angleC"];
 			$angleD = $row["angleD"];
-		}
 
+			//map info
+			$viewMap = "SELECT * FROM map WHERE REUN = $REUN";
+			$mapRes = mysqli_query($con,$viewMap);
+
+			$mapRow = mysqli_fetch_array($mapRes);
+
+			$REUN = $mapRow["REUN"];
+			$lat = $mapRow["latitude"];
+			$long = $mapRow["longitude"];
+		}
 
 	}else{
 		echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
@@ -118,6 +126,14 @@
 			<script src="components/ComponentHandler.js" ></script>
 		</head>
 		<style>
+			/* Set the size of the div element that contains the map */
+			#map {
+				height: 300px;
+				/* The height is 400 pixels */
+				width: 100%;
+				/* The width is the width of the web page */
+				background-color: rgba(103,178,147, 0.8);
+			}
 			.container{
 				width: 1000px;
 				display: block;
@@ -249,21 +265,32 @@
 		</style>
 
 		<script>      // Initialize and add the map
-            function initMap() {
-                // The location of Uluru
-                const uluru = { lat: 24.7136, lng: 46.6753 };
-                // The map, centered at Uluru
-                const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
-                center: uluru,
-                });
-                // The marker, positioned at Uluru
-                const marker = new google.maps.Marker({
-                position: uluru,
-                    map: map,
-                });
-            }
-        </script>
+			// In the following example, markers appear when the user clicks on the map.
+			var marker;
+			var longitude;
+			var latitude;
+			var map;
+
+			function initMap() {
+				<?php
+					echo "var lats ='$lat';";
+					echo "var longs ='$long';";
+				?>
+
+				var uluru = { lat: <?php echo($lat)?>, lng: <?php echo($long)?> };
+
+				map = new google.maps.Map(document.getElementById("map"), {
+				zoom: 17,
+				center: uluru,
+				});
+
+				new google.maps.Marker({
+				position: uluru,
+				map
+				});
+				
+			}
+		</script>
 
 		<body>
 		<!--header call-->
@@ -392,7 +419,8 @@
 				<div class="row" style="flex-direction: row;">
 					<div class="col left">
 						<h3>خريطة الموقع</h3>
-						<?php include "mapView.php"; ?>
+						<!--The div element for the map -->
+    					<div id="map"></div>
 					</div>
 					<div class="col right">
 						<h3>احداثيات واركان الوحدة العقارية</h3>
