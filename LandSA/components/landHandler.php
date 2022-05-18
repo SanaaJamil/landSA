@@ -63,8 +63,8 @@
         $count = mysqli_num_rows($Check);
 
         if($count == 0){
-            $insertLand = "INSERT INTO landrecord(firstName, middleName, lastName, nationality, share, address, IDType, IDdate, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
-            value('$firstName', '$middleName', '$lastName', '$nationality', '$share', '$address', '$IDType', '$IDdate', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
+            $insertLand = "INSERT INTO landrecord(firstName, middleName, lastName, share, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
+            value('$firstName', '$middleName', '$lastName', '$share', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
             $query = mysqli_query($con, $insertLand);
 
             if($query){
