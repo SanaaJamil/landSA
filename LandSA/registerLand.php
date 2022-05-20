@@ -59,16 +59,6 @@ $lastName = $row["lastName"];
                             <div class="form">
                                 <input type="number" name="share" required>
                             </div>
-                            <p>نوع الهوية</p>
-                            <div class="form">
-                                <div class="custom_select">
-                                    <select name="IDType">
-                                        <option value="">اختار</option>
-                                        <option value="مواطن">هوية مواطن</option>
-                                        <option value="مقيم">هوية مقيم</option>
-                                    </select>
-                                </div>
-                            </div>
                             <p>رقم الهوية</p>
                             <div class="form">
                                 <?php
@@ -127,15 +117,15 @@ $lastName = $row["lastName"];
                             </div>
                             <p>المساحة بالأرقام</p>
                             <div class="form multiple">
-                                <input type="number" name="spaceInNumbersLength" required> <input type="number" name="spaceInNumbersWidth" required>
+                                <input type="number" name="spaceInNumbers" required>
                             </div>  
                             <p>المساحة كتابتًا</p>
                             <div class="form multiple">
-                                <input type="text" name="spaceInWritingLength" required> <input type="text" name="spaceInWritingWidth" required>
+                                <input type="text" name="spaceInWriting" required>
                             </div>  
                             <p>الحدود: شمالا، جنوبا، شرقا، غربا</p>
                             <div class="form multiple">
-                                <input type="number" name="bordersNorth" required> <input type="number" name="bordersSouth" required> <input type="number" name="bordersEast" required> <input type="number" name="bordersWest" required>
+                                <input type="text" name="bordersNorth" required> <input type="text" name="bordersSouth" required> <input type="text" name="bordersEast" required> <input type="text" name="bordersWest" required>
                             </div> 
                             <p>الأطوال: شمالا، جنوبا، شرقا، غربا</p>
                             <div class="form multiple">
@@ -158,25 +148,25 @@ $lastName = $row["lastName"];
                                     <th>أ</th>
                                     <th><input type="text" name="LatitudeA" required></th>
                                     <th><input type="text" name="LongitudeA" required></th>
-                                    <th><input type="text" name="angleA" required></th>
+                                    <th><input type="number" name="angleA" required></th>
                                 </tr>
                                 <tr>
                                     <th>ب</th>
                                     <th><input type="text" name="LatitudeB" required></th>
                                     <th><input type="text" name="LongitudeB" required></th>
-                                    <th><input type="text" name="angleB" required></th>
+                                    <th><input type="number" name="angleB" required></th>
                                 </tr>
                                 <tr>
                                     <th>ج</th>
                                     <th><input type="text" name="LatitudeC" required></th>
                                     <th><input type="text" name="LongitudeC" required></th>
-                                    <th><input type="text" name="angleC" required></th>
+                                    <th><input type="number" name="angleC" required></th>
                                 </tr>
                                 <tr>
                                     <th>د</th>
                                     <th><input type="text" name="LatitudeD" required></th>
                                     <th><input type="text" name="LongitudeD" required></th>
-                                    <th><input type="text" name="angleD" required></th>
+                                    <th><input type="number" name="angleD" required></th>
                                 </tr>
                             </table> <br>
                             <p>خريطة الموقع / كروكي</p>

@@ -239,10 +239,11 @@ $REUN = null;
 	<aside></aside>
 
 	<div class="content">
+
 		<h1>قائمة الاراضي</h1><br>
 		<div class="landList"></div>
 			<?php
-				$sql_lands = "SELECT `landrecord`.REUN,deedDate, deedNumber,unitType,city,neighborhoodName,spaceInNumbersWidth,spaceInNumbersLength,landState FROM `landrecord`,`landinfo` WHERE IDNumber ='$ID' AND `landrecord`.REUN=`landinfo`.REUN";
+				$sql_lands = "SELECT `landrecord`.REUN,deedDate, deedNumber,unitType,city,neighborhoodName,spaceInNumbers,landState FROM `landrecord`,`landinfo` WHERE IDNumber ='$ID' AND `landrecord`.REUN=`landinfo`.REUN";
 				
 				$result = $con->query($sql_lands);
 
@@ -294,7 +295,7 @@ $REUN = null;
 						
 						echo "<tr>
 							<td>المساحة بالارقام:</td>
-							<td> $row[spaceInNumbersLength]x$row[spaceInNumbersWidth] متر</td>
+							<td> $row[spaceInNumbers] متر</td>
 						</tr>";
 
 						// try to add the price if the land got for sale
@@ -320,7 +321,7 @@ $REUN = null;
 								echo"
 								<form method='GET' action='giftLandForm.php'>
 									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
-									<button class='giftB' type='submit' >اهداء</button>
+									<button class='giftB' type='submit'>اهداء</button>
 								</form>";	
 							}
 							echo"
@@ -336,17 +337,10 @@ $REUN = null;
 						<div class='block'>
 							<span onclick='document.getElementById(`id01`).style.display=`none`' class='close' title='Close Modal'>&times;</span>
 							<div style='text-align:center;margin: 5%;'>
-							<h1 style='padding-left:1%;' > أدخل سعر لبيع الارض رقم : $REUN  </h1>
+							<h2> أدخل سعر لبيع الارض رقم : $REUN  </h2>
 							<form method='POST'>
 								<input type='hidden' id='REUN' name='REUN' value='$REUN' />
-								<table class='Namefeild'>
-									<tr>
-									<td><label for='price'>أدخل سعر لبيع الارض رقم : $REUN</label></td>
-									</tr>
-									<tr>
-									<td><input type='text' id='price' name='price' required></td>
-									</tr>
-								</table><br><br>
+								<input type='text' id='price' name='price' required><br><br>
 							<button><input type='submit' name='setPrice' value='إرسال' ></button>
 							</form>
 							<br>
