@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2022 at 09:30 AM
+-- Generation Time: May 20, 2022 at 06:30 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -87,8 +87,8 @@ CREATE TABLE `inheritancerecord` (
 
 CREATE TABLE `landinfo` (
   `REUN` varchar(64) NOT NULL,
-  `spaceInNumbersLength` varchar(64) NOT NULL,
-  `spaceInWritingLength` varchar(64) NOT NULL,
+  `spaceInNumbers` varchar(64) NOT NULL,
+  `spaceInWriting` varchar(64) NOT NULL,
   `bordersNorth` varchar(64) NOT NULL,
   `bordersSouth` varchar(64) NOT NULL,
   `bordersEast` varchar(64) NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `landinfo` (
 -- Dumping data for table `landinfo`
 --
 
-INSERT INTO `landinfo` (`REUN`, `spaceInNumbersLength`, `spaceInWritingLength`, `bordersNorth`, `bordersSouth`, `bordersEast`, `bordersWest`, `lengthNorth`, `lengthSouth`, `lengthEast`, `lengthWest`, `LatitudeA`, `LatitudeB`, `LatitudeC`, `LatitudeD`, `LongitudeA`, `LongitudeB`, `LongitudeC`, `LongitudeD`, `angleA`, `angleB`, `angleC`, `angleD`, `ElectronicTitleDeed`) VALUES
+INSERT INTO `landinfo` (`REUN`, `spaceInNumbers`, `spaceInWriting`, `bordersNorth`, `bordersSouth`, `bordersEast`, `bordersWest`, `lengthNorth`, `lengthSouth`, `lengthEast`, `lengthWest`, `LatitudeA`, `LatitudeB`, `LatitudeC`, `LatitudeD`, `LongitudeA`, `LongitudeB`, `LongitudeC`, `LongitudeD`, `angleA`, `angleB`, `angleC`, `angleD`, `ElectronicTitleDeed`) VALUES
 ('12', '810', 'ثمانمئة وعشرة متر مربع', '15', '1602', '1604', '1600', '35', '12', '33', '30', '26', '27', '27', '26', '22', '22', '21', '21', '90', '125', '85', '60', 0x433a78616d7070096d70706870444632442e746d70),
 ('1603', '810', 'ثمانمئة وعشرة متر مربع', '15', '1602', '1604', '1600', '35', '12', '33', '30', '26', '26', '26', '26', '21', '21', '21', '21', '90', '125', '85', '60', 0x433a78616d7070096d70706870373836422e746d70),
 ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 0x433a78616d7070096d70706870444631302e746d70),
@@ -153,7 +153,7 @@ CREATE TABLE `landrecord` (
 --
 
 INSERT INTO `landrecord` (`REUN`, `landState`, `firstName`, `middleName`, `lastName`, `share`, `IDNumber`, `pieceNumber`, `blockNumber`, `planNumber`, `neighborhoodName`, `city`, `unitType`, `deedNumber`, `deedDate`, `courtIssued`, `requestID`) VALUES
-('1', b'0', 'طيف', 'محمد', 'الغامدي', '1', '1108047638', '1', '1', '1', '1', '1', '', '111111111111', '0001-01-01', '1', ''),
+('1', b'0', 'طيف', 'محمد', 'الغامدي', '1', '1108047638', '1', '1', '1', '1', 'الرياض', '', '111111111111', '0001-01-01', '1', ''),
 ('12', b'0', 'طيف', 'محمد', 'الغامدي', '100', '1108047638', '1603', '29', '1', 'حي الهدى التجميعي', 'مكة المكرمة', 'سكني', '730801013745', '2013-05-01', 'مكتب الدوسري للمحاماة والقضايا ', ''),
 ('1603', b'0', 'طيف', 'محمد', 'الغامدي', '100', '1108047638', '12', '29', '1', 'حي الهدى التجميعي', 'مكة المكرمة', 'سكني', '730801013745', '2013-05-01', 'مكتب الدوسري للمحاماة والقضايا', ''),
 ('1891', b'0', 'أسماء ', 'عبدالرحمن', 'عظيم الدين', '100', '2145518821', '7', '107', '1', 'ولي العهد', 'مكة المكرمة', 'سكني', '220121016478', '2021-02-20', 'المحكمة الكبرى', '');
@@ -168,6 +168,14 @@ CREATE TABLE `landsonsale` (
   `REUN` varchar(64) NOT NULL,
   `price` decimal(20,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `landsonsale`
+--
+
+INSERT INTO `landsonsale` (`REUN`, `price`) VALUES
+('1', '55555555.00'),
+('12', '100000000.00');
 
 -- --------------------------------------------------------
 
@@ -187,7 +195,7 @@ CREATE TABLE `map` (
 
 INSERT INTO `map` (`REUN`, `latitude`, `longitude`) VALUES
 ('1', '21.24837855885264', '40.419271426130535'),
-('12', '', ''),
+('12', '21.54837855885264', '41.209271426130535'),
 ('1603', '21.405516036129672', '39.75173913796386'),
 ('1891', '21.378838565867056', '39.81305885964267');
 
@@ -262,7 +270,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `IDType`, `IDdate`, `firstName`, `middleName`, `lastName`, `nationality`, `Password`, `phoneNum`, `Email`, `IBAN`, `BirthDate`, `address`, `UserType`) VALUES
-('1108047638', 'مواطن', '2022-11-12', 'طيف', 'محمد', 'الغامدي', 'المملكة العربية السعودية', '123456789Tt', '0550393666', 'tofagmd.hp@gmail.com', 'ٍِ0945000000251140737001', '1999-11-21', 'مكة المكرمة, الحمرا وام الجود', '0'),
+('1108047638', 'مواطن', '2022-11-12', 'طيف', 'محمد', 'الغامدي', 'المملكة العربية السعودية', '123456789Tt', '0550393666', 'tofa.gmd@gmail.com', '0945000000251140737001', '1999-11-21', 'مكة المكرمة, الحمرا وام الجود', '0'),
+('1111111111', 'مواطن', '2022-05-01', 'طيف', 'محمد', 'الغامدي', 'المملكة العربية السعودية', '123456789aA', '3456789087', 't@gmail.com', '111111111111111111111111', '2022-05-19', '89789', '0'),
 ('2145518821', 'مقيم', '2024-12-19', 'أسماء ', 'عبدالرحمن', 'عظيم الدين', 'المملكة العربية السعودية', 'Asmaa1234', '0554976011', 'assmaish@gmail.com', '435262846768986858984', '1996-06-09', 'مكة المكرمة- الكعكية', '0');
 
 -- --------------------------------------------------------
