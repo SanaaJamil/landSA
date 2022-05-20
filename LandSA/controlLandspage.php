@@ -325,7 +325,7 @@ $REUN = null;
 								</form>";	
 							}
 							echo"
-								<form method='GET' action='land.php'>
+								<form method='GET' action='landViewSeller.php'>
 									<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 									<button class='moreB' type='submit' >تفاصيل</button>
 								</form>";							
