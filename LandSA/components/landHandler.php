@@ -11,7 +11,6 @@
         $middleName = $_POST["middleName"];
         $lastName = $_POST["lastName"];
         $share = $_POST["share"];
-        $IDType = $_POST["IDType"];
         $IDNumber= $_SESSION['loggedUser'];
         // $IDNumber  = $_POST["IDNumber"];
 
@@ -26,10 +25,8 @@
         $deedNumber = $_POST["deedNumber"];
         $deedDate = $_POST["deedDate"];
         $courtIssued = $_POST["courtIssued"];
-        $spaceInNumbersLength = $_POST["spaceInNumbersLength"];
-        $spaceInNumbersWidth = $_POST["spaceInNumbersWidth"];
-        $spaceInWritingLength = $_POST["spaceInWritingLength"];
-        $spaceInWritingWidth = $_POST["spaceInWritingWidth"];
+        $spaceInNumbers = $_POST["spaceInNumbers"];
+        $spaceInWriting = $_POST["spaceInWriting"];
         $bordersNorth = $_POST["bordersNorth"];
         $bordersSouth = $_POST["bordersSouth"];
         $bordersEast = $_POST["bordersEast"];
@@ -63,13 +60,13 @@
         $count = mysqli_num_rows($Check);
 
         if($count == 0){
-            $insertLand = "INSERT INTO landrecord(firstName, middleName, lastName, share, IDType, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
-            value('$firstName', '$middleName', '$lastName', '$share', '$IDType', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
+            $insertLand = "INSERT INTO landrecord(firstName, middleName, lastName, share, IDNumber, pieceNumber, blockNumber, planNumber, neighborhoodName, city, REUN, unitType, deedNumber, deedDate, courtIssued) 
+            value('$firstName', '$middleName', '$lastName', '$share', '$IDNumber', '$pieceNumber', '$blockNumber', '$planNumber', '$neighborhoodName', '$city', '$REUN', '$unitType', '$deedNumber', '$deedDate', '$courtIssued')";
             $query = mysqli_query($con, $insertLand);
 
             if($query){
-                $insertLandInfo = "INSERT INTO landinfo(spaceInNumbersLength, spaceInNumbersWidth, spaceInWritingLength, spaceInWritingWidth, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, angleA, angleB, angleC, angleD, ElectronicTitleDeed, REUN) 
-                VALUE('$spaceInNumbersLength', '$spaceInNumbersWidth', '$spaceInWritingLength', '$spaceInWritingWidth', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$angleA', '$angleB', '$angleC', '$angleD', '$ElectronicTitleDeed', '$REUN')";
+                $insertLandInfo = "INSERT INTO landinfo(spaceInNumbers, spaceInWriting, bordersNorth, bordersSouth, bordersEast, bordersWest, lengthNorth, lengthSouth, lengthEast, lengthWest, LongitudeA, LongitudeB, LongitudeC, LongitudeD, LatitudeA, LatitudeB, LatitudeC, LatitudeD, angleA, angleB, angleC, angleD, ElectronicTitleDeed, REUN) 
+                VALUE('$spaceInNumbers', '$spaceInWriting', '$bordersNorth', '$bordersSouth', '$bordersEast', '$bordersWest', '$lengthNorth', '$lengthSouth', '$lengthEast', '$lengthWest', '$LongitudeA', '$LongitudeB', '$LongitudeC', '$LongitudeD', '$LatitudeA', '$LatitudeB', '$LatitudeC', '$LatitudeD', '$angleA', '$angleB', '$angleC', '$angleD', '$ElectronicTitleDeed', '$REUN')";
                 $query = mysqli_query($con, $insertLandInfo);
                 // insert the title image to images Table
                 
