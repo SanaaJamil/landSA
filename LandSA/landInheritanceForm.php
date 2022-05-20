@@ -1,6 +1,7 @@
 <?php
 //connect and check connection
 include "components/connection.php";
+$IDNumber=null;
 #Check if the user is still logedin
 session_start();
 if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
@@ -17,13 +18,19 @@ if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
 
                 //connect and check connection
                 include "components/connection.php";
+			$query1="SELECT ID FROM users WHERE  ID ='$OwnerID' "; 
+			$result = mysqli_query($con, $query1);
+			$row = mysqli_fetch_array($result);
+			$ID = $row["ID"];
+			if ($ID == $_SESSION['loggedUser']){
+			  echo "<script>alert('رقم هوية المالك غير صحيح')</script>";
 
-                // if(($_POST["submit"])){
-                        $stmt=$con->prepare("INSERT INTO inheritancerecord (courtOrder,OwnerID,REUN,requestID,UserID) VALUES (?,?,?,?,?)");
-                        $stmt -> bind_param("sssss",$courtOrder,$OwnerID,$REUN,$requestID,$_SESSION['loggedUser']);
-                        $stmt->execute();
-                        echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
-                // }
+            }else{      
+				$stmt=$con->prepare("INSERT INTO inheritancerecord (courtOrder,OwnerID,REUN,requestID,UserID) VALUES (?,?,?,?,?)");
+                $stmt -> bind_param("sssss",$courtOrder,$OwnerID,$REUN,$requestID,$_SESSION['loggedUser']);
+                $stmt->execute();
+                echo "<script>alert('تم إرسال الطلب بنجاح')</script>";
+                }
 
         }
 }else{
@@ -67,10 +74,10 @@ if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']==true){
 				<button><input type="file" id="courtOrder" name="courtOrder" src="img_submit.gif" alt="Submit" width="48" height="48" laceholder="Photo" required="" capture></button><br><br>
 
 				<label for="OwnerID">ادخل رقم هوية صاحب الأرض (الشخص المتوفي)</label><br>
-				<input type="text" id="OwnerID" minlength="10" maxlength="10" name="OwnerID" required=""><br><br>
+				<div class="form"><input type="text" id="OwnerID" minlength="10" maxlength="10" name="OwnerID" required=""></div><br><br>
 				
 				<label for="REUN">أدخل رقم الوحدة العقارية (REUN)</label><br>
-				<input type="text" id="REUN" name="REUN" required=""><br><br>
+				<div class="form"><input type="text" id="REUN" name="REUN" required=""></div><br><br>
 
 				<button><input name="submit" type="submit" value="إرسال" ></button>
 
