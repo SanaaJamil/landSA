@@ -88,6 +88,19 @@ $lastName = $row["lastName"];
                             <p>المدينة</p>
                             <div class="form">
                                 <input type="text" name="city" required>
+                                <div class="form">
+                                    <div class="custom_select">
+                                        <select name="nationality">
+                                            <option value="مكة المكرمة">مكة المكرمة</option>
+                                            <option value="المدينة المنورة">المدينة المنورة</option>
+                                            <option value="الرياض">الرياض</option>
+                                            <option value="الدمام">الدمام</option>
+                                            <option value="تبوك">تبوك</option>
+                                            <option value="جده">جده</option>
+                                            <option value="الباحة">الباحة</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <p>رقم الوحدة</p>
                             <div class="form">

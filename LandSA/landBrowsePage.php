@@ -217,6 +217,7 @@
 						<input type="radio" class="radio" name="city" value="الدمام" >الدمام
 						<input type="radio" class="radio" name="city" value="تبوك" >تبوك
 						<input type="radio" class="radio" name="city" value="جده" >جده
+						<input type="radio" class="radio" name="city" value="الباحة" >الباحة
 						
 						<h3> <strong>أدخل السعر:  </strong></h3>
 						<div class="form"><input class="form" type="text"  placeholder="السعر" name="price"></input></div>
@@ -284,7 +285,7 @@
 
 										echo"<div>";
 											echo"
-											<form method='GET' action='land.php'>
+											<form method='GET' action='landView.php'>
 												<input type='hidden' id='REUN' name='REUN' value='$row[REUN]' />
 												<button class='giftB' type='submit' >تفاصيل</button>
 											</form>";
