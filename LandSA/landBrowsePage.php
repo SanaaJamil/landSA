@@ -41,6 +41,29 @@
 		header("Location: landBrowsePage.php"); 
 		exit();
 	}
+
+	if(isset($_GET["area"])){
+		$area = $_GET["area"];
+
+		if($area == "center"){
+			$sql_lands = "SELECT * FROM searchEngine WHERE city = 'الرياض'";
+			$result = $con->query($sql_lands);
+		}elseif($area == "north"){
+			$sql_lands = "SELECT * FROM searchEngine WHERE city = 'تبوك'";
+			$result = $con->query($sql_lands);
+		}elseif($area == "south"){
+			$sql_lands = "SELECT * FROM searchEngine WHERE city = 'الباحة'";
+			$result = $con->query($sql_lands);
+		}elseif($area == "east"){
+			$sql_lands = "SELECT * FROM searchEngine WHERE city = 'الباحة'";
+			$result = $con->query($sql_lands);
+		}elseif($area == "west"){
+			$sql_lands = "SELECT * FROM searchEngine WHERE city = 'مكة المكرمة' OR city = 'المدينة المنورة' OR city = 'جدة'";
+			$result = $con->query($sql_lands);
+		}else{
+			exit();
+		}
+	}
 	
 ?>
 
@@ -216,7 +239,7 @@
 						<input type="radio" class="radio" name="city" value="الرياض" >الرياض
 						<input type="radio" class="radio" name="city" value="الدمام" >الدمام
 						<input type="radio" class="radio" name="city" value="تبوك" >تبوك
-						<input type="radio" class="radio" name="city" value="جده" >جده
+						<input type="radio" class="radio" name="city" value="جدة" >جدة
 						<input type="radio" class="radio" name="city" value="الباحة" >الباحة
 						
 						<h3> <strong>أدخل السعر:  </strong></h3>

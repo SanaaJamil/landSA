@@ -4,11 +4,6 @@
 			<title>Home Page</title>
 			<link rel="stylesheet" href="style.css">
 			<script src="components/ComponentHandler.js" ></script>
-			<style>
-				aside{
-					flex: 0 0 150px;
-				}
-			</style>
 		</head>
 		<body>
 		<!--header call-->
@@ -75,25 +70,25 @@
 
 				<!--areas view start-->
 				<h1>مناطق الاراضي</h1>
-				<div class="galley">
+				<form class="galley" action="landBrowsePage.php" style="background: #ffffff00;">
 					<div class="area">
-						<div class="area-image area-1"><h4>الشماليه</h4></div>
+						<button name="area" value="center" class="area-image area-1"><h4>الوسطى</h4></button>
 					</div>
 					<div class="area">
-						<div class="area-image area-1"><h4>الجنوبيه</h4></div>
+						<button name="area" value="north" class="area-image area-1"><h4>الشماليه</h4></button>
 					</div>
 					<div class="area">
-						<div class="area-image area-1"><h4>الشرقيه</h4></div>
+						<button name="area" value="south" class="area-image area-1"><h4>الجنوبيه</h4></button>
 					</div>
 					<div class="area">
-						<div class="area-image area-1"><h4>الغربيه</h4></div>
+						<button name="area" value="east" class="area-image area-1"><h4>الشرقيه</h4></button>
 					</div>
-				</div>
-				<!--areas view end-->
+					<div class="area">
+						<button name="area" value="west" class="area-image area-1"><h4>الغربيه</h4></button>
+					</div>
+				</form>
 			</div>
-			<aside></aside><!--just to make it look better with flex display-->
 		</main>
-		
 
 		<!--footer call-->
 		<div w3-include-html="components/footer.php"></div>
