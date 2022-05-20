@@ -42,7 +42,7 @@
         $BirthDate=$row["BirthDate"];
     }else{
 		echo "<script>alert('الرجاء تسجيل الدخول اولاً')</script>";
-		echo "<script>setTimeout(\"location.href = '../log/login.php.php';\",1500);</script>";
+		echo "<script>setTimeout(\"location.href = '../log/login.php';\",1500);</script>";
 	}
 
 ?>
@@ -111,14 +111,14 @@
                                 <th>الاسم الثلاثي: &emsp;</th>
                                 <td>
                                     <div class="form">
-                                        <?php echo "<input type='text' name='firstName' placeholder='$row[firstName]' required>" ?>
-                                        <?php echo "<input type='text' name='middleName' placeholder='$row[middleName]' required>" ?>
-                                        <?php echo "<input type='text' name='lastName' placeholder='$row[lastName]' required>" ?>
+                                        <?php echo "<input type='text' name='firstName' value='$row[firstName]'>" ?>
+                                        <?php echo "<input type='text' name='middleName' value='$row[middleName]'>" ?>
+                                        <?php echo "<input type='text' name='lastName' value='$row[lastName]'>" ?>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <th>رقم الهوية الوطنية: </th>
+                                <th>رقم الهوية : </th>
                                 <td><?php print($ID);?></td>
                             </tr>
                             <tr>
@@ -129,7 +129,7 @@
                                 <th>رقم الجوال:</th>
                                 <td>
                                     <div class="form">
-                                        <?php echo "<input type='text' minlength='10' maxlength='10' name='phoneNum' placeholder='$row[phoneNum]' required>" ?>
+                                        <?php echo "<input type='text' minlength='10' maxlength='10' name='phoneNum' value='$row[phoneNum]'>" ?>
                                     </div>
                                 </td>
                             </tr>
@@ -137,7 +137,7 @@
                                 <th>البريد الإلكتروني:</th>
                                 <td>
                                     <div class="form">
-                                        <?php echo "<input type='text' name='Email' placeholder='$row[Email]' required>" ?>
+                                        <?php echo "<input type='text' name='Email' value='$row[Email]'>" ?>
                                     </div>
                                 </td>
                             </tr>
@@ -145,7 +145,7 @@
                                 <th>رقم الحساب البنكي (IBAN):</th>
                                 <td>
                                     <div class="form">
-                                        <?php echo "<input type='text' name='IBAN' placeholder='$row[IBAN]' required>" ?>
+                                        <?php echo "<input type='text' name='IBAN' value='$row[IBAN]'>" ?>
                                     </div>
                                 </td>
                             </tr>
@@ -155,7 +155,7 @@
                             </tr>
                         </table><br>
                         <button type="submit" name="save">حفظ</button>
-                        <button type="reset">إلغاء</button>
+                        <button type="reset" name="cancle" onclick="myFunction()">إلغاء</button>
                     </form>
                 </div>
                 </div>
@@ -167,7 +167,7 @@
                             <td><?php print($firstName .' ' .$middleName .' ' .$lastName);?></td>
                         </tr>
                         <tr>
-                            <th>رقم الهوية الوطنية: </th>
+                            <th>رقم الهوية : </th>
                             <td><?php print($ID);?></td>
                         </tr>
                         <tr>
