@@ -52,6 +52,7 @@ footer {
 <a href="#" class="fa fa-linkedin"></a>
 <a href="#" class="fa fa-twitter"></a>
 <a href="#" class="fa fa-envelope" ></a>
+<p>تم استخدام تقنية البلوك تشين في انشاء هذا الموقع للحفاظ على معلومات المستخدم امنة</p>
 
 <!-- <p style="  text-align: center; ";> دليل المستخدم </p>
 <a href="#" class="fa fa-facebook"></a> -->
