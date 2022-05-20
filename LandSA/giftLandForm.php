@@ -75,18 +75,6 @@ $REUN=null;
 		<script src="components/ComponentHandler.js" ></script>
 		
 		<style>
-			.Namefeild{
-				text-align: center;
-				width: 80%;
-				margin:0 auto;
-			}
-			table.Namefeild{
-			border-collapse: collapse;
-			width: 80%;
-			}
-			.Namefeild input[type=text] {
-				width: 98.5%;
-			}
 			.card {
 				background-color: red;
 				border-radius: 18px;
@@ -104,39 +92,33 @@ $REUN=null;
 		<div id="Head" w3-include-html="components/nav.php"></div>
 		<main>
 			<aside></aside>
+			
+			<div style="text-align:center; " >
 
-
-						
-			<div class="content">
-			<div  style="text-align:center; " class="content">
-
-				<div class="container" style= "text-align:center; width: 650px;" class="content">
-				<h1 style="padding-left:1%; margin: 5%; color: black" >استبيان اهداء ارض</h1>
-				<h2><?PHP echo $REUN; ?></h2>
+				<div class="container" style= "text-align:center; width: 650px;">
+					<h1 style="padding-left:1%; margin: 5%; color: black" >استبيان اهداء ارض</h1>
+					<h2><?PHP echo $REUN; ?></h2>
 
 					<!-- Gift Land Form -->
-					<form method="POST" action="giftLandForm.php">
+					<form class="gift" method="POST" action="giftLandForm.php">
 					<?php echo"<input type='hidden' id='REUN' name='REUN' value='$REUN' />";?>
 
-					<label for="NOwnerID">ادخل رقم الهوية الوطنيه للشخص المهدى إليه (يجب ان يكون مسجلاً في الموقع):*</label><br>
-					<input type="text" id="NOwnerID" name="NOwnerID" required><br><br>
+					<h3>ادخل رقم الهوية الوطنيه للشخص المهدى إليه (يجب ان يكون مسجلاً في الموقع):*</h3><br>
+					<div class="form">
+						<input type="text" minlength="10" maxlength="10" id="NOwnerID" name="NOwnerID" required><br><br>
+					</div>
 					
 					<h3 for="NOwnerName">الاسم الثلاثي للشخص المهدى إليه:</h3><br>
-					<table class="Namefeild">
-						<tr>
-							<td><label for="NOwnerFirstName">الاسم الأول*:</label></td>
-							<td><label for="NOwnerMiddleName">اسم الأب*:</label></td>
-							<td><label for="NOwnerLastName">اسم العائلة*:</label></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="NOwnerFirstName" name="NOwnerFirstName" required></td>
-							<td><input type="text" id="NOwnerMiddleName" name="NOwnerMiddleName" required></td>
-							<td><input type="text" id="NOwnerLastName" name="NOwnerLastName" required></td>
-						</tr>
-					</table><br><br>
+					<div class="form multiple">
+						<input type="text" name="NOwnerFirstName" id="NOwnerFirstName" placeholder="الاسم الأول" required>
+						<input type="text" name="NOwnerMiddleName" id="NOwnerMiddleName" placeholder="اسم الأب" required>
+						<input type="text" name="NOwnerLastName" id="NOwnerLastName" placeholder="اسم العائلة" required>
+					</div><br><br>
 
-					<label for="NOwnerPhone">رقم هاتف الشخص المهدى إليه*:</label><br>
-					<input type="text" minlength="10" maxlength="10" id="NOwnerPhone" name="NOwnerPhone" placeholder="مثال: 0555555555" required><br><br>
+					<h3>رقم هاتف الشخص المهدى إليه*:</h3><br>
+					<div class="form">
+						<input type="text" minlength="10" maxlength="10" id="NOwnerPhone" name="NOwnerPhone" placeholder="مثال: 0555555555" required><br><br>
+					</div>
 
 					<button><input type="submit" value="إرسال" ></button>
 

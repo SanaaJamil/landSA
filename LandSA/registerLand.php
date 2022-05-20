@@ -116,11 +116,11 @@ $lastName = $row["lastName"];
                                 <input type="text" name="courtIssued" required>
                             </div>
                             <p>المساحة بالأرقام</p>
-                            <div class="form multiple">
+                            <div class="form">
                                 <input type="number" name="spaceInNumbers" required>
                             </div>  
                             <p>المساحة كتابتًا</p>
-                            <div class="form multiple">
+                            <div class="form">
                                 <input type="text" name="spaceInWriting" required>
                             </div>  
                             <p>الحدود: شمالا، جنوبا، شرقا، غربا</p>
