@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 20, 2022 at 06:30 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Host: localhost
+-- Generation Time: May 29, 2022 at 04:27 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `landsa`
+-- Database: `landsa_DB`
 --
 
 -- --------------------------------------------------------
@@ -277,11 +277,22 @@ INSERT INTO `users` (`ID`, `IDType`, `IDdate`, `firstName`, `middleName`, `lastN
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `userslands`
+--
+
+CREATE TABLE `userslands` (
+  `UserID` varchar(64) NOT NULL,
+  `REUN` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `bill`
 --
 DROP TABLE IF EXISTS `bill`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `b`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `bill`  AS SELECT `offers`.`OwnerID` AS `OwnerID`, `offers`.`BuyerID` AS `BuyerID`, `offers`.`REUN` AS `REUN`, `s`.`firstName` AS `SellerFName`, `s`.`middleName` AS `SellerMName`, `s`.`lastName` AS `SellerLName`, `b`.`firstName` AS `BuyerFName`, `b`.`middleName` AS `BuyerMName`, `b`.`lastName` AS `BuyerLName`, `s`.`IBAN` AS `SellerIBAN`, `b`.`IBAN` AS `BuyerIBAN`, `offers`.`OfferID` AS `offerID`, `offers`.`landPrice` AS `landPrice`, `b`.`address` AS `address`, `l`.`city` AS `city`, `l`.`deedNumber` AS `deedNumber`, `l`.`deedDate` AS `deedDate` FROM (((`offers` join `users` `b`) join `users` `s`) join `landrecord` `l`) WHERE `s`.`ID` = `offers`.`OwnerID` AND `b`.`ID` = `offers`.`BuyerID` AND `offers`.`offerStatus` = '1' AND `offers`.`REUN` = `l`.`REUN``REUN`  ;
 
 -- --------------------------------------------------------
 
@@ -290,7 +301,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `searchengine`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `searchengine`  AS SELECT `landrecord`.`REUN` AS `REUN`, `landrecord`.`city` AS `city`, `landrecord`.`neighborhoodName` AS `neighborhoodName`, `landrecord`.`unitType` AS `unitType`, `landrecord`.`deedDate` AS `deedDate`, `landsonsale`.`price` AS `price` FROM (`landrecord` join `landsonsale`) WHERE `landrecord`.`REUN` = `landsonsale`.`REUN` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `searchengine`  AS SELECT `landrecord`.`REUN` AS `REUN`, `landrecord`.`city` AS `city`, `landrecord`.`neighborhoodName` AS `neighborhoodName`, `landrecord`.`unitType` AS `unitType`, `landrecord`.`deedDate` AS `deedDate`, `landsonsale`.`price` AS `price` FROM (`landrecord` join `landsonsale`) WHERE `landrecord`.`REUN` = `landsonsale`.`REUN``REUN`  ;
 
 --
 -- Indexes for dumped tables
@@ -300,17 +311,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indexes for table `giftrecord`
 --
 ALTER TABLE `giftrecord`
-  ADD PRIMARY KEY (`REUN`,`requestID`) USING BTREE,
-  ADD UNIQUE KEY `REUN` (`REUN`),
-  ADD KEY `UserID` (`UserID`);
+  ADD PRIMARY KEY (`REUN`,`requestID`) USING BTREE;
 
 --
 -- Indexes for table `inheritancerecord`
 --
 ALTER TABLE `inheritancerecord`
-  ADD PRIMARY KEY (`ownerID`,`requestID`),
-  ADD UNIQUE KEY `REUN` (`REUN`),
-  ADD KEY `UserID` (`UserID`);
+  ADD PRIMARY KEY (`ownerID`,`requestID`);
 
 --
 -- Indexes for table `landinfo`
@@ -322,44 +329,37 @@ ALTER TABLE `landinfo`
 -- Indexes for table `landrecord`
 --
 ALTER TABLE `landrecord`
-  ADD PRIMARY KEY (`REUN`,`IDNumber`) USING BTREE,
-  ADD UNIQUE KEY `REUN` (`REUN`),
-  ADD KEY `IDNumber` (`IDNumber`);
+  ADD PRIMARY KEY (`REUN`,`IDNumber`) USING BTREE;
 
 --
 -- Indexes for table `landsonsale`
 --
 ALTER TABLE `landsonsale`
-  ADD PRIMARY KEY (`REUN`),
-  ADD KEY `REUN` (`REUN`);
-
---
--- Indexes for table `map`
---
-ALTER TABLE `map`
-  ADD UNIQUE KEY `REUN` (`REUN`);
+  ADD PRIMARY KEY (`REUN`);
 
 --
 -- Indexes for table `offers`
 --
 ALTER TABLE `offers`
-  ADD PRIMARY KEY (`OfferID`,`OwnerID`,`REUN`),
-  ADD UNIQUE KEY `requestID` (`requestID`),
-  ADD KEY `offers_ID_fk` (`OwnerID`),
-  ADD KEY `offers_REUN_fk` (`REUN`);
+  ADD PRIMARY KEY (`OfferID`,`OwnerID`,`REUN`);
 
 --
 -- Indexes for table `systemrequest`
 --
 ALTER TABLE `systemrequest`
-  ADD PRIMARY KEY (`requestID`),
-  ADD KEY `OfferID` (`OfferID`);
+  ADD PRIMARY KEY (`requestID`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`) USING BTREE;
+
+--
+-- Indexes for table `userslands`
+--
+ALTER TABLE `userslands`
+  ADD PRIMARY KEY (`REUN`);
 
 --
 -- Constraints for dumped tables
